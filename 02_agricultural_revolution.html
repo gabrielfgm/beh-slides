@@ -1,39 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>British economic growth: an overview</title>
+    <meta charset="utf-8" />
+    <script src="libs/xaringanExtra-webcam-0.0.1/webcam.js"></script>
+    <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
+    <link href="libs/tile-view-0.0.17/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.0.17/tile-view.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="helper_functions/extra.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# British economic growth: an overview
+### <div class="line-block">Dr. Gabriel Geisler Mesevage<br />
+<a href="mailto:gabriel.mesevage@kcl.ac.uk" class="email">gabriel.mesevage@kcl.ac.uk</a><br />
+Office Hours: Wed. 10-11am &amp; Thurs. 2-3pm</div>
+### Last update: 21 August, 2020
+
 ---
-title: "British economic growth: an overview"
-author: | 
-    | Dr. Gabriel Geisler Mesevage 
-    | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 2-3pm
-date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
-output: 
-  xaringan::moon_reader:
-    nature:
-      beforeInit: "helper_functions/macros.js"
-    lib_dir: libs
-    css: ["xaringan-themer.css", "helper_functions/extra.css"]
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
-                      message = FALSE, fig.align='center', fig.retina=3,
-                      out.width="100%", fig.width=6, fig.height=4.5)
 
-library(RefManageR)
-BibOptions(check.entries = FALSE, 
-           bib.style = "authoryear", 
-           style = "markdown",
-           dashed = TRUE, hyperlink = FALSE)
-source("helper_functions/helper_print_bib.R")
-bib <- ReadBib("pres.bib")
-```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-solarized_light()
-source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
-```
+
+
 
 # Outline
 
@@ -72,89 +64,22 @@ class: inverse, center, middle
 
 ## Feeding Britain: an overview
 
-```{r, kelly_and_pop, fig.align='center', out.height='.7\\textheight',  out.extra='keepaspectratio'}
-knitr::include_graphics("figures/kelly_plot.png")
-```
+&lt;img src="figures/kelly_plot.png" width="100%" height=".7\textheight" keepaspectratio style="display: block; margin: auto;" /&gt;
 
 + Source: [@kelly2013numerare].
 + **But remember**: population goes from ~6 m. in 1300 to ~20 m. in 1850!
 
 ---
 
-```{r, input_indices}
-library(tidyverse)
-library(ggalt)
-library(ggrepel)
-
-df <- data.frame(date = rep(c(1700,1800,1850), 2),
-                 input = rep(c("Land", "Labor"), each=3),
-                 index = c(1, 1.35, 1.37, 1, .95, 1.16))
-
-df %>% ggplot(aes(date, index, color=input, label=index)) + 
-  geom_line() +
-  geom_point(size=4) +
-  geom_text(nudge_y = .04, color="black") +
-  facet_wrap(~input) +
-  scale_color_viridis_d(option = "D") + 
-  ggtitle("Index of Land and Labour inputs")+
-  theme_minimal() +
-  ylab("Index") + xlab("") +
-  guides(color=FALSE) +
-  xlim(c(1690,1860)) + theme_lecture
-
-```
+&lt;img src="02_agricultural_revolution_files/figure-html/input_indices-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-```{r, capital_deepening}
-cap <- data.frame(date = rep(c(1700, 1750, 1800, 1850), 2),
-                  input = rep(c("Landlord", "Tenant"), each=4),
-                  index = c(112, 114, 143, 232, 183, 195, 242, 353))
-
-cap %>% ggplot(aes(date, index, color=input, label=index)) + 
-  geom_line() +
-  geom_point(size=4) +
-  geom_text(nudge_y = 18, color="black") +
-  facet_wrap(~input) +
-  scale_color_viridis_d(option = "D") + 
-  ggtitle("Index of Capital Deepening", subtitle = "Landlords and Tenants")+
-  theme_minimal() +
-  ylab("Index") + xlab("") +
-  guides(color=FALSE)+
-  xlim(c(1690,1860)) + theme_lecture
-
-```
+&lt;img src="02_agricultural_revolution_files/figure-html/capital_deepening-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-```{r, change_per_acre, fig.align='center', fig.height=3, fig.width=4}
-
-pc <- data.frame(date = unique(df$date),
-                 labor_ratio = df$index[df$input=="Labor"]/df$index[df$input=="Land"])
-
-pc <- cbind(pc, cap %>% group_by(date) %>% 
-  summarise(tot_cap = sum(index)) %>% 
-  ungroup() %>% 
-  filter(date != 1750) %>% 
-  select(tot_cap))
-
-pc %>% mutate(tot_cap = tot_cap/tot_cap[1]) %>% 
-  gather(key = item, value = index, labor_ratio, tot_cap) %>% 
-  mutate(item = if_else(item=="tot_cap", "Capital ratio", "Labor ratio")) %>% 
-  ggplot(aes(date, index, color=item, label=round(index, 2))) +
-  geom_line() + 
-  geom_point(size=4) +
-  facet_wrap(~item) + 
-  geom_text(nudge_y = .1, color="black") +
-  scale_color_viridis_d(option = "D") + 
-  ggtitle("Index of Labor and Capital per Acre")+
-  theme_minimal() +
-  ylab("Index") + xlab("") +
-  guides(color=FALSE)+
-  xlim(c(1690,1860)) +
-  theme_lecture
-
-```
+&lt;img src="02_agricultural_revolution_files/figure-html/change_per_acre-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 + A consequence of increasing farm size
     - Enclosure, more below
@@ -180,41 +105,16 @@ class: inverse, center, middle
 
 At least 4 interpretations [@overton1996agricultural]:
 
->1. A transformation in agricultural technique
->2. Agriculture's ability to feed the growing population
->3. Productivity increases
->4. Broader criteria of change (an 'Agrarian Revolution') associated with institutional reform
+&gt;1. A transformation in agricultural technique
+&gt;2. Agriculture's ability to feed the growing population
+&gt;3. Productivity increases
+&gt;4. Broader criteria of change (an 'Agrarian Revolution') associated with institutional reform
 
 ---
 
 ## When was the Agricultural Revolution? Some conflicting interpretations
 
-```{r,engine='tikz',eval=FALSE}
-\begin{tikzpicture}[scale=1]
-\node[align=center] at (0,-0.5) {1500};
-\draw (0,-.15) -- (0, .15);
-\node[align=center] at (2.5,-0.5) {1600};
-\draw (2.5,-.15) -- (2.5, .15);
-\node[align=center] at (5,-0.5) {1700};
-\draw (5,-.15) -- (5, .15);
-\node[align=center] at (7.5,-0.5) {1800};
-\draw (7.5,-.15) -- (7.5, .15);
-\node[align=center] at (10,-0.5) {1900};
-\draw (10,-.15) -- (10, .15);
-\draw [thick] (0,0) -- (10,0);
-\uncover<2,3,4,5,6>{\draw [thick,decorate,decoration={brace,amplitude=12pt,raise=0pt,mirror}] (6.25,-0.5) -- (8.75,-0.5);
-\node[align=center] at (6.25,-3) {Traditional\\View};
-\draw[thick, ->] (6.25,-2.5) -- (7.5, -1);}
-\uncover<3,4,5,6>{\draw [thick,decorate,decoration={brace,amplitude=12pt,raise=0pt}] (2.5,0.5) -- (5,0.5);
-\node[align=center] at (7.5, 3) {Revisionist\\View};
-\draw [thick, ->] (7, 3) -- (3.75, 1);}
-\uncover<4,5,6>{\draw [thick,decorate,decoration={brace,amplitude=12pt,raise=0pt,mirror}] (0,-1.5) -- (5,-1.5);
-\node[align=center] at (2.5, -2.5) {More Revision};}
-\uncover<5,6>{\draw [thick,decorate,decoration={brace,amplitude=12pt,raise=0pt}] (7.5,0.5) -- (10,0.5);
-\node[align=center] at (8.75, 1.5) {Unusual Views};}
-\uncover<6>{\node[align=center, circle, draw, fill=orange] at (6.25,-3) {Traditional\\View};}
-\end{tikzpicture}
-```
+
 
 ---
 
@@ -271,9 +171,7 @@ class: inverse, center, middle
 
 ## Crop rotation
 
-```{r, overfig, fig.align='center', out.height='.95\\textheight', out.extra='keepaspectratio'}
-knitr::include_graphics("figures/overton_twoviews.png")
-```
+&lt;img src="figures/overton_twoviews.png" width="100%" height=".95\textheight" keepaspectratio style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -296,9 +194,7 @@ knitr::include_graphics("figures/overton_twoviews.png")
 
 ## Technology
 
-```{r, rotherham_plot, fig.align='center', out.width='.95\\textwidth', out.extra='keepaspectratio'}
-knitr::include_graphics("figures/rotherham_plow.jpg")
-```
+&lt;img src="figures/rotherham_plow.jpg" width=".95\textwidth" keepaspectratio style="display: block; margin: auto;" /&gt;
 
 + Rotherham Plow
     - two horses instead of four
@@ -308,9 +204,7 @@ knitr::include_graphics("figures/rotherham_plow.jpg")
 
 ## Technology
 
-```{r, tull_seed_drill, fig.align='center', out.width='.95\\textwidth', out.extra='keepaspectratio'}
-knitr::include_graphics("figures/tull_seed_drill.jpg")
-```
+&lt;img src="figures/tull_seed_drill.jpg" width=".95\textwidth" keepaspectratio style="display: block; margin: auto;" /&gt;
 
 + Jethro Tull's Seed Drill
 
@@ -336,9 +230,7 @@ knitr::include_graphics("figures/tull_seed_drill.jpg")
 
 ## The 'Great Men' of the agricultural revolution
 
-```{r, great_men, out.height="70%", fig.show='hold', fig.align='center'}
-knitr::include_graphics(c("figures/arthur_young.jpg", "figures/jethro_tull.jpg"))
-```
+&lt;img src="figures/arthur_young.jpg" width="100%" height="70%" style="display: block; margin: auto;" /&gt;&lt;img src="figures/jethro_tull.jpg" width="100%" height="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -379,9 +271,7 @@ knitr::include_graphics(c("figures/arthur_young.jpg", "figures/jethro_tull.jpg")
 
 ## Enclosure
 
-```{r, allen_frontis, fig.align='center', out.height='.95\\textheight',  out.extra='keepaspectratio'}
-knitr::include_graphics("figures/allen_enclosure_frontis.jpg")
-```
+&lt;img src="figures/allen_enclosure_frontis.jpg" width="100%" height=".95\textheight" keepaspectratio style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -443,9 +333,7 @@ Allen identifies with JS Mill:
 
 ## When did enclosure occur?
 
-```{r, enclosure_table}
-knitr::include_graphics("figures/clark_clark_table.png")
-```
+&lt;img src="figures/clark_clark_table.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 + Source: [@clark2001CommonRights].
 
@@ -453,9 +341,7 @@ knitr::include_graphics("figures/clark_clark_table.png")
 
 ## When did enclosure occur?
 
-```{r, enclosure_graph}
-knitr::include_graphics("figures/overton_enclosure_acts.png")
-```
+&lt;img src="figures/overton_enclosure_acts.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 + Source: [@overton1996agricultural]
 
@@ -466,7 +352,7 @@ knitr::include_graphics("figures/overton_enclosure_acts.png")
 + "I argue that there were two agricultural revolutions in English history -- the
 yeomen's and the much more famous landlords'" [@allen1992Enclosure pp. 13].
 + Rise and fall of Yeoman
-    - Black Death -> unrest -> enclosure -> provision of property rights c.16th
+    - Black Death -&gt; unrest -&gt; enclosure -&gt; provision of property rights c.16th
 + "The real collapse of yeoman agriculture occurred in the eighteenth century" (pp. 14)
     - sold their holdings to large estates where owners, or estates refuse to renew leases
 + **Most growth in output comes from yeomen's revolution**
@@ -477,10 +363,7 @@ yeomen's and the much more famous landlords'" [@allen1992Enclosure pp. 13].
 
 ## Two revolutions?
 
-```{r, two_revs, out.width="49%", fig.show='hold', fig.align='center'}
-knitr::include_graphics(c("figures/allen_first_ar.png",
-                          "figures/allen_second_ar.png"))
-```
+&lt;img src="figures/allen_first_ar.png" width="49%" style="display: block; margin: auto;" /&gt;&lt;img src="figures/allen_second_ar.png" width="49%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -493,9 +376,7 @@ knitr::include_graphics(c("figures/allen_first_ar.png",
 
 ## Landlord's revolution
 
-```{r, rental_rate, out.width="70%", fig.show='hold', fig.align='center'}
-knitr::include_graphics("figures/allen_real_rent.jpg")
-```
+&lt;img src="figures/allen_real_rent.jpg" width="70%" style="display: block; margin: auto;" /&gt;
 
 + rents rose benefitting landowners
     - prices rise (- consumers)
@@ -508,7 +389,7 @@ knitr::include_graphics("figures/allen_real_rent.jpg")
 
 Labor productivity in agriculture grew for three reasons:
 
-1. More land under cultivation and **increasing** $\texttt{land}/\texttt{labor}$ ratio
+1. More land under cultivation and **increasing** `\(\texttt{land}/\texttt{labor}\)` ratio
 2. Increase in capital per worker
 3. Increase in growing efficiency: the techniques of the ag revolution
 
@@ -534,13 +415,13 @@ Enclosure
 
 ## Questions about Allen, "Tracking"
 
->+ "The concept of agricultural revolution does not mean simply an increase in output-it also implies an increase in productivity." Do you agree with this?
->+ Is Allen pursuasive in his advocacy for an earlier agricultural revolution?
+&gt;+ "The concept of agricultural revolution does not mean simply an increase in output-it also implies an increase in productivity." Do you agree with this?
+&gt;+ Is Allen pursuasive in his advocacy for an earlier agricultural revolution?
 
 ## Questions about Kelly and O Grada
 
->+ In light of Kelly and O Grada's article, are estimates of agricultural output precise enough to meaningfully interpret trends over time?
->+ Kelly and O Grada reference modern estimates from developing countries to try to calibrate the income elasticity of demand. Other economic historians (e.g. [@allen1992Enclosure]) also do this. Is this a helpful approach? A meaningful approach?
+&gt;+ In light of Kelly and O Grada's article, are estimates of agricultural output precise enough to meaningfully interpret trends over time?
+&gt;+ Kelly and O Grada reference modern estimates from developing countries to try to calibrate the income elasticity of demand. Other economic historians (e.g. [@allen1992Enclosure]) also do this. Is this a helpful approach? A meaningful approach?
 
 ---
 
@@ -548,9 +429,7 @@ Enclosure
 
 ## What you will see
 
-```{r, reg_examp, out.width="105%", fig.align='center', fig.show='hold'}
-knitr::include_graphics("figures/horrell_reg_examp.png")
-```
+&lt;img src="figures/horrell_reg_examp.png" width="105%" style="display: block; margin: auto;" /&gt;
 
 + Look at each row
 
@@ -558,123 +437,35 @@ knitr::include_graphics("figures/horrell_reg_examp.png")
 
 ## Closer view
 
-```{r, reg_manual}
-set.seed(42)
-x <- rnorm(100)
-beta <- 1.5
-alpha <- 40
-eps <- rnorm(100)
-
-y <- alpha + beta*x + eps
-
-fd <- data.frame(y, x, eps)
-
-reg <- lm(y~x, data = fd)
-
-fd %>% 
-  ggplot(aes(x, y)) + 
-  geom_point(size = 3, color = "tomato") +
-  stat_smooth(method = 'lm', se = FALSE) +
-  theme_minimal() +
-  geom_label_repel(data = data.frame(x = 0, y = reg$coefficients[[1]],
-                                     lab = "Intercept"), 
-                   aes(x, y, label = lab), nudge_x = -2, nudge_y = 2) +
-  geom_label_repel(data = data.frame(x = -1.5, 
-                                     y = predict(reg, 
-                                                 newdata = data.frame(x = -1.5)),
-                                     lab = paste0("The slope of \nthis line is ", 
-                                                  round(reg$coefficients[[2]], 2))), 
-                   aes(x, y, label = lab), nudge_x = 3, nudge_y = -2) +
-  ggtitle("A simple regression") +
-  geom_segment(aes(x, y, xend = x, yend = fitted(reg)), linetype="dashed") + 
-  theme_lecture
-  
-
-```
+&lt;img src="02_agricultural_revolution_files/figure-html/reg_manual-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ## A simple regression
 
-```{r, reg_output, results='asis'}
-stargazer::stargazer(reg, header = FALSE, 
-                     title = "Example Regression Table",
-                     single.row = TRUE,
-                     omit.stat = c("rsq", "f", "ser"), type = 'html')
-```
+
+&lt;table style="text-align:center"&gt;&lt;caption&gt;&lt;strong&gt;Example Regression Table&lt;/strong&gt;&lt;/caption&gt;
+&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan="1" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;y&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;x&lt;/td&gt;&lt;td&gt;1.527&lt;sup&gt;***&lt;/sup&gt; (0.088)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;Constant&lt;/td&gt;&lt;td&gt;39.912&lt;sup&gt;***&lt;/sup&gt; (0.091)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;Observations&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.753&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td style="text-align:right"&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
 
 ---
 
 ## Assumptions: the relationship is linear
 
-```{r, reg_manual_nl}
-set.seed(42)
-x <- rnorm(100)
-beta <- 1.5
-alpha <- 40
-eps <- rnorm(100)
-
-y <- alpha + beta*x^2 + eps
-
-fd <- data.frame(y, x, eps)
-
-reg2 <- lm(y~x, data = fd)
-
-fd %>% 
-  ggplot(aes(x, y)) + 
-  geom_point(size = 3, color = "tomato") +
-  stat_smooth(method = 'lm', se = FALSE) +
-  theme_minimal() +
-  ggtitle("A bad fit") +
-  geom_segment(aes(x, y, xend = x, yend = fitted(reg2)), linetype="dashed") +
-  theme_lecture
-  
-
-```
+&lt;img src="02_agricultural_revolution_files/figure-html/reg_manual_nl-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 ## Assumptions: we are accounting for what we need to
 
-```{r, reg_manual_ovb}
-set.seed(4242)
-alpha <- 40
-eps <- rnorm(100, mean = 0, sd = 15)
-z <- rep(c(10,20), each = 50)
-x <- rnorm(100, mean = z, sd = 3)
-
-y1 <- alpha - x[1:50] + eps[1:50] + 5 * z[1:50]
-y2 <- alpha - x[51:100] + eps[51:100] + 5 *  z[51:100]
-
-y <- c(y1, y2)
-
-fd <- data.frame(y, x, z, eps)
-
-reg3 <- lm(y~x, data = fd)
-
-p1 <- fd %>% 
-  ggplot(aes(x, y)) + 
-  geom_point(size = 3) +
-  stat_smooth(method = 'lm', se = FALSE) +
-  theme_minimal() +
-  ggtitle("Missing variables can change a relationship") +
-  geom_segment(aes(x, y, xend = x, yend = fitted(reg3)), linetype="dashed") +
-  theme_lecture
-  
-p2 <- fd %>% 
-  ggplot(aes(x, y, color=as.factor(z), group=as.factor(z))) + 
-  geom_point(size = 3) +
-  stat_smooth(method = 'lm', se = FALSE) +
-  theme_minimal() +
-  #ggtitle("Missing variables can change a relationship") +
-  geom_segment(aes(x, y, xend = x, yend = fitted(reg3)), linetype="dashed") +
-  scale_color_viridis_d() +
-  guides(color = FALSE) +
-  theme_lecture
-
-cowplot::plot_grid(p1, p2)
-
-```
+&lt;img src="02_agricultural_revolution_files/figure-html/reg_manual_ovb-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -688,4 +479,91 @@ cowplot::plot_grid(p1, p2)
 ---
 
 ## References
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="helper_functions/macros.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
 
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
