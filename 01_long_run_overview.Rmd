@@ -3,8 +3,8 @@ title: "British economic growth: an overview"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 2-3pm
-date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
+    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
     nature:
@@ -44,14 +44,16 @@ class: center, inverse, middle
 .Large[
 ## Today's goals
 
-+ An overview of British economic history
-+ Key themes:
-    - Critical perspectives on national accounts
-    - The constraints of an organic economy
-    - a brief look at productivity
-+ This course
-    - What we will cover
-    - How you will be assessed
++ Some preliminary remarks on how classes will work
++ Part I
+  - A quantitative overview of British economic history
+  - A critical look at GDP
++ Part II
+  - A consideration on the rise in population
+  - Productivity: a worked example
++ Part III
+  - What this course will cover
+  - How you will be assessed
 ]
 
 ---
@@ -68,15 +70,16 @@ I want you to...
 + Engage with numerical evidence
     - [We all start somewhere](#message)
 
-You get out of this...
+You should take from this...
 
++ An overview of British economic development, but also...
 + Highly transferable analytic skills!
 
 ---
 
 class: inverse, center, middle
 
-# An overview of British economic history
+# Part I
 
 ---
 
@@ -173,7 +176,39 @@ real_gdp_eng %>%
   annotate("segment", x=1400, xend = 1688, y=2900, 
            yend = real_gdp_eng$`Real GDP per capita`[real_gdp_eng$Year==1688]) +
   annotate("text", x=1400, y=3200, 
-           label = "Institutional/Fiscal/Financial revolution?") +
+           label = "Institutional/Fiscal/\nFinancial revolution?") +
+  theme_lecture 
+```
+
+---
+
+```{r, gdp_pc_industrious}
+real_gdp_eng %>% 
+  filter(Year > 1270) %>% 
+  ggplot(aes(Year, `Real GDP per capita`)) +
+  #geom_point() + 
+  geom_line() +
+  scale_x_continuous(breaks = seq(1300, 1900, 50)) +
+  ggtitle("English Real GDP per capita, 1270-1939", 
+          subtitle = "Source: Broadberry et. al. (2015) & Bank of England") +
+  ylab("Real GDP per capita") + 
+  annotate("rect", xmin=1760, xmax=1820, 
+           ymin=500, ymax=6000, fill="coral",
+           alpha=.3) +
+  annotate("text", x=1670, y=5500, 
+           label="Industrial revolution?", color="coral") +
+  annotate("rect", xmin = 1600, xmax=1850, ymin=500, ymax = 4000, 
+           fill = 'steelblue', alpha = .3) +
+  annotate("text", x=1500, y=4000, 
+           label = "Agricultural revolution?", color="steelblue") +
+  annotate("segment", x=1400, xend = 1688, y=2900, 
+           yend = real_gdp_eng$`Real GDP per capita`[real_gdp_eng$Year==1688]) +
+  annotate("text", x=1400, y=3200, 
+           label = "Institutional/Fiscal/\nFinancial revolution?") +
+  annotate("segment", x=1475, xend = 1750, y=1800, 
+           yend = real_gdp_eng$`Real GDP per capita`[real_gdp_eng$Year==1750]) +
+  annotate("text", x=1350, y=1800, 
+           label = "Industrious revolution?") +
   theme_lecture 
 ```
 
@@ -225,6 +260,8 @@ plotdf %>%
   xlim(c(1700,1900)) +
   guides(color = FALSE) +
   scale_color_brewer(type = "qual", palette = 2) +
+  ylab("Chained GDP per capita") +
+  xlab("") +
   theme_lecture
 
 ```
@@ -254,13 +291,13 @@ plotdf %>%
             aes(label = country, x = year, y=cgdppc, color=countrycode)) +
   guides(color = FALSE) +
   scale_color_brewer(type = "qual", palette = 2) +
+  ylab("Chained GDP per capita") +
+  xlab("") +
   theme_lecture
 
 ```
 
 ---
-
-# Key Themes
 
 ## Historical national accounts
 
@@ -273,13 +310,13 @@ plotdf %>%
 
 ## Reconstructing British national accounts
 
-```{r, broadberry_et_al, fig.align='center', out.width="50%"}
+```{r, broadberry_et_al, fig.align='center', out.width="40%"}
 knitr::include_graphics("figures/broadberry_et_al.jpg")
 ```
 
 ---
 
-## How the sausage gets made -- GDP
+## How the sausage gets made: GDP
 
 Three ways to measure GDP
 
@@ -299,7 +336,7 @@ $GDP = \texttt{agricultural value added} + \texttt{industrial value added} + \\ 
 
 ---
 
-## How the sausage gets made -- GDP
+## How the sausage gets made: GDP
 
 + How hard is output based estimation?
 + To compute output just for agriculture:
@@ -317,7 +354,7 @@ $GDP = \texttt{agricultural value added} + \texttt{industrial value added} + \\ 
 
 name: nhavalue
 
-## How the sausage gets made -- GDP 
+## How the sausage gets made: GDP 
 
 + Why do it this way?
     - Existing wage series `r AutoCite(bib["clarkConditionWorkingClass2005", "clark1381MalthusDelusion2013"])` [did not seem to match other historical evidence!](#clarkvbroadberry) `r AutoCite(bib["broadberryBritishEconomicGrowth2012"])`
@@ -356,17 +393,19 @@ ag_share %>%
 
 ---
 
-# The escape from Malthus
+class: inverse, center, middle
+
+# Part II: The escape from Malthus
+
+---
 
 ## Overcoming 'Organic'/Malthusian constraints
 
->+ Ricardo describes diminishing *marginal* returns from land [@wrigley2004poverty]
+>+ Ricardo describes diminishing *marginal* returns from land `r AutoCite(bib["wrigleyPovertyProgressPopulation2004"])`
 >    - What does *marginal* mean?
 >+ And yet population grows!
 
 ---
-
-## English Population, 1086-1939
 
 ```{r population}
 real_gdp_eng %>% 
@@ -377,7 +416,7 @@ real_gdp_eng %>%
   ggtitle("English population, 1086-1939", 
           subtitle = "Source: Broadberry et. al. (2015) & Bank of England") +
   ylab("population") + 
-  scale_x_continuous(breaks = seq(1000, 1940, 50)) +
+  scale_x_continuous(breaks = seq(1000, 1940, 100)) +
   annotate('rect', xmin=1325, xmax=1375, ymin=1.5, ymax=7.5, 
            color='black', fill='grey', alpha=.3) +
   annotate('text', x=1250, y=8.5, label='Black Death') +
@@ -390,7 +429,7 @@ real_gdp_eng %>%
 
 ---
 
-## Overcoming 'Organic'/Malthusian constraints
+### Overcoming 'Organic'/Malthusian constraints
 
 ```{r, wages_pop, fig.align='center'}
 knitr::include_graphics("figures/clark_wage_pop.jpeg")
@@ -407,12 +446,6 @@ knitr::include_graphics("figures/clark_wage_pop.jpeg")
 
 ---
 
-class: inverse, middle, center
-
-# Productivity
-
----
-
 ## What accounts for the jump in growth? Productivity
 
 + *Productivity*: doing more with what you have
@@ -421,7 +454,7 @@ class: inverse, middle, center
     - Change in prices of a good
     - Change in price index
     - Change in price of inputs
-+ You can compute change in productivity [@mccloskey1994, pp. 250]
++ You can compute change in productivity `r AutoCite(bib["mccloskey17801860Survey1994"])`
     * actually need to additionally assume markups don't change a lot
 
 ---
@@ -429,6 +462,7 @@ class: inverse, middle, center
 ## Productivity: the evidence from prices
 
 >"The diminution of price has . . . been most remarkable in those manufactures of which the materials are the coarse metals. A better movement of a watch, that about the middle of the last century could have been bought for twenty pounds, may now perhaps be had for twenty shillings." 
+<br>
 > —Adam Smith (1976 , bk. 1, ch. 11, pt. 3) [@kelly2016WatchPrices]
 
 ---
@@ -467,8 +501,8 @@ knitr::include_graphics("figures/watch_prices.png")
 
 ## Productivity: the example from watches
 
-+ Average real price in 1710: \pounds{}6
-+ Average real price in 1809: \pounds{}2
++ Average real price in 1710: £6
++ Average real price in 1809: £2
 + Average fall in price: approx. -1.3% per year
     - Wages were roughly unchanged
     - adjusting for quality changes productivity gains of roughly 2% a year.
@@ -477,41 +511,47 @@ knitr::include_graphics("figures/watch_prices.png")
 
 ## Division of labor
 
-+ In a mid-eighteenth-century description of London trades, Campbell (1747 , p. 250) described how watches “at their first appearance . . . were began and ended by one man who was called a watchmaker” but “of late years the watchmaker . . . scarce makes anything belonging to a watch. He only deploys the different tradesmen among who the art is divided.” [@kelly2016WatchPrices]
++ In a mid-eighteenth-century description of London trades, Campbell (1747 , p. 250) described how watches “at their first appearance . . . were began and ended by one man who was called a watchmaker” but “of late years the watchmaker . . . scarce makes anything belonging to a watch. He only deploys the different tradesmen among who the art is divided.” `r AutoCite(bib["kellyAdamSmithWatch2016"])`
 
-+ “...if the Demand of Watches shou’d become so very great as to find constant imployment for as many Persons . . . the Maker of the Pins, or Wheels, or Screws, or other Parts, must needs be more perfect and expeditious at his proper work, . . . than if he is also to be imploy’d in all the variety of a Watch.” [@henry_1701, pp. 42–43]
++ “...if the Demand of Watches shou’d become so very great as to find constant imployment for as many Persons . . . the Maker of the Pins, or Wheels, or Screws, or other Parts, must needs be more perfect and expeditious at his proper work, . . . than if he is also to be imploy’d in all the variety of a Watch.” `r AutoCite(bib["henryConsiderationsEastIndiaTrade1701"])`
 
 ---
 
-# Course outline
+class: inverse, center, middle
+
+# Course mechanics
+
+---
+
+.center.pull.Large.black[Course outline]
 
 .pull-left[
-## Semester 1
+### Semester 1
 
 2. Agricultural revolution
-3. Consumption
-4. Institutions & Finance
-5. Industrial revolution overview
-6. IR: particular causal theories
-7. IR & trade & empire
-8. The standard of living
-9. Globalization and domestic interest groups
-10. Britain and globalization in 19th c.
+3. Industrious revolution
+4. Government & the financial revolution
+5. The industrial revolution: an introduction and the factory system
+6. Causes of the industrial revolution
+7. The industrial revolution and international trade
+8. The standard of living debate
+9. The Poor Law and Social Assistance
+10. 19th century globalization and trade
 ]
 
 --
 
 .pull-right[
-## Semester 2
+### Semester 2
 
-11. Finance and Banking, 19th century
-12. Foreign investment, post-1850
-13. The decline in agriculture, post-1850
+11. The Bank of England and monetary and financial stability
+12. Britain and the export of capital
+13. Decline in British Agriculture 1850-1890
 14. Did Victorian Britain fail?
 15. Entrepreneurial Failure?
-16. The economics of empire, 19th c.
-17. Public Health and Welfare in 19th c.
-18. The British economy in WWI
+16. The economics of empire
+17. Unemployment assistance, the labour market and trade
+18. The economics of WWI
 19. The interwar monetary and financial crisis
 20. The interwar economy
 ]
@@ -529,17 +569,13 @@ knitr::include_graphics("figures/watch_prices.png")
 
 ---
 
-# Course mechanics
-
 ## Assessed work
 
 + 2 essays: 30%
     - 2,000 words each
-        + Deadline 1: **5/12/19, 16:00**
-        + Deadline 2: **2/04/20, 16:00**
     - Each essay counts towards 15% of grade
 + Exam: 60%
-    * I will post some example exam questions later in the year
+    * Last year's exam will be made available on the Keat's page
 + Presentation: 10%
 
 ---
@@ -583,7 +619,7 @@ knitr::include_graphics("figures/me_marc_math.png")
 
 ---
 
-## Appendix Slides
+### Appendix Slides
 
 ```{r, recent_pub, fig.align='center'}
 knitr::include_graphics("figures/recent_excerpt.png")
@@ -595,12 +631,7 @@ knitr::include_graphics("figures/recent_excerpt.png")
 
 name: clarkvbroadberry
 
-## Appendix Slides 
-
-
-```{r, clark_v_broadberry, fig.align='center'}
-knitr::include_graphics("figures/clark_v_bckov.jpg")
-```
+<img src="figures/clark_v_bckov.jpg" style="width: 90%" />
 
 [return](#nhavalue)
 
