@@ -399,11 +399,35 @@ class: inverse, center, middle
 
 ---
 
-## Overcoming 'Organic'/Malthusian constraints
+### Overcoming 'Organic'/Malthusian constraints
 
->+ Ricardo describes diminishing *marginal* returns from land `r AutoCite(bib["wrigleyPovertyProgressPopulation2004"])`
->    - What does *marginal* mean?
->+ And yet population grows!
++ Ricardo describes diminishing *marginal* returns from land `r AutoCite(bib["wrigleyPovertyProgressPopulation2004"])`
+    - What does *marginal* mean?
+
+--
+
+```{r dimmarg, fig.retina=3, fig.align="center", out.width="70%"}
+Input <- 1:100
+Output <- Input^.5
+
+df <- tibble(Input, Output)
+
+df %>% 
+  ggplot(aes(Input, Output)) + 
+  geom_line() +
+  geom_segment(aes(x = 25, xend = 100, y = 5, yend = 5), color = "steelblue") + 
+  annotate(geom = "text", y = 4.5, x = 75, 
+           label = "4 x Input", color = "steelblue") +
+  geom_segment(aes(x = 100, xend = 100, y = 5, yend = 10), color = "tomato") +
+  annotate(geom = "text", y = 8, x = 90, 
+           label = "2 x Output", color = "tomato") +
+  ggtitle("Example of Diminishing Marginal Returns") + 
+  theme_lecture
+```
+
+--
+
+.pull.center[**And yet population grows!**]
 
 ---
 
@@ -431,13 +455,13 @@ real_gdp_eng %>%
 
 ### Overcoming 'Organic'/Malthusian constraints
 
-```{r, wages_pop, fig.align='center'}
+```{r, wages_pop, fig.align='center', out.width="95%"}
 knitr::include_graphics("figures/clark_wage_pop.jpeg")
 ```
 
 ---
 
-## Overcoming 'Organic'/Malthusian constraints
+### Overcoming 'Organic'/Malthusian constraints
 
 + Ricardo describes diminishing *marginal* returns from land `r AutoCite(bib["wrigleyPovertyProgressPopulation2004"])`
     - What does *marginal* mean?
@@ -463,7 +487,7 @@ knitr::include_graphics("figures/clark_wage_pop.jpeg")
 
 >"The diminution of price has . . . been most remarkable in those manufactures of which the materials are the coarse metals. A better movement of a watch, that about the middle of the last century could have been bought for twenty pounds, may now perhaps be had for twenty shillings." 
 <br>
-> —Adam Smith (1976 , bk. 1, ch. 11, pt. 3) [@kelly2016WatchPrices]
+> —Adam Smith (1976 , bk. 1, ch. 11, pt. 3) `r AutoCite(bib["kellyAdamSmithWatch2016"])`
 
 ---
 
@@ -477,7 +501,7 @@ knitr::include_graphics("figures/kelly_ograda_frontpiece.png")
 
 ## Productivity: the example from watches
 
-```{r, old_bailey_data, fig.align='center'}
+```{r, old_bailey_data, fig.align='center', out.width="95%"}
 knitr::include_graphics("figures/watch_distributions.png")
 ```
 
@@ -485,7 +509,7 @@ knitr::include_graphics("figures/watch_distributions.png")
 
 ## Productivity: the example from watches
 
-```{r, watch_victims, fig.align='center'}
+```{r, watch_victims, fig.align='center', out.width="95%"}
 knitr::include_graphics("figures/watch_victims_table.png")
 ```
 
