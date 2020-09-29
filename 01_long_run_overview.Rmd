@@ -395,7 +395,7 @@ ag_share %>%
 
 class: inverse, center, middle
 
-# Part II: The escape from Malthus
+# Part II
 
 ---
 
@@ -519,7 +519,7 @@ knitr::include_graphics("figures/watch_prices.png")
 
 class: inverse, center, middle
 
-# Course mechanics
+# Part III
 
 ---
 
