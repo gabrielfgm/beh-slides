@@ -9,4 +9,24 @@
 .pull-right40{ 
   float: right;
   width: 40%;}
+.pull-left40{
+  float: left;
+  width: 40%;
+}
+.pull-right60{
+  float: right;
+  width: 60%;
+}
+.pull-left60{
+  float: left;
+  width: 60%;
+}
+.scale120{
+  float: left;
+  width: 120%;
+}
+.scale80{
+  float: right;
+  width: 80%
+}
 </style>

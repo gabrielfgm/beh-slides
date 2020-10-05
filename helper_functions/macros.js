@@ -3,6 +3,3 @@ remark.macros.scale = function(w) {
   return '<img src="' + url + '" style="width: ' + w + '" />';
 };
 
-.large { font-size: 130% };
-
-.small { font-size: 70% };
