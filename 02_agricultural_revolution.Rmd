@@ -418,7 +418,7 @@ knitr::include_graphics("figures/jethro_tull.jpg")
 
 class: inverse, center, middle
 
-# Enclosure
+# Part 3: Enclosure
 
 ---
 .pull-left40[
@@ -655,7 +655,7 @@ class: inverse, center, middle
 
 class: inverse, center, middle
 
-## Preview of next week: how to read a regression table
+## Part 4: Preview of next week: how to read a regression table
 
 ---
 
