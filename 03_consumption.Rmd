@@ -3,33 +3,37 @@ title: "Week 3: Consumption in the 18th Century"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 3-4pm
-date: "8 October 2019"
+    | Office Hours: Wed. 10-11am & Thurs. 2-3pm
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
-        lib_dir: libs
-        css: xaringan-themer.css
+    nature:
+      beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
+    lib_dir: libs
+    css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
   
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
 
+library(RefManageR)
+BibOptions(check.entries = FALSE, 
+           bib.style = "authoryear", 
+           style = "markdown",
+           dashed = TRUE, hyperlink = FALSE)
+source("helper_functions/helper_print_bib.R")
+bib <- ReadBib("pres.bib")
+```
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
-```
-
-```{r, load_refs, include=FALSE, cache=FALSE}
-library(RefManageR)
-BibOptions(check.entries = FALSE,
-           bib.style = "authoryear",
-           cite.style = "text",
-           style = "markdown",
-           hyperlink = FALSE,
-           dashed = FALSE)
-myBib <- ReadBib("~/Dropbox/masterbib.bib", check = FALSE)
+style_solarized_light()
+source("helper_functions/theme_lecture.R")
+xaringanExtra::use_webcam()
+xaringanExtra::use_tile_view()
 ```
 
 # Today's Plan
@@ -50,39 +54,14 @@ myBib <- ReadBib("~/Dropbox/masterbib.bib", check = FALSE)
 
 ---
 
-class: center, inverse, middle
-
-# Preliminaries
-
----
-
-## How to run the classroom
-
-.pull-left[
-
-> "The most basic principle that every teacher should know about teaching this sort of thinking is that the brain learns the thinking that it practices, but little else." -Carl Wieman
-
-New Rules:
-
-+ I will cold-call
-+ You **do not** have to have an answer!
-+ I don't like this any more than you!
-]
-
-.pull-right[
-![daedalus](improving_teaching.jpg)
-]
-
----
-
 ## Presentations!
 
 + Remember to sign up!
 + Look for this logo: 
 
-.pull-right[<img src="pres_logo.png" width="200">]
+.pull-right[<img src="figures/pres_logo.png" width="200">]
 
-.center[<img src="presentation.png" width="600">]
+.center[<img src="figures/presentation.png" width="600">]
 
 + Start thinking about your essays!
 
@@ -125,7 +104,7 @@ Commodity consumption
 + Probate inventories show consumer durables increasingly common
 
 ```{r kent_cornwall_probate, fig.align='center', fig.retina=2.5}
-knitr::include_graphics("kent_cornwall_probate.png")
+knitr::include_graphics("figures/kent_cornwall_probate.png")
 ```
 
 
@@ -134,7 +113,7 @@ knitr::include_graphics("kent_cornwall_probate.png")
 ## The rise of consumption
 
 ```{r glass_shopping, fig.align='center', fig.retina=1}
-knitr::include_graphics("consumerism-glassware-pellatt-green074523.jpg")
+knitr::include_graphics("figures/consumerism-glassware-pellatt-green074523.jpg")
 ```
 
 + Shopping for glassware at Messrs. Pellatt and Green's, 1809
@@ -144,7 +123,7 @@ knitr::include_graphics("consumerism-glassware-pellatt-green074523.jpg")
 ## The rise of consumption
 
 ```{r fabriuc_shopping, fig.align='center', fig.retina=3}
-knitr::include_graphics("consumerism-shopping-fabric-D40089-62.jpg")
+knitr::include_graphics("figures/consumerism-shopping-fabric-D40089-62.jpg")
 ```
 
 + Shopping for fabric, 1809
@@ -173,7 +152,7 @@ Probate inventories say consumption rising **but** wage data is flat
 **How to reconcile?**]
 
 ```{r clark_v_probate, fig.align='center', fig.retina=2.5}
-knitr::include_graphics("clark_v_probate.png")
+knitr::include_graphics("figures/clark_v_probate.png")
 ```
 
 
@@ -209,7 +188,7 @@ $\rightarrow$ they might work **less** if paid **more**
 
 ]
 
-.pull-right[<img src="industrious_rev.jpg" width="300">]
+.pull-right[<img src="figures/industrious_rev.jpg" width="300">]
 
 ---
 
@@ -236,7 +215,7 @@ Implies some wage rate $w^*$ above which higher wages result in less work and mo
 ]
 
 .right-column[
-![bblsc](bblsc.png)
+![bblsc](figures/bblsc.png)
 ]
 
 ---
@@ -309,7 +288,7 @@ class: center, middle
 
 ## Measuring and explaining consumption
 
-![ccu_frontis](ccu_frontis.png)
+![ccu_frontis](figures/ccu_frontis.png)
 
 + Laborers seemed really poor (see week 8!) **who** was actually consuming?
 + The prices of consumer goods were falling (remember Adam Smith and Watch Prices?)
@@ -384,3 +363,5 @@ knitr::kable(work_time, format = "html", caption = "Estimated Annual working hou
 
 + **Was Keynes right?**
 + **What about the concept of a career? Do we labor for the money or the social distinction?**
+
+

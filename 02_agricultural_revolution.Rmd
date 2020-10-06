@@ -3,7 +3,7 @@ title: "The Agricultural Revolution"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 2-3pm
+    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
@@ -82,7 +82,7 @@ knitr::include_graphics("figures/kelly_plot.png")
 
 ---
 
-```{r, input_indices}
+```{r, input_indices, fig.height=4.5, fig.width=6}
 library(tidyverse)
 library(ggalt)
 library(ggrepel)
@@ -107,7 +107,7 @@ df %>% ggplot(aes(date, index, color=input, label=index)) +
 
 ---
 
-```{r, capital_deepening}
+```{r, capital_deepening, fig.height=4.5, fig.width=6}
 cap <- data.frame(date = rep(c(1700, 1750, 1800, 1850), 2),
                   input = rep(c("Landlord", "Tenant"), each=4),
                   index = c(112, 114, 143, 232, 183, 195, 242, 353))
@@ -129,7 +129,7 @@ cap %>% ggplot(aes(date, index, color=input, label=index)) +
 ---
 
 .right-column[
-```{r, change_per_acre, out.width="100%"}
+```{r, change_per_acre, out.width="100%", fig.height=4, fig.width=6}
 
 pc <- data.frame(date = unique(df$date),
                  labor_ratio = df$index[df$input=="Labor"]/df$index[df$input=="Land"])
@@ -679,7 +679,7 @@ $$ave(y) = 40 + 1.5 x$$
 ]
 
 .right-column[
-```{r, reg_manual, out.width="100%"}
+```{r, reg_manual, out.width="100%", fig.height=4.5, fig.width=6}
 set.seed(42)
 x <- rnorm(100)
 beta <- 1.5
@@ -742,7 +742,7 @@ stargazer::stargazer(reg, header = FALSE,
 ]
 
 .right-column[
-```{r, reg_manual_nl, out.width="100%"}
+```{r, reg_manual_nl, out.width="100%", fig.height=4.5, fig.width=6}
 set.seed(42)
 x <- rnorm(100)
 beta <- 1.5
@@ -778,7 +778,7 @@ fd %>%
 ]
 
 .right-column[
-```{r, reg_manual_ovb, out.width="100%"}
+```{r, reg_manual_ovb, out.width="100%", fig.height=4.5, fig.width=6}
 set.seed(4242)
 alpha <- 40
 eps <- rnorm(100, mean = 0, sd = 15)
