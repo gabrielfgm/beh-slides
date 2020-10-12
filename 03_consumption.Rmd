@@ -38,38 +38,19 @@ xaringanExtra::use_tile_view()
 
 # Today's Plan
 
-+ Preliminaries
-    - Signing up for presentations
-+ Lecture
-    - The rise of consumption
-    - The problems this poses
-    - Can we reconcile consumption and wages?
-    - An 'Industrious revolution'
-    - The evidence on consumption
-        + Its spread
-        + Its causes
-    - Demand-side causes of the industrial revolution?
-+ Discussion
-
----
-
-## Presentations!
-
-+ Remember to sign up!
-+ Look for this logo: 
-
-.pull-right[<img src="figures/pres_logo.png" width="200">]
-
-.center[<img src="figures/presentation.png" width="600">]
-
-+ Start thinking about your essays!
-
-
+### Shorter videos about key themes
+  
+.Large[
+1. Consumption goods
+2. The industrious revolution hypothesis
+3. Backward bending labor supply curves
+4. Time use
+]
 ---
 
 class: center, inverse, middle
 
-# Lecture
+# Part I: Consumption
 
 ---
 
@@ -139,159 +120,6 @@ knitr::include_graphics("figures/consumerism-shopping-fabric-D40089-62.jpg")
 
 > "Consumer aspirations across class and gender stimulated the rapid and extensive proliferation of new commodities from the later seventeenth century onwards. The supply-side responses to these aspirations were in turn to generate wider and deeper demand for these goods, bought to satisfy desires for fashion, respectability, sociability, or for convenience and comfort. These new consumer goods were generated through technological change, but above all through product innovation" (Berg, 2007, 246).
 
-
-
----
-
-.left-column[
-## The puzzle
-
-Probate inventories say consumption rising **but** wage data is flat
-
-**How to reconcile?**]
-
-```{r clark_v_probate, fig.align='center'}
-knitr::include_graphics("figures/clark_v_probate.png")
-```
-
-
----
-
-.left-column[
-## The puzzle
-
-Probate inventories say consumption rising **but** wage data is flat
-
-**How to reconcile?**]
-
-.right-column[
-> "Consumer demand grew, even in the face of contrary real wage trends, and the productive achievements of industry and agriculture in the century before the Industrial Revolution could occur because of reallocations of the productive resources of households. In England, but in fact through much of Northwestern Europe and Colonial America, a broad range of households made decisions that increased both the supply of marketed commodities and labor and the demand for goods offered in the marketplace. This combination of changes in household behavior constituted an "industrious revolution"" (de Vries, 1994, 255)
-]
-
----
-
-## The industrious revolution
-
-.pull-left[
-+ If wages were stable...
-+ But consumption increased
-
-$\rightarrow$ Implies an increase in **hours worked**
-
-### Why?
-
-+ de Vries argues change in consumer desires leads to increased labor
-
-$\rightarrow$ This implies that **before** this 'industrious revolution' workers had less desire for wages 
-
-$\rightarrow$ they might work **less** if paid **more**
-
-]
-
-.pull-right[<img src="figures/industrious_rev.jpg" width="300">]
-
----
-
-## Backward Bending Labor Supply Curves?
-
-### Leisure is a superior good to the poor
-
-> On laborers: "if by Fours Days labor in a Week they can maintain themselves, will hardly be persuaded to work the fifth" (Mandeville, 1924, 1723, 509).
-
-<br> 
-
-> The poor "just work so much and no more, as may maintain them in that mean condition to which they have been accustomed" (Sir Joshua Childs in Koyama 2012)
-
---
-
-### Until better goods arrive...
-
-> "it is a violent method and most cases impracticable, to oblige the laborer to toil in order to raise from the land more than what subsists himself and his family. Furnish him with manufactures and commodities and he will do it himself." (David Hume quoted in de Vries, 2008).
-
----
-
-.left-column[
-## Backward Bending Labor Supply Curves?
-
-Implies some wage rate $w^*$ above which higher wages result in less work and more leisure
-]
-
-.right-column[
-![bblsc](figures/bblsc.png)
-]
-
----
-
-## The Building Blocks of de Vries Industrious Revolution
-
-.pull-left[
-#### Contextual factors
-
-**The Revolt of the Early Modernists**: as we saw in the Agricultural revolution lecture the 17th and 18th centuries were far from static.
-
-**The Revisionist Macroeconomics of the British IR**: The newer GDP estimates revised growth rates downwards -- growth rises far more smoothly from the 18th to the 19th century.
-]
-
---
-
-.pull-right[
-#### Theoretical building blocks
-
-**The Western European Marriage Pattern**: a critical element in de Vries' theory of a family that is adaptable to the market, but whose behavior is not wholly determined by market forces.
-
-**The 'New' Household Economics**: de Vries will tackle the 'black box' of the family unit by approaching it with microeconomic theory.
-]
-
----
-
-## A model of the family
-
-+ Families can allocate their time ( $T$ ) towards
-    - Leisure ( $T_l$ )
-    - House work ( $T_c$ )
-    - Wage work ( $T_w$ )
-    - And that accounts for all of their time: $T = T_l + T_c + T_w$
-
---
-
-+ Families do not directly consume products, they transform them to consume them using their labor, and they consume them in their leisure
-    - **e.g.** Products ( $x_i$ ) might be groceries and what is eaten ( $z_i$ ) is the product of the food and the labor allocated to preparing it
-        + Consider shopping and cooking ( $T_c$, $T_w$, $x_i$ ) to eat ( $T_l$, $z_i$ ) as opposed to ordering take-out ( $\downarrow T_c$, $\uparrow T_w$, $x_j$ )
-        
---
-
-+ Family welfare is the sum of what they consume ( $\sum_i z_i \pi_i$ )
-+ **But** what we measure of family welfare is the sum of the goods they purchase/the wage they receive ( $\sum_i x_i p_i$ )
-+ We are missing
-    - The value-added of family labor
-    - Changes in the efficiency of family production
-
----
-
-class: center, middle, inverse
-
-# Discussion: de Vries and the Industrious Revolution
-
-> Explain how in de Vries model "full income" of a household could diverge from its measured income?
-
---
-
-<br>
-
-> "...new commodities by themselves do not possess the utility that they come to acquire once they are bundled with others." Why is this point important to de Vries' argument?
-
---
-
-<br>
-
-> Is the industrious revolution more than the decline in the prices of consumer durables?
-
---
-
-<br>
-
-> How strong is the case for a demand-led industrial revolution?
-
 ---
 
 ## Measuring and explaining consumption
@@ -354,8 +182,219 @@ $$\Big [ \texttt{Intuition: after prices and income you own what you prefer.}\Bi
 
 ---
 
+class: inverse, center, middle
+
+# Part II: the industrious revolution hypothesis
+
+---
+
+.left-column[
+## The puzzle
+
+Probate inventories (and other sources) say consumption rising **but** wage data is flat
+
+**How to reconcile?**]
+
+```{r clark_v_probate, fig.align='center'}
+knitr::include_graphics("figures/clark_v_probate.png")
+```
+
+
+---
+
+.left-column[
+## The puzzle
+
+Probate inventories say consumption rising **but** wage data is flat
+
+**How to reconcile?**]
+
+.right-column[
+> "**Consumer demand grew**, even **in the face of contrary real wage trends**, and the productive achievements of industry and agriculture in the century before the Industrial Revolution could occur **because of reallocations of the productive resources of households.** In England, but in fact through much of Northwestern Europe and Colonial America, a broad range of **households made decisions that increased both the supply of marketed commodities and labor and the demand for goods offered in the marketplace.** This combination of changes in household behavior constituted an "industrious revolution"" (de Vries, 1994, 255)
+]
+
+---
+
+## The industrious revolution
+
+.pull-left[
++ If wages were stable...
++ But consumption increased
+
+$\rightarrow$ Implies an increase in **hours worked**
+
+### Why?
+
++ de Vries argues change in consumer desires leads to increased labor
+
+$\rightarrow$ This implies that **before** this 'industrious revolution' workers had less desire for wages 
+
+$\rightarrow$ they might work **less** if paid **more**
+
+]
+
+.pull-right[<img src="figures/industrious_rev.jpg" width="300">]
+
+---
+
+## The Building Blocks of de Vries Industrious Revolution
+
+.pull-left[
+#### Contextual factors
+
+**The Revolt of the Early Modernists**: as we saw in the Agricultural revolution lecture the 17th and 18th centuries were far from static.
+
+**The Revisionist Macroeconomics of the British IR**: The newer GDP estimates revised growth rates downwards -- growth rises far more smoothly from the 18th to the 19th century.
+]
+
+--
+
+.pull-right[
+#### Theoretical building blocks
+
+**The Western European Marriage Pattern**: a critical element in de Vries' theory of a family that is adaptable to the market, but whose behavior is not wholly determined by market forces.
+
+**The 'New' Household Economics**: de Vries will tackle the 'black box' of the family unit by approaching it with microeconomic theory.
+]
+
+---
+
+## A model of the family
+
+.pull-left[
+
+
++ Families can allocate their time ( $T$ ) towards
+    - Leisure ( $T_l$ )
+    - House work ( $T_c$ )
+    - Wage work ( $T_w$ )
+    - And that accounts for all of their time: $T = T_l + T_c + T_w$
+
+<br>
+
++ Families do not directly consume products, they transform them to consume them using their labor, and they consume them in their leisure
+    - **e.g.** Products ( $x_i$ ) might be groceries and what is eaten ( $z_i$ ) is the product of the food and the labor allocated to preparing it
+        + Consider shopping and cooking ( $T_c$, $T_w$, $x_i$ ) to eat ( $T_l$, $z_i$ ) as opposed to ordering take-out ( $\downarrow T_c$, $\uparrow T_w$, $x_j$ )
+
+]
+
+--
+
+.pull-right[
++ Family welfare is the sum of what they consume ( $\sum_i z_i \pi_i$ )
++ **But** what we measure of family welfare is the sum of the goods they purchase/the wage they receive ( $\sum_i x_i p_i$ )
++ We are missing
+    - The value-added of family labor
+    - Changes in the efficiency of family production
+]
+
+---
+
+class: center, middle, inverse
+
+# Discussion: de Vries and the Industrious Revolution
+
+> Explain how in de Vries model "full income" of a household could diverge from its measured income?
+
+--
+
+<br>
+
+> "...new commodities by themselves do not possess the utility that they come to acquire once they are bundled with others." Why is this point important to de Vries' argument?
+
+--
+
+<br>
+
+> Is the industrious revolution more than the decline in the prices of consumer durables?
+
+--
+
+<br>
+
+> How strong is the case for a demand-led industrial revolution?
+
+---
+
+class: inverse, center, middle
+
+# Part III: Backward bending labor supply curves
+
+---
+
+### Backward Bending Labor Supply Curves?
+
++ **Recap**: per De Vries workers might work **less** if paid **more**
+
+***
+
+--
+
+.pull-left[
+### Leisure is a superior good 
+
+> On laborers: "if by Fours Days labor in a Week they can maintain themselves, will hardly be persuaded to work the fifth" (Mandeville, 1924, 1723, 509).
+]
+
+.pull-right[
+> The poor "just work so much and no more, as may maintain them in that mean condition to which they have been accustomed" (Sir Joshua Childs in Koyama 2012)
+]
+
+***
+
+--
+
+### Until better goods arrive...
+
+> "it is a violent method and most cases impracticable, to oblige the laborer to toil in order to raise from the land more than what subsists himself and his family. Furnish him with manufactures and commodities and he will do it himself." (David Hume quoted in de Vries, 2008).
+
+---
+
+.left-column[
+## Backward Bending Labor Supply Curves?
+
+Implies some wage rate $w^*$ above which higher wages result in less work and more leisure
+]
+
+.right-column[
+![bblsc](figures/bblsc.png)
+]
+
+
+---
+
+class: inverse, center, middle
+
+# Part IV: Time use
+
+---
+
+## Economic change and time use
+
+![tw](figures/time_work_discipline_frontis.png)
+
+> "Thompson saw the coming of industry as a watershed in the history of time and work. The pre-industrial world, he suggested, was marked by irregular work rhythms. Workers focused on completing certain tasks, rather than working for a set number of hours, and consequently there was little need for an understanding or application of clock time." <br> —Hailwoood, p. 2.
+
++ Hailwood, on basis of 4,300 rural witness statements, argues that "Thompson was wrong to see clock-time consciousness and regular work rhythms as inventions of the factory."
+
+---
+
+## Voth's approach
+
+.Large[
++ Look at Old Bailey reports
+  + What do witnesses say they were doing and **what time do they say they were doing it!**
+]
+
+<br>
+
+![:scale 120%](figures/voth_excerpt.png)
+
+---
+
 ## Why do we work so much?
 
+.pull-left[
 ```{r working_hours}
 
 work_time <- data.frame(Date = c(1760, 1800, 1830, 1870, 2000),
@@ -363,14 +402,44 @@ work_time <- data.frame(Date = c(1760, 1800, 1830, 1870, 2000),
 
 work_time$`Avg. Hours/week` <- round(work_time$Estimate/52, 2)
 
-knitr::kable(work_time, format = "html", caption = "Estimated Annual working hours in England")
+knitr::kable(work_time, format = "html", caption = "Estimated Annual working hours in England (Koyama, p. 508, Table 1)")
 ```
+
++ In 1930, JM Keynes famously predicted that in the future we would have a 15 hour work week.]
+
+.pull-right[
+
+![vothgraph](figures/voth_graph.png)
+]
+
+---
+
+class: inverse, center, middle
+
+# Questions about time use
+
+> Do we think times as collected by witness statements are a good representation of work patterns?
 
 --
 
-### Open questions?
+<br>
 
-+ **Was Keynes right?**
-+ **What about the concept of a career? Do we labor for the money or the social distinction?**
+> Is the increased labor hours Voth finds evidence for De Vries theory?
+
+<br>
+
+> How else might we explain the rise in working hours during the industrial revolution?
+
+---
+
+class: inverse, middle, center
+
+# Open questions?
+
+> Was Keynes roughly correct in his predictions about work?
+
+<br>
+
+> What about the concept of a career? Do we labor for the money or the social distinction?
 
 
