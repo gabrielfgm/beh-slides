@@ -498,7 +498,7 @@ growth_data %>%
 
 ## Rehabilitating the industrial revolution: Mokyr's Example
 
-```{r animation, fig.retina=3, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE}
+```{r animation, fig.retina=3, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE, out.width="50%"}
 library(tidyverse)
 library(gganimate)
 
@@ -510,13 +510,13 @@ p <- df %>% gather("sector", "output", -year) %>%
   ggplot(aes(year, output, fill=sector)) + 
   geom_area() + 
   ggtitle("Total economic growth with two sectors") + 
-  scale_fill_manual(values = c("pink", "steelblue")) +
+  scale_fill_manual(values = c("#cb4b16", "#268bd2")) +
   theme(legend.position="bottom") + 
   ylab("Total output (year 1 = 1)") + 
   xlab("Years") + transition_reveal(year) +
   theme_lecture
 
-animate(p, height = 461, width = 644, end_pause = 10)  
+animate(p, height = 400, width = 504, end_pause = 10)  
 
 ```
 
