@@ -29,4 +29,10 @@
   float: right;
   width: 80%
 }
+.pull-left-border{
+  float: left;
+  width: 49%;
+  border-right-width: 1px;
+  border-right-style: solid;
+  padding-right: 2px;}
 </style>

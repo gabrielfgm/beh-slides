@@ -3,58 +3,74 @@ title: "Week 5: The Industrial Revolution, Context and Overview"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 3-4pm
-date: "22 October 2019"
+    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
-        lib_dir: libs
-        css: xaringan-themer.css
+    nature:
+      beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
+    lib_dir: libs
+    css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
 
-background-image: url(iron_rolling_mill_1875.png)
-background-size: cover
-
-<style type="text/css">
-.white { color: white; }
-</style>
-
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
 
+library(RefManageR)
+BibOptions(check.entries = FALSE, 
+           bib.style = "authoryear", 
+           style = "markdown",
+           dashed = TRUE, hyperlink = FALSE)
+source("helper_functions/helper_print_bib.R")
+bib <- ReadBib("pres.bib")
+```
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
+style_solarized_light()
+source("helper_functions/theme_lecture.R")
+xaringanExtra::use_webcam()
+xaringanExtra::use_tile_view()
 ```
 
 # Outline of Today's Lecture
 
 --
 
-.pull-left[.white[
-+ The process of industrial transformation
-    - Energy
-    - Textiles
-    - Metallurgy
-]]
+.pull-left[
 
---
+#### Video 1
 
-.pull-left[.white[
++ The debate about the industrial revolution
+    - Was there an industrial revolution?
+    - The process of industrial transformation
+    
+#### Video 3
+
 + The industrial revolution's history
     - Early views
     - Contesting the 'revolutionary' character
     - Rehabilitating the 'revolutionary' character
-]]
+]
 
---
+.pull-left[
 
-.pull-left[.white[
-+ Next week: *Causes*
-+ Following week: *Consequences*
-]]
+#### Video 2
+
++ Inventions and key sectors
+    - Energy
+    - Textiles
+    - Metallurgy
+]
+
+---
+
+class: center, middle, inverse
+
+# Part I: Framing
 
 ---
 
@@ -69,42 +85,48 @@ class: center, middle, inverse
 >"Was there an industrial revolution? The absurdity of the question is not that it is taken seriously but that the term is taken seriously ... by scholars who should know better" (Cameron, 1990 in Mokyr, "Editor's introduction")
 
 ---
+.left-column[
+### The process of industrial transformation
 
-class: center, middle, inverse
++ Hard to see in aggregate
+]
 
-# The process of industrial transformation
-
-```{r broadberry_et_al_headline, fig.align='center', fig.retina=3,out.width="100%", fig.width=6, fig.height=4}
+.right-column[
+```{r broadberry_et_al_headline, fig.height=4, fig.width=5.5, out.width="100%"}
 library(tidyverse)
 library(readxl)
 library(ggthemes)
 
-real_gdp_eng <- read_xlsx(path = "~/Dropbox/teaching/brit_eh_1700_1940/lectures/week01/a-millennium-of-macroeconomic-data-for-the-uk.xlsx", 
+real_gdp_eng <- read_xlsx(path ="data/a-millennium-of-macroeconomic-data-for-the-uk.xlsx", 
                       sheet = "A21. GDP per capita 1086+", 
                       range = "A5:K790")
 
 names(real_gdp_eng)[1] <- "Year"
 
-# real_gdp_eng %>% 
-#   filter(Year > 1270) %>% 
-#   ggplot(aes(Year, `Real GDP per capita`)) +
-#   #geom_point() + 
-#   geom_line() +
-#   scale_x_continuous(breaks = seq(1300, 1870, 100)) +
-#   ggtitle("English Real GDP per capita, 1270-1870", 
-#           subtitle = "Source: Broadberry et. al. (2015)") +
-#   ylab("Real GDP per capita") + 
-#   theme_hc() +
-#   theme(panel.background = element_rect(fill = "#fdf6e3"),
-#         plot.background = element_rect(fill = "#fdf6e3"))
+real_gdp_eng %>%
+  filter(Year > 1750 & Year < 1850) %>%
+  ggplot(aes(Year, `Real GDP per capita`)) +
+  #geom_point() +
+  geom_line() +
+  scale_x_continuous(breaks = seq(1750, 1850, 10)) +
+  ggtitle("English Real GDP per capita, 1750-1850",
+          subtitle = "Source: Broadberry et. al. (2015)") +
+  ylab("Real GDP per capita") +
+  annotate("path",
+   x=1790+30*cos(seq(0,2*pi,length.out=100)),
+   y=2200+300*sin(seq(0,2*pi,length.out=100)), color = "red") +
+  annotate("text", x = 1760, y = 2500, label = "Industrial Rev?", color="red") +
+  theme_lecture
 
 ```
+]
 
 ---
 
 ## Urbanization & the fall in agricultural employment
 
-```{r ag_share, fig.align='default', fig.retina=3, out.width="50%", fig.width=5, fig.height=4}
+.pull-left[
+```{r ag_share, fig.align='center', fig.retina=3, out.width="80%", fig.width=5, fig.height=4}
 library(ggalt)
 library(ggrepel)
 
@@ -121,13 +143,17 @@ ag_share %>%
   ggtitle("Agricultural Employment Share", 
           subtitle = "Source: Crafts (1998) & Wrigley (2018)") +
   scale_x_continuous(breaks = ag_share$year) +
-  theme_hc() +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3"))
+  theme_lecture
 
-knitr::include_graphics("flax_spinning.png")
+```
+]
+
+.pull-right[
+```{r, out.width="80%"}
+knitr::include_graphics("figures/flax_spinning.png")
 ```
 
+]
 
 --
 
@@ -135,9 +161,12 @@ knitr::include_graphics("flax_spinning.png")
 
 ---
 
+.left-column[
 ## Urbanization & the fall in agricultural employment
+]
 
-```{r urbanization, fig.align='center', fig.retina=3, , out.width="100%", fig.width=6, fig.height=4}
+.right-column[
+```{r urbanization, fig.align='center', fig.retina=3, , out.width="100%", fig.width=5.5, fig.height=4}
 
 urban <- data.frame(date = c(1520, 1600,
                                  1700,1750,1800),
@@ -163,11 +192,16 @@ urban %>%
   ggtitle("English Urban Population, percent of total",
           subtitle = "Source: Wrigley (2018), pp. 18") +
   scale_color_hue(name = "") +
-  theme_hc() +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3"))
+  theme_lecture
 
 ```
+]
+
+---
+
+class: center, middle, inverse
+
+# Part II: Invention & Key Industries
 
 ---
 
@@ -193,25 +227,14 @@ urban %>%
 --
 <br>
 
-+ None of these distinctions are very clean
+.pull.center.Large[ None of these distinctions are very clean]
 
 ---
 
 class: inverse
-background-image: url(coal_map.jpg)
+background-image: url(figures/coal_map.jpg)
 background-position: right
 background-size: contain
-
-<style type="text/css">
-.red { color: red; }
-</style>
-
-<style type="text/css">
-.pull-left40 {
-  float: left;
-  width: 40%;
-}
-</style>
 
 .pull-left40[
 ## Energy
@@ -250,12 +273,12 @@ background-size: contain
 
 <br>
 
->"The developments in water power also demonstrate the fact that to view the inudstiral revolution as a switch from wood and animate energy to a coal-using economy is somewhat misleading" (Mokyr, "Technological Change", 25).
+>"The developments in water power also demonstrate the fact that to view the industrial revolution as a switch from wood and animate energy to a coal-using economy is somewhat misleading" (Mokyr, "Technological Change", 25).
 
 ---
 
-background-image: url(Spinning-jenny.jpg)
-background-position: center
+background-image: url(figures/Spinning-jenny.jpg)
+background-position: right
 background-size: cover
 
 .pull-left[
@@ -305,33 +328,33 @@ Iron ore $\rightarrow$ pig iron $\rightarrow$ wrought iron
 + Henry Cort, 1784, improved refinement process, pig iron $\rightarrow$ wrought iron
     + Output increases 500% 1788-1815
     + Price falls from £22/ton to £14/ton 1801-1815
+    
+>"It is conceivable to imagine an industrial revolution based on water power and linen or wool -- in fact in many places that is precisely what happened. There was no substitute for iron, however, in thousands of uses, from nails to engines. As its price fell, iron invaded terrains traditionally dominated by timber, such as bridges, ships and eventually buildings" (Mokyr, p. 27).
 ]
 
 .pull-right[
-![henry_cort](HenryCort.jpg)
+![henry_cort](figures/HenryCort.jpg)
 ]
-
---
-
->"It is conceivable to imagine an industrial revolution based on water power and linen or wool -- in fact in many places that is precisely what happened. There was no substitute for iron, however, in thousands of uses, from nails to engines. As its price fell, iron invaded terrains traditionally dominated by timber, such as bridges, ships and eventually buildings" (Mokyr, p. 27).
 
 ---
 
 class: center, middle, inverse
 
-## The industrial revolution's history
+## Part III: The industrial revolution's history
 
 ---
 
 ## Early views
 
-.pull-left[
-![toynbee](toynbee.png)
+.pull-left.center[
+![:scale 75%](figures/toynbee.png)
 ]
 
 .pull-right[
 
 > "...the essence of the industrial revolution is the substitution of competition for the medieval regulations which had previously controlled the production and distribution of wealth." (Toynbee 1884)
+
+<br>
 
 > "[The industrial revolution] separated England from her past as completely as the political revolution separated France from her past." (J. L. and B. Hammond, 1911)
 
@@ -341,15 +364,31 @@ class: center, middle, inverse
 
 ## The view from the mid-20th century
 
-```{r names_and_books, out.width="40%", fig.show='hold', fig.align='default'}
-knitr::include_graphics(c( "stages_rostow.png", "making_thompson.jpg"))
+.pull-left-border[
+
+```{r rostow, out.width="45%", fig.align='center'}
+knitr::include_graphics("figures/stages_rostow.png")
 ```
+
++ An 'Non-Communist Manifesto'
++ A typology of economic development by 'stages' in which industrial revolution is prominent
+
+]
+
+.pull-right[
+```{r thompson, out.width="45%", fig.align='center'}
+knitr::include_graphics("figures/making_thompson.jpg")
+```
+
++ IR as a turning point in class conception
+
+]
 
 ---
 
-## The early quantitative view
+### The early quantitative view
 
-```{r dean_and_cole, out.width='100%', fig.height=4, fig.width=6, fig.align='center', fig.retina=3}
+```{r dean_and_cole, out.width='85%', fig.height=3.5, fig.width=6, fig.align='center', fig.retina=3}
 
 growth_data <- data.frame(dates = c("1700-60",
                                     "1760-80",
@@ -370,18 +409,16 @@ growth_data %>%
    theme(axis.text.x=element_text(angle=45, hjust=1))+
   scale_color_manual(values = c("steelblue"),
     name = "", labels = c("Dean & Cole")) +
-  theme_hc() +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3"))
+  theme_lecture
   
 
 ```
 
 ---
 
-## Revisionists: The Historical Macroeconomists
+### Revisionists: The Historical Macroeconomists
 
-```{r dean_and_cole_and_crafts, out.width='100%', fig.height=4, fig.width=6, fig.align='center', fig.retina=3}
+```{r dean_and_cole_and_crafts, out.width='85%', fig.height=3.5, fig.width=6, fig.align='center', fig.retina=3}
 
 growth_data <- data.frame(dates = c("1700-60",
                                     "1760-80",
@@ -402,16 +439,15 @@ growth_data %>%
    theme(axis.text.x=element_text(angle=45, hjust=1))+
   scale_color_manual(values = c("coral", "steelblue"),
     name = "", labels = c("Crafts", "Dean & Cole")) +
-  theme_hc() +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3"))
+  theme_lecture
   
 
 ```
 
 ---
 
-![manchester_ship](manchester-ship-canal.jpg)
+.pull.center[
+![:scale 60%](figures/manchester-ship-canal.jpg)]
 
 ### Revisionists: The dynamism of the 17th & 18th centuries
 
@@ -437,7 +473,7 @@ growth_data %>%
 
 .pull-right[
 
-## What should we focus on?
+### What should we focus on?
 
 > "The national accounts approach to economic growth and productivity change is not a good starting point for the analysis of fundamental economic discontinuity."
 ]
@@ -448,7 +484,13 @@ growth_data %>%
 
 + Imagine the British economy as composed of two sectors
     1. Traditional
+        + Large
+        + Grows slowly
     2. Modern
+        + Small
+        + Grows quickly
+
+<br>
 
 > "A moment of reflection and a few simple computations indicate that for a country that undergoes structural change while it grows, very sudden accelerations in the growth rate of the kind that Rostow envisaged are simply impossible. Thus the finding that the aggregate effects of the Industrial Revolution are not overwhelming before 1820 is not surprising" (Mokyr, "Editor's introduction", 12).
 
@@ -456,7 +498,7 @@ growth_data %>%
 
 ## Rehabilitating the industrial revolution: Mokyr's Example
 
-```{r animation, fig.retina=3, fig.align='center', cache=TRUE}
+```{r animation, fig.retina=3, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(gganimate)
 
@@ -468,26 +510,18 @@ p <- df %>% gather("sector", "output", -year) %>%
   ggplot(aes(year, output, fill=sector)) + 
   geom_area() + 
   ggtitle("Total economic growth with two sectors") + 
-  scale_fill_viridis_d(name="Sector") +
+  scale_fill_manual(values = c("pink", "steelblue")) +
   theme(legend.position="bottom") + 
   ylab("Total output (year 1 = 1)") + 
   xlab("Years") + transition_reveal(year) +
-  theme_hc() +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3"))
+  theme_lecture
 
-animate(p, height = 461, width = 644)  
+animate(p, height = 461, width = 644, end_pause = 10)  
 
 ```
 
 
 ---
-<style type="text/css">
-.pull-right60 {
-  float: right;
-  width: 60%;
-}
-</style>
 
 ## Rehabilitating the industrial revolution: what national accounts miss
 
@@ -513,15 +547,17 @@ class: center, middle, inverse
 
 --
 
-"...we cannot think of the events of the past seventy years as sudden. Seventy British years [in the period 1760-1830] passed no more rapidly" (Hughes, *Industrialization and Economic History*, p. 45). Is the term industrial revolution misleading?
+> "...we cannot think of the events of the past seventy years as sudden. Seventy British years [in the period 1760-1830] passed no more rapidly" (Hughes, *Industrialization and Economic History*, p. 45). Is the term industrial revolution misleading?
 
 --
 
-"National income accounting, by itself, is not adequate to the task of presenting national economic activity" (Berg, p. 18). What are Berg's critiques of the Crafts-Harley view?
+<br>
+
+> "National income accounting, by itself, is not adequate to the task of presenting national economic activity" (Berg, p. 18). What are Berg's critiques of the Crafts-Harley view?
 
 --
 
-"In fact, we still know too little to be able to write convincingly the type of book Berg has attempted. Perhaps her effort will, as she hopes, spur others on" (Hoppit, p. 223). What changes would Berg and Hoppit like to see in the historiography of the industrial revolution?
+<br>
 
+> "In fact, we still know too little to be able to write convincingly the type of book Berg has attempted. Perhaps her effort will, as she hopes, spur others on" (Hoppit, p. 223). What changes would Berg and Hoppit like to see in the historiography of the industrial revolution?
 
----
