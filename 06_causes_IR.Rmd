@@ -3,65 +3,130 @@ title: "Week 6: Causes of the Industrial Revolution"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 3-4pm
-date: "5 November 2019"
+    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
-        lib_dir: libs
-        css: xaringan-themer.css
-        beforeInit: "macros.js"
+    nature:
+      beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
+    lib_dir: libs
+    css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
-
-<style type="text/css">
-.white { color: white; }
-.large { font-size: 130% }
-.small { font-size: 70% }
-.pull-right40{ 
-  float: right;
-  width: 40%;}
-</style>
 
 ## Today's Plan
 
 .pull-left[
 .large[
-+ Presentation
-    * Presentation discussion
-+ Lecture:
-    * Causes
-        + More on Allen
-        + Mokyr
-+ Discussion
+### Part 1
+
++ Some quick advice on essay writing
++ Counterfactuals and causes in history
+]
+]
+
+.pull-right[
+.large[
+### Part 2
+
++ Allen's theory of induced innovation
++ Some critiques of Allen
+
+]]
+
+.pull-left[
+.large[
+### Part 3
+
++ Mokyr's theory of 'industrial enlightenment'
++ Some criticism
 ]
 ]
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
 
+library(RefManageR)
+BibOptions(check.entries = FALSE, 
+           bib.style = "authoryear", 
+           style = "markdown",
+           dashed = TRUE, hyperlink = FALSE)
+source("helper_functions/helper_print_bib.R")
+bib <- ReadBib("pres.bib")
+```
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
+style_solarized_light()
+source("helper_functions/theme_lecture.R")
+xaringanExtra::use_webcam()
+xaringanExtra::use_tile_view()
 ```
 
 ---
 
-class: center, inverse, middle
-
-## Presentation
-
----
-
-class: inverse, center, middle
-
-## Questions for the presenter
-
----
 
 class: center, middle, inverse
 
-## Lecture
+# Part I
+
+---
+
+## Some brief advice on writing essays
+
+.pull-left[
+### Answer the question!!
+
++ ...by presenting and interpreting other scholars answers to the question
++ This should be easy as you can pick your own question
+    - Check with me first that your question is OK
+
+### Care about your reader
+
++ Spelling, Style, Structure
++ Say what you will do and then do it
+]
+
+.pull-right[
+### Things not to worry about
+
++ Don't worry about your essay "not being economics-y enough"
++ You are not obliged to incorporate primary sources
+    - If it is natural go ahead
++ You can use the first person "I will..."
+
+### Give yourself time to edit!!!
+
+> 
+]
+
+---
+## Some brief advice on writing essays: essay structure
+
+.pull-left[
+.Large[
++ 2,000 words $\approx$ 5 paragraphs (400 words/paragraph)
+    + Each paragraph should make a point
+    + Subtracting intro and conclusion you can only make ~3 points. Make them count!
+]]
+
+--
+
+.pull-right[
+.Large[
++ How to write an introduction
+  + What you will argue and what you will cover
+  + *Do not* put definitions
+  + *Do not* put pre-history
+
+
++ How to write a conclusion
+  + Summarize argument
+  + Assess strengths and weaknesses
+]
+]
 
 ---
 
@@ -93,11 +158,35 @@ graph LR
 ]
 ---
 
+## Counterfactuals and history
+
+.left-column[
++ Counterfactuals are debated in history
++ Much more common in economic history/social-scientific history
+    - Why?
+]
+
+.right-column[
+
+.pull-left[
+![:scale 80%](figures/virtual_history.jpg)]
+
+.pull-right[
+![:scale 80%](figures/altered_pasts.jpg)]
+]
+---
+
+class: inverse, middle, center
+
+# Part II
+
+---
+
 ## Allen on Why the Industrial Revolution was British
 
 .pull-left[
 
-```{r allen_graph, fig.align='center', fig.retina=3}
+```{r allen_graph, fig.align='center', fig.retina=3, out.width="100%"}
 library(DiagrammeR)
 
 mermaid("
@@ -129,7 +218,7 @@ style H fill:#93a1a1
 ```
 ]
 
-.pull-right40[
+.pull-right[
 + Allen's theory is multi-causal
     - High relative wages are one important component
 + He mainly wants to explain the adoption of technology in production -- industrial innovation
@@ -144,7 +233,7 @@ style H fill:#93a1a1
 ## Allen: Core causal mechanism
 
 .pull-left[
-```{r allen_graph_3, fig.align='center', fig.retina=3}
+```{r allen_graph_3, fig.align='center', fig.retina=3, out.width="100%"}
 
 mermaid("
 graph LR
@@ -174,7 +263,7 @@ style H fill:#93a1a1
 ```
 ]
 
-.pull-right40[
+.pull-right[
 + The core elements of the theory are
     * The price of labor
     * The price of capital
@@ -189,7 +278,7 @@ style H fill:#93a1a1
 ## Allen: additional supply factors
 
 .pull-left[
-```{r allen_graph_core, fig.align='center', fig.retina=3}
+```{r allen_graph_core, fig.align='center', fig.retina=3, out.width="100%"}
 
 mermaid("
 graph LR
@@ -219,7 +308,7 @@ style H fill:#dc322f
 ```
 ]
 
-.pull-right40[
+.pull-right[
 + The **supply** of innovation increased by
     + Availability of education
         - Product of high wages (as education is costly)
@@ -233,7 +322,7 @@ style H fill:#dc322f
 ## Allen: causes of the causes, why were wages high?
 
 .pull-left[
-```{r allen_graph_4, fig.align='center', fig.retina=3}
+```{r allen_graph_4, fig.align='center', fig.retina=3, out.width="100%"}
 
 mermaid("
 graph LR
@@ -263,7 +352,7 @@ style H fill:#93a1a1
 ```
 ]
 
-.pull-right40[
+.pull-right[
 - Thinks wages grew through external trade/colonialism
 - Thinks low energy prices stem from geography: availability of coal deposits
     + Also trade drives commercial adoption of coal through urbanization
@@ -291,14 +380,19 @@ style H fill:#93a1a1
 + Re-examines key wage series Allen relies on: builder's wages in London
 
 > "...the bills that have been interpreted in the past as reports of wages received by labourers and craftsmen did not, in fact, state the pay of workers, but the rates charged by major building contractors to clients for types of service. ...Once contractors’ margins are taken into account, the actual wage in London construction was significantly below the levels reported in the series that have been used by Allen and others."
-    
+
+---
+class: inverse, center, middle
+
+# Part III
+
 ---
 
 .pull-left[
 
 ## Mokyr, on the Intellectual Origins of the Industrial Revolution
 
-```{r mokyr_0, fig.align='center', fig.retina=2, out.width="200%"}
+```{r mokyr_0, fig.align='center', fig.retina=3, out.width="200%"}
 
 mermaid("
 graph LR
@@ -322,7 +416,7 @@ style G fill:#93a1a1
 ```
 ]
 
-.pull-right40[
+.pull-right[
 + **cultural** account grounded in Enlightenment
     - Cultures that produce **useful knowledge**
 + Prime movers are small fraction of high human capital individuals
@@ -335,7 +429,7 @@ style G fill:#93a1a1
 
 ## Mokyr, on the Intellectual Origins of the Industrial Revolution
 
-```{r mokyr_1, fig.align='center', fig.retina=2, out.width="200%"}
+```{r mokyr_1, fig.align='center', fig.retina=3, out.width="200%"}
 
 mermaid("
 graph LR
@@ -359,7 +453,7 @@ style G fill:#93a1a1
 ```
 ]
 
-.pull-right40[
+.pull-right[
 + Core idea is a particular form of Enlightenment: **Industrial Enlightenment**
     - More focussed on science/engineering than elsewhere
     - Devoted to creating *useful knowledge*
@@ -372,7 +466,7 @@ style G fill:#93a1a1
 
 ## Mokyr, on the Intellectual Origins of the Industrial Revolution
 
-```{r mokyr_2, fig.align='center', fig.retina=2, out.width="200%"}
+```{r mokyr_2, fig.align='center', fig.retina=3, out.width="200%"}
 
 mermaid("
 graph LR
@@ -396,7 +490,7 @@ style G fill:#dc322f
 ```
 ]
 
-.pull-right40[
+.pull-right[
 + *Knowledge production*: both scientific but also descriptive
     - Effect is more than cumulative as knowledge interacts
 + *Access costs* to information
@@ -412,7 +506,7 @@ style G fill:#dc322f
 
 ## Mokyr, on the Intellectual Origins of the Industrial Revolution
 
-```{r mokyr_3, fig.align='center', fig.retina=2, out.width="200%"}
+```{r mokyr_3, fig.align='center', fig.retina=3, out.width="200%"}
 
 mermaid("
 graph LR
@@ -436,7 +530,7 @@ style G fill:#93a1a1
 ```
 ]
 
-.pull-right40[
+.pull-right[
 + *Belief in progress* as attainable in many domains (politics, ethics, natural philosophy) seen as important cultural view
     - Supports will to experiment in production
 + *Baconian science*:
@@ -448,7 +542,7 @@ style G fill:#93a1a1
 
 ## Critiques of Mokyr
 
-### O'Brian
+### O'Brien
 
 + Mokyr inexplicably dismissive of the litany of other causal factors (geography, agriculture, institutions, etc)
 + Does not engage in *reciprocal comparison* -- comparing Britain to comparable units elsewhere in the world to ensure these mechanisms are absent
@@ -459,19 +553,6 @@ style G fill:#93a1a1
 
 ---
 
-## Discussion
-
-.pull-left[
-![ealing](ealing_budget.png)
-]
-
-.pull-right[
-+ Consider the budget of a gardener (left)
-    - Is this gardener poor?
-    - Is this gardener *comparatively* poor?
-]
-
----
 
 ## Discussion
 
