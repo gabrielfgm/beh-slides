@@ -6,6 +6,13 @@
 .Large { font-size: 150% }
 .small { font-size: 70% }
 .Small { font-size: 50% }
+.pull-right30{ 
+  float: right;
+  width: 30%;}
+.pull-left30{
+  float: left;
+  width: 30%;
+}
 .pull-right40{ 
   float: right;
   width: 40%;}
@@ -20,6 +27,14 @@
 .pull-left60{
   float: left;
   width: 60%;
+}
+.pull-right70{
+  float: right;
+  width: 70%;
+}
+.pull-left70{
+  float: left;
+  width: 70%;
 }
 .scale120{
   float: left;

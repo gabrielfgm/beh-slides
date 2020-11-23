@@ -3,65 +3,70 @@ title: "Week 8: Living Standards & the Industrial Revolution"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 3-4pm
-date: "19 November 2019"
+    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
-        lib_dir: libs
-        css: xaringan-themer.css
-        beforeInit: "macros.js"
+    nature:
+      beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
+    lib_dir: libs
+    css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
 
-<style type="text/css">
-.white { color: white; }
-.large { font-size: 130% }
-.small { font-size: 70% }
-.pull-right40{ 
-  float: right;
-  width: 40%;}
-.pull-left60{
-  float: left;
-  width: 60%;
-}
-.scale120{
-  float: left;
-  width: 120%;
-}
-.scale80{
-  float: right;
-  width: 80%
-}
-</style>
 
-## Today's Plan
+## Lecture Outline
+
+### Welfare in multiple dimensions
 
 .pull-left[
-.large[
-+ Presentation
-    * Presentation discussion
-+ Presentation
-    * Presentation discussion
-+ Lecture:
-    * Trade & the Industrial Revolution
-+ Discussion
+#### .Large[I will cover..].
+
+### Wages
+
+- Changing views of their growth
+- Wages vs family income
 ]
+
+.pull-right[
+### Heights?
+
+- The promise and pitfalls of anthropometrics
+
+
+### Child labor
+
+- Growth or decline in IR?
+- Why?
 ]
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
 
+library(RefManageR)
+BibOptions(check.entries = FALSE, 
+           bib.style = "authoryear", 
+           style = "markdown",
+           dashed = TRUE, hyperlink = FALSE)
+source("helper_functions/helper_print_bib.R")
+bib <- ReadBib("pres.bib")
+```
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
+style_solarized_light()
+source("helper_functions/theme_lecture.R")
+xaringanExtra::use_webcam()
+xaringanExtra::use_tile_view()
 ```
 
 ---
 
-class: center, inverse, middle
+class: inverse, center, middle
 
-## Presentation
+# Part I
 
 ---
 
@@ -77,30 +82,6 @@ class: center, inverse, middle
 
 ---
 
-## Lecture Outline
-
-### Welfare in multiple dimensions
-
-#### I will try to cover...
-
-
-
-+ Wages
-    - Changing views of their growth
-    - Wages vs family income
-+ Heights?
-    - The promise and pitfalls of anthropometrics
-+ Child labor
-    - Growth or decline in IR?
-    - Why?
-
-.pull-right40[
-#### I would like to cover
-
-+ Mortality/Life-expectancy but we don't have time
-]
-
----
 
 ## The old view on the standard of living
 
@@ -120,13 +101,13 @@ Among these dark Satanic Mills?<br> -William Blake
 ---
 
 .pull-left60[
-```{r lw, fig.align='left', fig.retina=3}
+```{r lw, fig.align='left', fig.retina=3, out.width="100%", fig.height=5, fig.width=5}
 library(tidyverse)
 library(ggrepel)
 library(ggthemes)
 library(readxl)
 
-lw_feinstein <- read_xlsx("lw_feinstein.xlsx")
+lw_feinstein <- read_xlsx("data/lw_feinstein.xlsx")
 
 lw_feinstein <- lw_feinstein %>% 
   gather("series", "index", -Date) 
@@ -146,20 +127,12 @@ lw_feinstein %>%
   scale_color_hc() +
   xlim(c(1780,1865)) +
   guides(color=FALSE) +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3")) +
+  theme_lecture +
   xlab("") +
   ggtitle("Lindert-Williamson (LW) wage series", 
           subtitle = "A sharp rise in real income")
 
 ```
-
-<br> 
-
-\begin{equation}
- \texttt{realwage}_{1840} = [s_{1, 1840}*w_{1,1840} + \\
- s_{2, 1840}*w_{2, 1840}+...]/p_{1840}
-\end{equation}
 ]
 
 
@@ -172,15 +145,20 @@ lw_feinstein %>%
         - Measure how much things cost in a year $p_{1840}$
         - Add it all up and divide by prices
     - Measurement depends on measuring wages, shares and prices!
+    
+<br> 
+
+\begin{equation}
+ \texttt{realwage}_{1840} = [s_{1, 1840}*w_{1,1840} + \\
+ s_{2, 1840}*w_{2, 1840}+...]/p_{1840}
+\end{equation}
+
 ]
 
 ---
 
 .pull-left60[
-```{r humphries_wages_family, fig.align='center', fig.retina=3}
-library(tidyverse)
-library(ggthemes)
-library(ggrepel)
+```{r humphries_wages_family, fig.align='left', fig.retina=3, out.width="100%", fig.height=5, fig.width=5}
 
 hh_df <- data.frame(years = c(1795, 1800, 1820, 1835, 
                               1840, 1845, 1850, 1865),
@@ -205,8 +183,7 @@ hh_df %>%
   theme_hc() + 
   scale_color_hc() +
   guides(color=FALSE) +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3")) +
+  theme_lecture +
   xlab("") +
   ggtitle("Wages grew more than family income", 
           subtitle = "Evidence from family budgets, Horrell & Humphries (1992)")
@@ -223,7 +200,7 @@ hh_df %>%
 ---
 
 .pull-left60[
-```{r lw_revised, fig.align='left', fig.retina=3}
+```{r lw_revised, fig.align='left', fig.retina=3, out.width="100%", fig.height=5, fig.width=5}
 
 lw_feinstein %>% 
   filter(series != "Feinstein_original") %>% 
@@ -240,20 +217,12 @@ lw_feinstein %>%
   xlim(c(1780,1865)) +
   scale_color_hc() +
   guides(color=FALSE) +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3")) +
+  theme_lecture + 
   xlab("") +
   ggtitle("LW revised by Feinstein", 
           subtitle = "A very small rise in real income")
 
 ```
-
-<br> 
-
-\begin{equation}
- \texttt{realwage}_{1840} = [s_{1, 1840}*w_{1,1840} + \\
- s_{2, 1840}*w_{2, 1840}+...]/\underbrace{p_{1840}}_{\texttt{Revised}}
-\end{equation}
 ]
 
 
@@ -264,13 +233,68 @@ lw_feinstein %>%
 
 > "This marked contrast... arises almost entirely from the differences in the underlying cost-of-living indices discussed above. ...it is not the result of the inclusion of the incomes of women and children in a previously patriarchal earnings index" (p. 643)
 
+<br> 
+
+\begin{equation}
+ \texttt{realwage}_{1840} = [s_{1, 1840}*w_{1,1840} + \\
+ s_{2, 1840}*w_{2, 1840}+...]/\underbrace{p_{1840}}_{\texttt{Revised}}
+\end{equation}
+
+]
+
+---
+.left-column[
+## The verdict on wages
+
++ Mixed: grow, but slowly enough that dis-amenities of urban life could dominate
++ For instance, hard to argue for an 'improved' standard of living with small rise in income and big fall in life-expectancy!
+]
+
+.right-column[
+```{r life_expec, fig.align='center', fig.retina=3, fig.height=5, fig.width=7, out.width="90%"}
+
+le <- data.frame(year = seq(1800, 1890, 10),
+                 le_urban = c(NA, NA, 35, 29, 30, 34, 34, 38, 40, 42),
+                 le_national = c(40, 41, 41, 41, 41, 41, 41, 43, 45, 46))
+
+le %>% 
+  gather("series", "life_expectancy", -year) %>% 
+  ggplot(aes(year, life_expectancy, color = series, label = life_expectancy)) +
+  geom_point(size = 3) + 
+  geom_line() +
+  geom_label_repel(nudge_y = .5) +
+  geom_text(data = le %>% 
+              gather("series", "life_expectancy", -year) %>% 
+              mutate(lab = if_else(series=="le_urban", 
+                                   "Avg. Cities > 100,000", 
+                                   "Avg. Eng. & Wales")) %>% 
+              filter(year == max(year)),
+            aes(year, life_expectancy, label = lab), nudge_x = 18) + 
+  xlim(c(1800, 1920)) +
+  guides(color=F) +
+  ggtitle("Life expectancy in Britain", 
+          subtitle = "Source: Szreter & Mooney (1998)") +
+  ylab("Life Expectancy at Birth (years)") + 
+  xlab("") +
+  theme_hc() + 
+  scale_color_hc() +
+  theme_lecture
+
+
+```
 ]
 
 ---
 
-class: center, inverse, middle
+class: inverse, center, middle
 
 > "The present account of trends in living standards also seems **more plausible in relation to other indicators** of well-being. It accords better with the evidence of a sharp deterioration in infant and child mortality. It eliminates the paradox of the decline in nutritional status indicated by the early nineteenth-century height data occurring at a time of an allegedly swift advance in living standards." <br> -Feinstein, p. 652
+
+---
+
+class: inverse, center, middle
+
+# Part II
 
 ---
 
@@ -288,7 +312,7 @@ class: center, inverse, middle
 + Several problems
   - Bias/truncation
   - Composition effects
-  - Seperating out the cause of height change
+  - Separating out the cause of height change
       * Epidemics? Public health works? Child labor
   - When *exactly* do we grow?
 
@@ -298,7 +322,7 @@ class: center, inverse, middle
 
 The concept of **biological well-being** 
 
-![floud](floud_height.jpg)
+![floud](figures/floud_height.jpg)
 
 ### But how does it work?
 ]
@@ -306,61 +330,95 @@ The concept of **biological well-being**
 
 ---
 
-class: center
+.pull-left30[
 
 On **average** it is not genes
 
->  "Newcomers to the idea that stature measures important aspects of the standard of living should not be sidetracked by genetic issues. Genes are important determinants of individual height, but genetic differences approximately cancel in comparisons of averages across most populations, and in these situations heights accurately reflect health status." -Steckel, "Stature", p. 1903
+>  "Newcomers to the idea that stature measures important aspects of the standard of living should not be sidetracked by genetic issues. **Genes are important determinants of individual height, but genetic differences approximately cancel in comparisons of averages across most populations**, and in these situations heights accurately reflect health status." <br> —Steckel, "Stature", p. 1903
+]
 
-.scale80[
-![clark](male-heights-from-skeletons-in-europe-1-2000-clark.png)
+.pull-right70[
+![clark](figures/male-heights-from-skeletons-in-europe-1-2000-clark.png)
+*Source*: Clark, *A Farewell to Alms*, 2008.
 ]
 
 ---
+
 ## Heights during the IR
 
-.pull-left[
-![soldiers](soldiers_heights.png)
-+ Komlos, "Secular Trend"
+.pull-right70.center[
+![:scale 49%](figures/soldiers_heights.png) ![:scale 49%](figures/convicts_heights.png)
+*Sources*: Komlos, "Secular Trend" & Nicholas & Steckel, "English Workers"
 ]
 
-.pull-right[
-![convicts](convicts_heights.png)
-+ Nicholas & Steckel, "English Workers"
+.pull-left30[
+> "In some regards the common men and women of the early industrial age were not as well off as their parents. **There was some divergence between their living standard, as conventionally conceived, and their biological well-being**." <br> -Komlos, "Physical Stature"  
 ]
 
-> "In some regards the common men and women of the early industrial age were not as well off as their parents. There was some divergence between their living standard, as conventionally conceived, and their biological well-being." <br> -Komlos, "Physical Stature"  
+---
+
+.pull-left40[
+## Anthropometrics: a critical regard
+
+![bgm](figures/Bodenhorn_Guinnane_Mroz_frontis.png)
+
++ Why do people join the military?
++ Why does crime rise and fall?
+
+]
+
+.pull-right60[
+> "Sample-selection bias is a potential problem for every source that was not produced or collected for the entire population, or for which only non-random sub-samples survive. **Selection bias also affects textual and other non-quantitative sources.**"<br> —Bodenhorn, Guinnane & Mroz, p. 1157
+
+<br>
+
+> "We do question whether parts of the literature add to our understanding of long-term changes in economic well-being because they rely on choice- based samples... Several militaries ... relied on volunteers rather than conscripts drawn randomly from their underlying populations. Selection occurs at every stage of the criminal justice system: prisons house only those alleged to have committed crimes, whom the police choose to catch, states’ attorneys choose to prosecute, and juries choose to convict." <br> —Bodenhorn, Guinnane & Mroz, p. 1155.
+
+]
+
+---
+
+class: inverse, center, middle
+
+# Part III
 
 ---
 
 .pull-left[
-![frontis](childhood_frontis.jpg)
+# Child Labor
+
+![frontis](figures/childhood_frontis.jpg)
 ]
 
 .pull-right[
-![jane](jane_humphries.jpg)
+![jane](figures/jane_humphries.jpg)
 + Professor Jane Humphries<br>CBE, BA, MA, PhD, FBA
 + Draws on 600+ biographies of working men to study child labor
     + Qualitative and quantitative approach
 ]
 
 ---
+.left-column[
+## Distribution of work-starting ages by cohort
 
-#### Distribution of work-starting ages by cohort
++ "...the sons of miners, factory workers, outworkers, casual workers, and soldiers all on average started work below the age of 10." <br> Humphries, p. 406.
+]
 
-![dist](age_start_work.png)
+.right-column.center[
+![dist](figures/age_start_work.png)]
 
 ---
 
+.pull-left60[
 ## A simple model of child labor
 
-.pull-left60[
-![clm](child_labor_model.png)
+![:scale 85%](figures/child_labor_model.png)
 ]
 
 .pull-right40[
 + Assume parents prefer their children at home
 + Assume all jobs *could* be done by adults or children
++ Assume a standard of living $s$ such that if household income falls below $s$ children are sent to work
     - Good equilibrium $E1$: 
         + Only parents work, low labor supply high wage
     - Bad equilibrium $E2$:
