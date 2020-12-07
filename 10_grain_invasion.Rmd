@@ -39,12 +39,25 @@ xaringanExtra::use_tile_view()
 
 ## Today's Plan
 
-### Globalization and History
+.pull-left[
+### Part I
 
-### The political economy of free-trade
++ Globalization and History
 
-### Heckscher-Ohlin trade theory and factor price
+### Part II
 
++ The Corn Laws
++ Political Economy of Free Trade
+]
+
+.pull-right[
+### Part III
+
++ Heckscher-Ohlin trade theory
++ factor prices
++ The European grain invasion
+
+]
 ---
 class: inverse, center, middle
 
