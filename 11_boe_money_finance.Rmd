@@ -3,154 +3,94 @@ title: "Week 11: Banking, Money and Finance"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 2-3pm
-date: "16 December 2020"
+    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
     nature:
-      beforeInit: "macros.js"
+      beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
     lib_dir: libs
-    css: xaringan-themer.css
+    css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
 
-<style type="text/css">
-.white { color: white; }
-.large { font-size: 130% }
-.small { font-size: 70% }
-.pull-right40{ 
-  float: right;
-  width: 40%;}
-.pull-left60{
-  float: left;
-  width: 60%;
-}
-.scale120{
-  float: left;
-  width: 120%;
-}
-.scale80{
-  float: right;
-  width: 80%
-}
-</style>
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
 
+library(RefManageR)
+BibOptions(check.entries = FALSE, 
+           bib.style = "authoryear", 
+           style = "markdown",
+           dashed = TRUE, hyperlink = FALSE)
+source("helper_functions/helper_print_bib.R")
+bib <- ReadBib("pres.bib")
+```
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
+style_solarized_light()
+source("helper_functions/theme_lecture.R")
+xaringanExtra::use_webcam()
+xaringanExtra::use_tile_view()
 ```
 
-## Today's Plan
-
-.large[
-+ Essay Feedback
-+ Student Presentations
-+ Lecture
-+ Discussion
-]
-
----
-
-# Essay Feedback
-
-.large[
-+ Generally pleased
-    - Did you find the feedback?
-    - **Feel free to come talk to me about it**
-        + New office hours 10-11am Wed, 2-3pm Thurs
-    
-.pull-left[
-### What I liked
-
-+ Impressive engagement with ideas
-+ Outside information
-]
-
-.pull-right[
-### Areas for improvement
-
-+ Writing
-    - Focus on clarity
-    - Proofread
-+ Citing: Facts need citations too! 
-]
-]
-
----
-
-```{r early_plot, fig.align='center', out.width='100%', fig.width=6, fig.height=4, fig.retina=4}
-
-library(tidyverse)
-library(readxl)
-library(ggthemes)
-
-grades <- read_xlsx("~/Dropbox/teaching/brit_eh_1700_1940/grades.xlsx", 
-                    range = "A1:F21", sheet = 2)
-grades <- grades %>% select(`Essay 1`, `Early Submission`)
-
-grades %>% 
-  na.omit() %>% 
-  mutate(`Early Submission` = as_factor(`Early Submission`)) %>% 
-  ggplot(aes(`Early Submission`, `Essay 1`)) + 
-  stat_summary(fun.data ="mean_cl_boot", 
-               size = 2, 
-               color = "coral") +
-  scale_x_discrete(labels = c("No", "Yes")) + 
-  theme_hc() +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3")) +
-  ggtitle("Essays submitted early scored higher")
-
-```
-
----
-
-class: inverse, center, middle
-
-# Student Presentations
-
----
 
 # Lecture Outline
 
-.large[
+### Part I
+
 + Some useful background
     - What is a bank?
     - Balance sheet and leverage
     - Leverage, risk and liability
     - Illiquidity vs insolvency?
+    
+### Part II
+
 + The Bank of England as a Monopoly Lender
 + The rise of joint-stock banks
+
+### Part III
+
 + The emergence of central banking doctrine
     - Central banking and financial stability?
-]
+
+---
+
+class: inverse, center, middle
+
+# Part I
 
 ---
 
 ## Banking and financial crises in historical perspective
 
+<br>
 
+.middle[
 >  **Warnings from history** <br> <br> 227.  The Commission recommends that an additional external member be appointed to the FPC, with particular responsibility for **taking a historical view of financial stability and systemic risk**, and drawing the attention of FPC colleagues, and the wider public through speeches and articles, to historical and international parallels to contemporary concerns. (Paragraph 1115) <br><br> -*Changing banking for good - Parliamentary Commission on Banking Standards*, Vol. 1, [https://publications.parliament.uk/pa/jt201314/jtselect/jtpcbs/27/2704.htm](https://publications.parliament.uk/pa/jt201314/jtselect/jtpcbs/27/2704.htm) 
+]
 
 ---
 
 # What is a Bank?
 
---
-
-![banks](balance_sheet.jpg)
+.center[
+![banks](figures/balance_sheet.jpg)
+]
 
 ---
 
 ### Leverage: Barclay's Simplified Balance Sheet, 2006
 
-![lev](barclays_balance_sheet.png)
+.center[
+![:scale 75%](figures/barclays_balance_sheet.png)
+]
 
 + Leverage ratio $= 996,787/ 27,390 = 36.4$
+
 ---
 
 ## Leverage, Risk and Liability: Why do banks fail?
@@ -178,10 +118,12 @@ class: inverse, center, middle
 
 
 ]]
+
 ---
-### Leverage, Risk and Liability: Why do banks fail?
 
+## Leverage, Risk and Liability: Why do banks fail?
 
+.pull-left[
 ### Why take on so much risk?
 
 .large[
@@ -191,8 +133,9 @@ class: inverse, center, middle
     - Limited liability, double liability, unlimited liability
 + Seperation of ownership and control (agency problems)
 ]
+]
 
-
+.pull-right[
 ### Why do depositors allow it?
 
 .large[
@@ -200,15 +143,18 @@ class: inverse, center, middle
     - I give you a list of 100s of investments (bonds, stocks, land, water, gold, wine, art, etc.) and ask how much its worth. How accurate can you be?
     - Exact asset positions not public
 ]
+]
 
-#### Why not have banks hold 100% deposits in reserves?
+<br>
+
+.Large[**Why not have banks hold 100% deposits in reserves?**]
 
 ---
 
-### Leverage, Risk and Liability: solutions?
+## Leverage, Risk and Liability: solutions?
 
 .pull-left[
-![bic](banking_in_crisis.jpg)
+![bic](figures/banking_in_crisis.jpg)
 ]
 
 .pull-right[
@@ -244,7 +190,13 @@ class: inverse, center, middle
 
 ---
 
-background-image: url("bank_of_england.jpg")
+class: inverse, center, middle
+
+# Part II
+
+---
+
+background-image: url("figures/bank_of_england.jpg")
 background-size: cover
 
 ## The Bank of England
@@ -273,10 +225,10 @@ background-size: cover
 
 ---
 
-### The path to central banking: ending commercial monopoly
+## The path to central banking: ending commercial monopoly
 
-.large[
-#### The Banking System in 1815
+### The Banking System in 1815
+
 + Bank of England (London only)
 + Goldsmith bankers (London only, 6 partners max)
 + Small country banks (also 6 partners)
@@ -284,11 +236,11 @@ background-size: cover
         + 1780: ~100
         + 1810: ~600
 
-#### Sources of reform
+### Sources of reform
 
 1. End of Napoleonic Wars
 2. Merchant pressure
-]
+
 ---
 
 ### The path to central banking: ending commercial monopoly
@@ -313,7 +265,7 @@ timevis(data, showZoom = F, fit = T, height = 600)
 
 ---
 
-```{r bankgraph, out.width='100%', fig.height=4.5, fig.width=6, fig.retina=4}
+```{r bankgraph, out.width='80%', fig.height=4.5, fig.width=6, fig.retina=4}
 library(ggrepel)
 
 bdata <- data.frame(type = rep(c("State-chartered bank", 
@@ -333,9 +285,7 @@ bdata %>% filter(type != "State-chartered bank") %>%
   geom_line() +
   theme_hc() +
   scale_color_hc() +
-  theme(panel.background = element_rect(fill = "#fdf6e3"),
-        plot.background = element_rect(fill = "#fdf6e3")) +
-  guides(color = FALSE) + 
+  theme_lecture +
   xlab("") +
   ylab("Number of Banks") +
   ggtitle("The Growth of Unlimited- and Limited-Liability Banking")
@@ -346,20 +296,26 @@ bdata %>% filter(type != "State-chartered bank") %>%
 ## Network Growth and Consolidation
 
 
-![mergers](grossman_mergers.png)
+![:scale 90%](figures/grossman_mergers.png)
 #### source: Grossman, *Unsettled Account*, p. 184
 
 ---
 
 ## Network Growth and Consolidation: a cartel?
 
-![consolidation](grossman_concentration.png)
+![:scale 80%](figures/grossman_concentration.png)
+
+---
+
+class: inverse, center, middle
+
+# Part III
 
 ---
 
 ## The Path to Central Banking: Crisis Intervention
 
-.large[
+.pull-left[
 
 ### Crises
 
@@ -372,7 +328,41 @@ bdata %>% filter(type != "State-chartered bank") %>%
 <br> 
 
 + Gradual development of Bagehot's rule?
+
+### Bagehot's Rule
+
+1. Lend freely
+2. On good collateral
+3. At a penalty rate
+
++ These rules are never exactly explicitly given
 ]
+
+.pull-right[
+
+
+.center[
+![:scale 100%](figures/Walter_Bagehot_NPG_cropped.jpg)
+]]
+
+---
+
+## Bagehot's Rule
+
+### 1. Lend Freely
+
+> "In opposition to what might be at first sight supposed, **the best way for the bank or banks who have the custody of the bank reserve to deal with a drain arising from internal discredit, is to lend freely.** The first instinct of everyone is the contrary. There being a large demand on a fund which you want to preserve, the most obvious way to preserve it is to hoard it — to get in as much as you can, and to let nothing go out which you can help. But every banker knows that this is not the way to diminish discredit." (23)
+
+### 2. On good collatoral
+
++ Require the borrowers to put up collateral of high quality for the loans
+
+### 3. At a penalty rate
+
++ *Not* as reflected in modern doctrine
++ Two reasons:
+  1. Punish borrowers for getting into trouble
+  2. Incentivize the private sector to lend
 
 ---
 
@@ -383,21 +373,16 @@ bdata %>% filter(type != "State-chartered bank") %>%
 
 + BoE refuses liquidity provision initially
 
-![money_market](1825_money_market.jpg)
+![money_market](figures/1825_money_market.jpg)
 
-### Bagehot's Rule
-
-1. Lend freely
-2. On good collateral
-3. At a penalty rate
 
 ]
 
 .pull-right[
 ### 1866
 
-+ lends extensively on collatoral (discounts)
-![old_lady](old-lady-of-threadneedle-street-mary-evans-picture-library.jpg)
++ lends extensively on collateral (discounts)
+![old_lady](figures/old-lady-of-threadneedle-street-mary-evans-picture-library.jpg)
 
 ]
 
@@ -407,7 +392,7 @@ bdata %>% filter(type != "State-chartered bank") %>%
 
 ### Why do we see this pattern?
 
-![collat](Screenshot 2020-01-16 at 16.28.53.png)
+![:scale 90%](figures/Screenshot 2020-01-16 at 16.28.53.png)
 
 ---
 
