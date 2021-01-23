@@ -52,7 +52,7 @@ xaringanExtra::use_tile_view()
 ### Sources
 
 + You may use the 2 documents provided
-+ You may access the same documents online
++ You may [access the same documents online](https://som.yale.edu/imm-issues)
 + You may draw on additional documents (online)
     - Plus the readings (obviously)
     
