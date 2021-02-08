@@ -1,0 +1,9 @@
+﻿Asset,British Govt. Bonds,British Corp. Stocks,British Corp. Bonds,Foreign Govt. Bonds,Foreign Corp. Stocks,Foreign Corp. Bonds,US Stocks,US Bonds
+British Govt. Bonds ,1 ,0.35 ,0.29 ,0.30 ,0.22 ,0.24 ,0.17 ,0.24 
+British Corp. Stocks ,0.35 ,1 ,0.43 ,0.40 ,0.39 ,0.38 ,0.29 ,0.33 
+British Corp. Bonds ,0.29 ,0.43 ,1 ,0.28 ,0.17 ,0.22 ,0.12 ,0.22 
+Foreign Govt. Bonds ,0.30 ,0.40 ,0.28 ,1 ,0.39 ,0.41 ,0.27 ,0.35 
+Foreign Corp. Stocks ,0.22 ,0.39 ,0.17 ,0.39 ,1 ,0.55 ,0.97 ,0.56 
+Foreign Corp. Bonds ,0.24 ,0.38 ,0.22 ,0.41 ,0.55 ,1 ,0.50 ,0.77 
+US Stocks ,0.17 ,0.29 ,0.12 ,0.27 ,0.97 ,0.50 ,1 ,0.54 
+US Bonds ,0.24 ,0.33 ,0.22 ,0.35 ,0.56 ,0.77 ,0.54 ,1 

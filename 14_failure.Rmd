@@ -3,51 +3,35 @@ title: "Did Victorian Britain Fail?"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 2-3pm
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+    | Office Hours: Mon. 10:30-11:30am & Fri. 2-3pm
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
     nature:
-      beforeInit: "macros.js"
+      beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
     lib_dir: libs
-    css: xaringan-themer.css
+    css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
-background-image: url("mccloskey_frontis.png")
-background-size: contain
-
-<style type="text/css">
-.white { color: white; }
-.red { color: red;}
-.blue { color: blue;}
-.large { font-size: 130% }
-.small { font-size: 70% }
-.pull-right40{ 
-  float: right;
-  width: 40%;}
-.pull-left60{
-  float: left;
-  width: 60%;
-}
-.scale120{
-  float: left;
-  width: 120%;
-}
-.scale80{
-  float: right;
-  width: 80%
-}
-</style>
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
 
+
+```
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
-source("~/Dropbox/teaching/lecture_ggplot2_theme.R")
+style_solarized_light()
+source("helper_functions/theme_lecture.R")
+xaringanExtra::use_webcam()
+xaringanExtra::use_tile_view()
 ```
+
+background-image: url("figures/mccloskey_frontis.png")
+background-size: contain
 
 ---
 
@@ -64,7 +48,7 @@ source("~/Dropbox/teaching/lecture_ggplot2_theme.R")
 # 3 Arguments
 
 .large[
-.blue[
+.red[
 + "...output grew too slowly because of sluggish demand..."
 ]
 .red[
@@ -90,11 +74,96 @@ source("~/Dropbox/teaching/lecture_ggplot2_theme.R")
 ]
 
 ---
-## Where did LSE investors put their money?
 
-```{r market_weights, fig.retina=4, out.width="100%", fig.height=4, fig.width=6}
+### 1. "...output grew too slowly because of sluggish demand..."
+
+```{r trade_growth, fig.retina=4, fig.height=4, fig.width=6}
 library(tidyverse)
-weights <- read_csv("michie_lse_weights.csv")
+library(readxl)
+
+trade <- read_excel("data/a-millennium-of-macroeconomic-data-for-the-uk.xlsx", sheet = "A35. Trade volumes and prices", 
+                    range = "A556:G626", col_names = FALSE)
+
+
+trade <- trade[,c(1,7)]
+names(trade) <- c("Date", 
+                  "Composite Export Index (2013 prices)")
+
+trade <- trade %>%
+  mutate(period = ifelse(Date > 1870, "post-1870", "pre-1870"),
+         ln_index = log(`Composite Export Index (2013 prices)`))
+
+reg_pre_1870 <- broom::tidy(lm(ln_index ~ Date, 
+                               data = trade %>% 
+                                 filter(period == "pre-1870")))
+
+reg_post_1870 <- broom::tidy(lm(ln_index ~ Date, 
+                               data = trade %>% 
+                                 filter(period == "post-1870")))
+
+trade %>% 
+  ggplot(aes(Date, log(`Composite Export Index (2013 prices)`), 
+             color = period)) +
+  stat_smooth(method = "lm") +
+  geom_point() + geom_line() +
+  annotate("text", x = 1860, y = 8, 
+           label = paste0("Average annual change of ", 
+                          scales::percent(reg_pre_1870$estimate[2], 
+                                          accuracy = .01)),
+           color = "blue") +
+  annotate("text", x = 1860, y = 10, 
+           label = paste0("Average annual change of ", 
+                          scales::percent(reg_post_1870$estimate[2], 
+                                          accuracy = .01)),
+           color = "red") +
+  theme_lecture +
+  ggtitle("Log composite export index with estimated growth rates",
+          subtitle = "1830-1869 vs 1870-1900") +
+  scale_color_manual(values = c("red", "blue"))
+```
+
+---
+
+### Could things have been better?
+
+#### Population growth
+
+> "The argument that Britain's output grew more slowly because of slower growing exports, however, **assumes that aggregate demand alone determined output**, when **in fact there were constraints of supply**. Indeed, there is evidence that they were the only binding constraints. ...the labour force at the end of the period would have had to have been twice as large as the actual labour force and two-fifths larger than the entire population aged 15 and over." <br> -McCloskey, p. 448-449.
+
+#### Savings rate
+
+.pull-left[
++ Simple accounting exercise
+
+$$
+Q = s_K K + s_L L + T
+$$
++ Total growth (Q) comes from labor growth (L) with proportion $s_L$ and capital growth (K) with proportion $s_K$ and getting better at doing things (T).
+]
+
+.pull-right[
++ Re-arranging
+
+$$
+K = \frac{1}{s_K} \Big(Q - s_LL - T \Big)
+$$
+
++ plug in plausible values and growth in $K$ has to be huge implying extraordinary high savings rate.
+]
+
+---
+
+### 2. "...too much was invested abroad because of imperfect capital markets..."
+
+>  "By reallocating resources, of course, any one sector of the economy could have grown faster: industry could have grown at the expense of services and exports at the expense of production for home consumption had labour and capital been allocated differently. The most popular target for hypothetical reallocation has been Britain's enormous hold- ings of capital abroad in the late nineteenth century." <br> -McCloskey, p. 451.
+
+---
+
+### Where did LSE investors put their money?
+
+```{r market_weights, fig.retina=4, fig.height=4, fig.width=6}
+library(tidyverse)
+weights <- read_csv("data/michie_lse_weights.csv")
 
 weights <- weights %>% mutate(Market_Weight = as.numeric(Market_Weight))
 
@@ -116,28 +185,154 @@ weights %>%
 
 ---
 
+## The export of capital debate: a simple critique
+
+### McCloskey
+
+.pull-left40[
++ Overseas investment earns income
++ If you don't invest abroad need to do something else with the money
++ If you invest at home:
+    - Maybe home investments yield lower returns (per Edelstein)
+    - Anyway **additional** home investment should push the yield on domestic capital downward
++ Ergo investing more at home $\rightarrow$ fall in income
+]
+
+.pull-right60[
+>"The most popular target for hypothetical reallocation has been Britain's enormous holdings of capital abroad... It is not clear, however, that exchanging domestic for foreign capital would have raised British national income. **The question is how bringing capital home could be expected to increase income and how large the increase would have been**."<br> -McCloskey 1970, p. 451
+]
+---
+
+### Key assumptions of McCloskey
+
++ Investors *could* have invested at home or abroad
+    - They *knew** about all the options
+    - Equivalently, markets are integrated
++ Their decision to invest abroad tells us about relative foreign/domestic rates of return
+    - This can be and has been empirically checked e.g. Edelstein, Chabot & Kurz, Goetzman & Ukov
+    - "...in emphasizing the rationality of entrepreneurs denies the very notion of failure" (Kirby 1992)
++ Rates of return do not depend on investment decisions
+    - Returns $\rightarrow$ investment **not** investment $\rightarrow$ returns
+
+### Bottom line
+
++ This is an argument over a **counterfactual claim**: what would have happened in Britain if foreign investment had been diverted into domestic investment?
++ Counterfactual claims can only be answered with a **theory**!!
+
+---
+
+## Framing the debate
+
+### Two broad questions
+
+  1. Was it in the interests of investors to invest abroad?
+  2. Was it in the "national interest" for investors to invest abroad?
+      - The term "national interest" is poorly defined but usually taken here to mean grown in GDP/pc
+      
+---
+
+### Was it rational for the British investor to invest so much abroad?
+
+### Probably yes
+
+
+> "When investors are given the opportunity to divide their money between home and foreign assets, the expected rate of return on domestic assets can exceed the expected rate of return on foreign assets and an unbiased, rational investor will still choose to invest a portion of her wealth overseas if the diversification benefits of foreign investment outweigh the loss of return." <br> -Chabot & Kurz, 2010
+
++ 518,224 individual stock or bond 28 day returns
++ The question is not whether investors should have picked foreign or investment, the question is the **optimal mix**
++ The authors compute returns by sector, test portfolios
+
+> "The real benefit of international investing was the diversification benefit of holding foreign assets that had a low correlation with their domestic counterparts." <br> -Chabot & Kurz, 2010
+
+---
+
+```{r returns_variance, fig.align='center', fig.height=4, fig.width=6, fig.retina=4}
+library(tidyverse)
+library(ggrepel)
+
+returns_df <- read_csv("data/portfolio_returns.csv")
+
+returns_df %>% 
+  ggplot(aes(`Std. Dev. (%)`, `28-Day Mean Return (%)`,
+             label = Portfolio)) +
+  geom_point(aes(color = Portfolio), size=3) +
+  theme_lecture +
+  geom_text_repel() +
+  scale_color_hc() +
+  theme(legend.position = "none") +
+  ggtitle("Asset Portfolio Returns and Standard Deviations") +
+  labs(caption = "Source: Chabot & Kurz 2010")
+
+```
+
+---
+
+```{r returns_covariance, fig.align='center', fig.height=5, fig.width=6, fig.retina=4}
+
+cor_mat <- read_csv("data/asset_correlation_matrix.csv")
+
+cor_mat %>% gather("Asset2", "cor", -Asset) %>% 
+  mutate(cor = as.numeric(cor)) %>% 
+  ggplot(aes(Asset, Asset2, fill = cor, label = cor)) +
+  geom_tile() +
+  geom_text() +
+  theme_lecture +
+  scale_fill_viridis_c() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "right") +
+  labs(fill="Correlation", caption = "Source: Chabot & Kurz 2010") +
+  xlab("") + ylab("") +
+  ggtitle("Correlation between asset classes")
+```
+
+---
+
+## Was it *socially* optimal for so much investment to go abroad?
+
+### Much harder question
+
+1. Were there industries that *could* have raised long-run growth if pursued?
+    - E.g. electrification and chemicals which become important in 20th century
+    - Can investment raise productivity? Where does innovation come from?
+2. Were there large social costs to foreign investments born by the public and not investors?
+    - The costs of formal and informal empire in protecting the investments abroad
+3. Is the market price the right metric? Maybe we should consider the amount *originally invested*?
+    - Price of a security is what current holder can sell it for, **not** necessarily a reflection of the money the company got
+
+---
+
+## Were key domestic industries neglected?
+
+>"Potentially successful frustrated borrowers leave no trace" <br> -Kindleberger, *Economic Growth in France and Britain*, p. 38
+
++ We can directly compare **observed** foreign and domestic investment
+    - We cannot directly compare foreign investment and **hypothetical** domestic investment
+    - Broader question of **sample selection bias**: we compare stock-exchange listed companies but this is not a random sample!
++ The case for more domestic investment:
+    - Some key industries that appear important in hindsight are not extensively developed: e.g. motor industry, new techniques in steel, electricity
+    - Assumption of diminishing marginal return to capital unproven: 
+    
+> "...in view of the fact that capital is the changing, the transforming, the dynamic element in the economy, and that it is neither homogeneous nor easily divisible, but usually lumpy and highly specific, it is by no means certain that adding to its quantity will necessarily lower its returns"<br> -Pollard, p. 502.
+
+---
+
 ## Today's Plan: Debate!
 
-![:scale 100%](dem_debate.jpg)
+![:scale 100%](figures/dem_debate.jpg)
 
 ---
 .pull-left[
+
 ## Rules
 
 + 2 Teams
-+ You have until **5pm** to prepare:
-    1. Your argument
-    2. Slides to support your argument
-    3. A potential rebuttal
-+ I will spend 15 minutes helping each team
-+ You can borrow up to 4 books at a time from me
++ You have **15 minutes** to prepare
++ I will spend half of time helping each team
 
 #### Presentations
-+ **5-5:30**: each team gets a 14 minute chance to talk
-+ **5:30-5:45**: each team gets a 7 minute rebuttal
-+ **5:45-5:55**: The judge (in his wisdom) deliberates and declares a winner
-
-**There will be a prize (Athens Duty Free - TBD)!!**
++ each team gets a 5 minute chance to talk
++ each team gets a 2 minute rebuttal
++ The judge (in his wisdom) deliberates and declares a winner
 ]
 
 .pull-right[
@@ -150,14 +345,12 @@ weights %>%
 
 ### Compelling presentation
 
-+ Good slides (+)
 + Use of visuals (+)
 + Bonus points for humor (++)
 
 ### Evidence of Breadth
 
 + Full use of the team (+)
-+ Wide range of sources (++)
 
 ]
 
