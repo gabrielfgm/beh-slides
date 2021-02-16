@@ -279,7 +279,7 @@ plotdf %>%
 
 class: inverse, center, middle
 
-Part II
+# Part II
 ---
 
 ### Case: The Lancashire Cotton Industry vs the New England Cotton Industry (Leunig 2003)
