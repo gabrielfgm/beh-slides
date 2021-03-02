@@ -1,250 +1,90 @@
 ---
-title: "Capital Exports, Victorian Failure, and the Economics of Empire" 
+title: "The Economics of Empire" 
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 2-3pm
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+    | Office Hours: Mon. 10:30-11:30am & Fri. 2-3pm
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
     nature:
-      beforeInit: "macros.js"
+      beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
     lib_dir: libs
-    css: xaringan-themer.css
+    css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
 
-<style type="text/css">
-.white { color: white; }
-.large { font-size: 130% }
-.small { font-size: 70% }
-.pull-right40{ 
-  float: right;
-  width: 40%;}
-.pull-left60{
-  float: left;
-  width: 60%;
-}
-.pull-left40{ 
-  float: left;
-  width: 40%;}
-.pull-right60{
-  float: right;
-  width: 60%;
-}
-.scale120{
-  float: left;
-  width: 120%;
-}
-.scale80{
-  float: right;
-  width: 80%
-}
-</style>
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
 
+
+```
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
-source("~/Dropbox/teaching/lecture_ggplot2_theme.R")
+style_solarized_light()
+source("helper_functions/theme_lecture.R")
+xaringanExtra::use_webcam()
+xaringanExtra::use_tile_view()
+
+library(tidyverse)
+library(ggplot2)
 ```
 
 ## Today's Plan
 
-.large[
-+ Admin
-+ Student talks
-+ Lecture:
-    - Reviewing the 'Export of Capital' Debate
-    - The Balance Sheet of Empire
+### 1. Framing the debate
+
+### 2. Offer's critiques
+
+### 3. Cain and broader counter-factuals
+
+---
+
+# The question
+
+.center.Large[
+> "Whether this complex institutional edifice of supranational power ... brought tangible gains to anything like a majority of British people" <br> —O'Brien, p. 163.
 ]
 
----
+### Caveats
 
-class: inverse, center, middle
++ *Not* a discussion of whether empire $\rightarrow$ industrialization
+  - O'Brien doesn't think so but as we saw (e.g. Inikori, Findlay & O'Rourke) people disagree
++ The debate is about the 
 
-# Rescheduled Class
-
-.large[
-**When**: Thursday, 23 Apr 2020, 16:00-18:00 <br>
-**Where**: STRAND BLDG S-1.29 
-]
-
-<br>
-#### Let's use this as an exam-review class
+> "material costs and benefits for British society as a whole, imputable to political decisions to retain and extend the empire from the onset of free trade through to the First World War, 1846 to 1914" <br> —O'Brien, p. 164.
 
 ---
 
-## Industrial Action: UCU strike over pensions
+# Some intellectual history
 
-.large[
++ Tradition since Smith of arguing that Empire is burden on taxpayers and "increased threats of war and the probability of political corruption at home" (O'Brien, p. 164).
 
-#### Class disruption
+>  "We do not any longer ask - we certainly do not receive - from our colonies any commercial advantages which are not equally open to the whole world, which we should not equally command though the political connection were severed tomorrow" <br> —Cairncross, 1873
 
-+ Scheduled industrial action for **next 3 classes**
-    - Thursday 5 March
-    - Thursday 12 March
-    - Thursday 19 March
-+ I am hopeful will end early
-    - If it does not I will try to organize something **off campus** for Thursday 19th of March
-    - I am available to meet **off campus** to talk essays
+### Radical critique of empire
 
-#### Assessment
-
-+ If we miss class time assessment will be reconfigured to ensure you are not disadvantaged
-    - Department cannot say *how* yet
-]
+> "... if I invest either in the public funds or in some private industrial venture in a foreign country for the benefit of my private purse, getting specially favorable terms to cover risks arising from the political insecurity of the country or the deficiencies of its Government, I am entitled to call upon my Government to use its political and military force to secure those very risks which I have already discounted in the terms of my investment. Can anything be more palpably unfair?" <br> —Hobson, 1902, p. 358.
 
 ---
 
-class: inverse, center, middle
+# The growth of 'Imperial accountancy'
 
-## Student Presentations
+> "Edward Gibbon Wakefield, Cobden, Marx, J. A. Hobson — every generation has had a shot at this question. In the last decade this debate has taken a new turn, which might be called 'imperial accountancy'." <br> —Offer, p. 215.
 
----
-
-### The export of capital debate: a simple critique
-
-### McCloskey
-
-.pull-left40[
-+ Overseas investment earns income
-+ If you don't invest abroad need to do something else with the money
-+ If you invest at home:
-    - Maybe home investments yield lower returns (per Edelstein)
-    - Anyway **additional** home investment should push the yield on domestic capital downward
-+ Ergo investing more at home $\rightarrow$ fall in income
-]
-
-.pull-right60[
->"By reallocating resources, of course, any one sector of the economy could have grown faster... The most popular target for hypothetical reallocation has been Britain's enormous holdings of capital abroad... It is not clear, however, that exchanging domestic for foreign capital would have raised British national income. **The question is how bringing capital home could be expected to increase income and how large the increase would have been**."<br> -McCloskey 1970, p. 451
-]
----
-
-### Key assumptions of McCloskey
-
-+ Investors *could* have invested at home or abroad
-    - They *knew** about all the options
-    - Equivalently, markets are integrated
-+ Their decision to invest abroad tells us about relative foreign/domestic rates of return
-    - This can be and has been empirically checked e.g. Edelstein, Chabot & Kurz, Goetzman & Ukov
-    - "...in emphasizing the rationality of entrepreneurs denies the very notion of failure" (Kirby 1992)
-+ Rates of return do not depend on investment decisions
-    - Returns $\rightarrow$ investment **not** investment $\rightarrow$ returns
-
-### Bottom line
-
-+ This is an argument over a **counterfactual claim**: what would have happened in Britain if foreign investment had been diverted into domestic investment?
-+ Counterfactual claims can only be answered with a **theory**!!
++ Referring in particular to the work by 
+  * **Davis & Huttenback**  
+  * **Edelstein**
 
 ---
-
-## Framing the debate
-
-### Two broad questions
-
-  1. Was it in the interests of investors to invest abroad?
-  2. Was it in the "national interest" for investors to invest abroad?
-      - The term "national interest" is poorly defined but usually taken here to mean grown in GDP/pc
-      
----
-
-## Was it rational for the British investor to invest so much abroad?
-
-### Probably yes
-
-
-> "When investors are given the opportunity to divide their money between home and foreign assets, the expected rate of return on domestic assets can exceed the expected rate of return on foreign assets and an unbiased, rational investor will still choose to invest a portion of her wealth overseas if the diversification benefits of foreign investment outweigh the loss of return." <br> -Chabot & Kurz, 2010
-
-+ 518,224 individual stock or bond 28 day returns
-+ The question is not whether investors should have picked foreign or investment, the question is the **optimal mix**
-+ The authors compute returns by sector, test portfolios
-
-> "The real benefit of international investing was the diversification benefit of holding foreign assets that had a low correlation with their domestic counterparts." <br> -Chabot & Kurz, 2010
-
----
-
-```{r returns_variance, fig.align='center', fig.height=5, fig.width=6, out.width='100%', fig.retina=4}
-library(tidyverse)
-library(ggrepel)
-
-returns_df <- read_csv("portfolio_returns.csv")
-
-returns_df %>% 
-  ggplot(aes(`Std. Dev. (%)`, `28-Day Mean Return (%)`,
-             label = Portfolio)) +
-  geom_point(aes(color = Portfolio), size=3) +
-  theme_lecture +
-  geom_text_repel() +
-  scale_color_hc() +
-  theme(legend.position = "none") +
-  ggtitle("Asset Portfolio Returns and Standard Deviations") +
-  labs(caption = "Source: Chabot & Kurz 2010")
-
-```
-
----
-
-```{r returns_covariance, fig.align='center', fig.height=5, fig.width=6, out.width='100%', fig.retina=4}
-
-cor_mat <- read_csv("asset_correlation_matrix.csv")
-
-cor_mat %>% gather("Asset2", "cor", -Asset) %>% 
-  mutate(cor = as.numeric(cor)) %>% 
-  ggplot(aes(Asset, Asset2, fill = cor, label = cor)) +
-  geom_tile() +
-  geom_text() +
-  theme_lecture +
-  scale_fill_viridis_c() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.position = "right") +
-  labs(fill="Correlation", caption = "Source: Chabot & Kurz 2010") +
-  xlab("") + ylab("") +
-  ggtitle("Correlation between asset classes")
-```
-
----
-
-## Was it socially optimal for so much investment to go abroad?
-
-### Much harder question
-
-1. Were there industries that *could* have raised long-run growth if pursued?
-    - E.g. electrification and chemicals which become important in 20th century
-    - Can investment raise productivity? Where does innovation come from?
-2. Were there large social costs to foreign investments born by the public and not investors?
-    - The costs of formal and informal empire in protecting the investments abroad
-3. Is the market price the right metric? Maybe we should consider the amount *originally invested*?
-    - Price of a security is what current holder can sell it for, **not** necessarily a reflection of the money the company got
-
----
-
-## Were key domestic industries neglected?
-
->"Potentially successful frustrated borrowers leave no trace" <br> -Kindleberger, *Economic Growth in France and Britain*, p. 38
-
-+ We can directly compare **observed** foreign and domestic investment
-    - We cannot directly compare foreign investment and **hypothetical** domestic investment
-    - Broader question of **sample selection bias**: we compare stock-exchange listed companies but this is not a random sample!
-+ The case for more domestic investment:
-    - Some key industries that appear important in hindsight are not extensively developed: e.g. motor industry, new techniques in steel, electricity
-    - Assumption of diminishing marginal return to capital unproven: 
-    
-> "...in view of the fact that capital is the changing, the transforming, the dynamic element in the economy, and that it is neither homogeneous nor easily divisible, but usually lumpy and highly specific, it is by no means certain that adding to its quantity will necessarily lower its returns"<br> -Pollard, p. 502.
-
----
-
-## The broader costs of foreign investment: defending British capital abroad?
-
-+ Here, the literature on foreign investment runs into the literature on the costs of empire
 
 ### Davis and Huttenback, *Mammon and the Pursuit of Empire*
 
 .pull-left40[
-![mammon](mammon_frontis.jpg)
+![:scale 80%](figures/mammon_frontis.jpg)
 ]
 
 .pull-right60[
@@ -259,7 +99,92 @@ cor_mat %>% gather("Asset2", "cor", -Asset) %>%
 
 ---
 
-```{r costs_of_defence, fig.align='center', fig.height=5, fig.width=6, out.width='100%', fig.retina=4}
+### Edelstein, *Overseas Investment in the Age of High Imperialism*
+
+.pull-left40[
+![:scale 80%](figures/edelstein_frontis.jpg)
+]
+
+.pull-right60[
++ Moderately positive case for *economic benefits* of empire
+    - takes a large sample of home and foreign investments
+    - computes returns on 'home' vs. 'overseas' and finds positive returns abroad
+    - This is familiar to us from export of capital week
+    
+]
+
+---
+
+# D&H vs. Edelstein: why do they differ?
+
++ D&H believe there is a 'market problem'
+  - Financial markets bid assets values up and down
+    + e.g. Gamestop mkt cap on 25/01 was 5b, on 27/01 it was 20b, on 04/02 it was 3.5b: total investment in Gamestop never changed! 
++ Want to compute returns on *initial investment*
+  - This needs to be built with *accounting data*
+  - Create a sample of 482 firms
++ D&H are using **different data** and a *different approach* to measuring rate of return
+
+---
+
+.pull-left[
+## Offer's critique
+
+### Critique along 2 dimensions
+
+1. Data and measurement
+  - Thinks 'market problem' is unreal
+  - Thinks accounting data is poor
+    
+2. Costs of defence
+  - Thinks costs of defence mismeasured
+]
+
+.pull-right[
+
+> "But even if the accounting estimates of historical capital were sound, they do not necessarily form an appropriate basis for estimating economic performance. In economics, past investments are sunk costs, water under the bridge. The constant review of expectations and prospects is the essence of economic life. Investments are sold in financial markets precisely in order to facilitate this constant review, and to convert lumpy chunks of physical capital into tradeable financial assets. That is why marketable securities were issued in the first place, so it is wrong to value such enterprises by historical cost methods, even if they are updated mechanically. **The market is a more objective and public mechanism for updating values. The Edelstein methodology of relying on market valuations is thus theoretically superior.**" <br> —Offer, p. 219
+]
+
+---
+
+## Offer on Data problems
+
+1. Some problems of selection
+  - Excludes government bonds
+  - Choice of time-periods
+2. Some problems of computation
+  - Returns are *unweighted* meaning return to 100 mil. firm weighted the same as 1 mil. firm.
+3. The market problem
+  - Does not think it is real: market prices incorporate capital gains and losses
+
+.pull-left60[
+> "D. & H.'s rates of return consist of two elements: reported profits, and asset valuations. Both elements can be questioned." <br> —Offer, p. 218
+
++ Profits:
+  - Easily manipulated 
++ Asset valuations:
+  - Ad hoc adjustments for depreciation, inflation, goodwill
+]
+---
+
+## Is defence like insurance? Offer's critique
+
++ Avner Offer offers several critiques:
+    1. Defence costs per head are not sensible, consider as share of income
+        + UK 2.95 % of GNP, Germany 2.86, France 4.52 (!)
+    2. Defence costs in the absence of empire are not zero
+        + What is the counterfactual? Argues the global trading system must be defended and benefits Britain
+    3. Cannot directly compare defence costs as defence *requirements* are different
+        + "If military expenditure is a form of insurance, then the higher the risk, the higher the premium required." -Offer, p. 226
+    4. Should not understate how much Brits liked having the empire
+        + Paid for it because they wanted it
+    5. The empire was a strategic resource that paid-off in WWI
+    
+> "From the defence point of view, investment in empire looks very different if one stops in 1919 instead of 1912, as D. & H. chose to do."<br> -Offer, p. 235
+
+---
+
+```{r costs_of_defence, fig.align='center', fig.height=4, fig.width=6, out.width='90%', fig.retina=4}
 def_costs <- tibble(Countries = c("UK", "Responsible\nGovernments", 
                                   "India", "Dependent\nGovernments",
                                   "France", "Germany"),
@@ -282,20 +207,42 @@ def_costs %>%
 
 ---
 
-## Is defence like insurance? Offer's critique
+## Edelstein on how to measure the costs
 
-+ Avner Offer offers several critiques:
-    1. Defence costs per head are not sensible, consider as share of income
-        + UK 2.95 % of GNP, Germany 2.86, France 4.52 (!)
-    2. Defence costs in the absence of empire are not zero
-        + What is the counterfactual? Argues the global trading system must be defended and benefits Britain
-    3. Cannot directly compare defence costs as defence *requirements* are different
-        + "If military expenditure is a form of insurance, then the higher the risk, the higher the premium required." -Offer, p. 226
-    4. Should not understate how much Brits liked having the empire
-        + Paid for it because they wanted it
-    5. The empire was a strategic resource that paid-off in WWI
-    
-> "From the defence point of view, investment in empire looks very different if one stops in 1919 instead of 1912, as D. & H. chose to do."<br> -Offer, p. 235
+
+.pull-right60[
+> "If the state of political and economic relations between Britain and Germany (or France or the US) provides an example of ‘non-imperialist’ economic and political relations, then the gains to Britain from ruling India (for example) can be measured as the amount by which Britain benefited from its economic relationship with India minus the benefits Britain would have gained if Britain had not ruled India but merely traded with India as she did with Germany, France or the US." <br> —Edelstein, p. 211
+]
+
+
+### The "marginal non-imperialist standard"
+
+- Economic development left unchanged but at point of measurement granted independence
+
+### The "strong non-imperialist standard"
+
+- Assumes that countries were never involved with Britain and this affects their involvement in world economy
+
+---
+
+## Edelstein's estimates
+
+![ed](figures/Edelstein_tab.png)
+---
+
+## Edelstein's estimates: does this make any sense?
+
++ Is it a meaningful counter-factual?
++ Social scientists often want to consider changes *ceteris paribus* ('all other things equal') — is this possible here?
+
+### Where are the politics?
+
++ The geopolitics of balance of power?
++ The political economy of development?
+
+> "...it remains difficult to envisage that the political circumstances — the non-existence of the raj — could be so drastically different without the economic circumstances — railways, ports, investments, commerce — being affected at all. ...There was little doubt that the cost of maintaining British army garrisons in India, Egypt and Natal was considerable; but were the imperialists completely wrong in arguing that, if those garrisons were withdrawn, there would be other costs to pay?"<br> —Paul Kennedy, p. 187.
+
++ Broader disconnect "between economic history literatures on 19th century globalization (who ignore geopolitics) and political science literatures on international relations (which ignore economics)" (Hauner et. al. 2017)?
 
 ---
 
