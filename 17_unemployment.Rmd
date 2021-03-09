@@ -35,6 +35,13 @@ library(ggplot2)
 
 ## Today's Plan
 
+### 1. Poverty and Economic Precarity
+
+### 2. The Campaign Against Outrelief (CAO) and Welfare Provision
+
+### 3. The Liberal Reforms
+
+
 ---
 
 # Wages, Living Standard and Precarity
