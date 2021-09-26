@@ -3,12 +3,12 @@ title: "British economic growth: an overview"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
     nature:
       beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
     lib_dir: libs
     css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
@@ -29,7 +29,7 @@ bib <- ReadBib("pres.bib")
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
+style_solarized_light()
 source("helper_functions/theme_lecture.R")
 xaringanExtra::use_webcam()
 xaringanExtra::use_tile_view()
@@ -83,7 +83,7 @@ class: inverse, center, middle
 
 ---
 
-```{r gdp_pc}
+```{r gdp_pc, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 library(tidyverse)
 library(readxl)
 
@@ -108,7 +108,7 @@ real_gdp_eng %>%
 
 ---
 
-```{r gdp_pc_ir}
+```{r gdp_pc_ir, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 
 real_gdp_eng %>% 
   filter(Year > 1270) %>% 
@@ -130,7 +130,7 @@ real_gdp_eng %>%
 
 ---
 
-```{r, gdp_pc_ag_transition}
+```{r, gdp_pc_ag_transition, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 real_gdp_eng %>% 
   filter(Year > 1270) %>% 
   ggplot(aes(Year, `Real GDP per capita`)) +
@@ -154,7 +154,7 @@ real_gdp_eng %>%
 
 ---
 
-```{r, gdp_pc_institutions}
+```{r, gdp_pc_institutions, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 real_gdp_eng %>% 
   filter(Year > 1270) %>% 
   ggplot(aes(Year, `Real GDP per capita`)) +
@@ -182,7 +182,7 @@ real_gdp_eng %>%
 
 ---
 
-```{r, gdp_pc_industrious}
+```{r, gdp_pc_industrious, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 real_gdp_eng %>% 
   filter(Year > 1270) %>% 
   ggplot(aes(Year, `Real GDP per capita`)) +
@@ -229,7 +229,7 @@ real_gdp_eng %>%
 
 ---
 
-```{r, comparative_perspective}
+```{r, comparative_perspective, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 library(ggrepel)
 
 maddison <- read_xlsx(path = "data/mpd2018.xlsx", 
@@ -268,7 +268,7 @@ plotdf %>%
 
 ---
 
-```{r, climacteric}
+```{r, climacteric, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 
 plotdf <- maddison %>% filter(year >= 1800, 
                     year <= 1940, 
@@ -310,7 +310,7 @@ plotdf %>%
 
 ## Reconstructing British national accounts
 
-```{r, broadberry_et_al, fig.align='center', out.width="40%"}
+```{r, broadberry_et_al, fig.align='center', out.width="30%"}
 knitr::include_graphics("figures/broadberry_et_al.jpg")
 ```
 
@@ -372,7 +372,7 @@ name: nhavalue
 
 ---
 
-```{r, ag_share}
+```{r, ag_share, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 library(ggalt)
 ag_share <- tibble(year = c(1780, 1820, 1870, 1913),
                    ag_share = c(45, 35, 22.7, 11.8))
@@ -401,11 +401,14 @@ class: inverse, center, middle
 
 ### Overcoming 'Organic'/Malthusian constraints
 
+.left-column[
 + Ricardo describes diminishing *marginal* returns from land `r AutoCite(bib["wrigleyPovertyProgressPopulation2004"])`
     - What does *marginal* mean?
+]
 
 --
 
+.right-column[
 ```{r dimmarg, fig.retina=3, fig.align="center", out.width="70%"}
 Input <- 1:100
 Output <- Input^.5
@@ -424,14 +427,14 @@ df %>%
   ggtitle("Example of Diminishing Marginal Returns") + 
   theme_lecture
 ```
-
+]
 --
-
+.right-column[
 .pull.center[**And yet population grows!**]
-
+]
 ---
 
-```{r population}
+```{r population, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 real_gdp_eng %>% 
   #filter(Year > 1700) %>% 
   ggplot(aes(Year, Population)) +
@@ -455,7 +458,7 @@ real_gdp_eng %>%
 
 ### Overcoming 'Organic'/Malthusian constraints
 
-```{r, wages_pop, fig.align='center', out.width="95%"}
+```{r, wages_pop, fig.align='center', out.width="70%"}
 knitr::include_graphics("figures/clark_wage_pop.jpeg")
 ```
 
@@ -493,7 +496,7 @@ knitr::include_graphics("figures/clark_wage_pop.jpeg")
 
 ## Productivity: the example from watches
 
-```{r, kelly_ograda_frontpiece, fig.align='center'}
+```{r, kelly_ograda_frontpiece, fig.align='center', out.width='70%'}
 knitr::include_graphics("figures/kelly_ograda_frontpiece.png")
 ```
 
@@ -501,7 +504,7 @@ knitr::include_graphics("figures/kelly_ograda_frontpiece.png")
 
 ## Productivity: the example from watches
 
-```{r, old_bailey_data, fig.align='center', out.width="95%"}
+```{r, old_bailey_data, fig.align='center', out.width="85%"}
 knitr::include_graphics("figures/watch_distributions.png")
 ```
 
@@ -509,7 +512,7 @@ knitr::include_graphics("figures/watch_distributions.png")
 
 ## Productivity: the example from watches
 
-```{r, watch_victims, fig.align='center', out.width="95%"}
+```{r, watch_victims, fig.align='center', out.width="65%"}
 knitr::include_graphics("figures/watch_victims_table.png")
 ```
 
@@ -517,7 +520,7 @@ knitr::include_graphics("figures/watch_victims_table.png")
 
 ## Productivity: the example from watches
 
-```{r, watch_prices, fig.align='center'}
+```{r, watch_prices, fig.align='center', out.width="75%"}
 knitr::include_graphics("figures/watch_prices.png")
 ```
 
@@ -552,6 +555,7 @@ class: inverse, center, middle
 .pull-left[
 ### Semester 1
 
+1. Introduction
 2. Agricultural revolution
 3. Industrious revolution
 4. Government & the financial revolution
@@ -599,7 +603,7 @@ class: inverse, center, middle
     - 2,000 words each
     - Each essay counts towards 15% of grade
 + Exam: 60%
-    * Last year's exam will be made available on the Keat's page
+    * Past exams are available on the Keat's page
 + Presentation: 10%
 
 ---
@@ -637,7 +641,7 @@ name: message
 
 ## Appendix Slides
 
-```{r, message_to_marc, fig.align='center'}
+```{r, message_to_marc, fig.align='center', out.width='80%'}
 knitr::include_graphics("figures/me_marc_math.png")
 ```
 
@@ -645,7 +649,7 @@ knitr::include_graphics("figures/me_marc_math.png")
 
 ### Appendix Slides
 
-```{r, recent_pub, fig.align='center'}
+```{r, recent_pub, fig.align='center', out.width='70%'}
 knitr::include_graphics("figures/recent_excerpt.png")
 ```
 
@@ -655,7 +659,7 @@ knitr::include_graphics("figures/recent_excerpt.png")
 
 name: clarkvbroadberry
 
-<img src="figures/clark_v_bckov.jpg" style="width: 90%" />
+<img src="figures/clark_v_bckov.jpg" style="width: 60%" />
 
 [return](#nhavalue)
 
