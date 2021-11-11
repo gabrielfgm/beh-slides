@@ -574,3 +574,14 @@ style G fill:#93a1a1
 
 <br>
 > What about Stephenson's revision of wage rates? Does it fatally undermine the argument?
+
+---
+.pull-left[
+### How do we interpret the Ealing gardener's annual budget?
+
++ Is this a lot/little?
++ What kind of questions should we ask about this?
+]
+.pull-right[
+![:scale 100%](figures/ealing_budget.png)
+]
