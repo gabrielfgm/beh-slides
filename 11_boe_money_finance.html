@@ -3,21 +3,31 @@
   <head>
     <title>Week 11: Banking, Money and Finance</title>
     <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
     <script src="libs/xaringanExtra-webcam-0.0.1/webcam.js"></script>
     <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
-    <link href="libs/tile-view-0.2.3/tile-view.css" rel="stylesheet" />
-    <script src="libs/tile-view-0.2.3/tile-view.js"></script>
-    <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-    <link href="libs/vis-4.16.1/vis.min.css" rel="stylesheet" />
-    <script src="libs/vis-4.16.1/vis.min.js"></script>
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+    <link href="libs/visjs-7.4.9/vis-timeline-graph2d.min.css" rel="stylesheet" />
+    <script src="libs/visjs-7.4.9/vis-timeline-graph2d.min.js"></script>
     <link href="libs/timeline-0.4/timevis.css" rel="stylesheet" />
-    <script src="libs/timevis-binding-0.5/timevis.js"></script>
-    <script src="libs/jquery-1.11.3/jquery.min.js"></script>
+    <script src="libs/timevis-binding-2.0.0/timevis.js"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
     <script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
     <script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+    <style>h1 {font-size: 34px;}
+           h1.title {font-size: 38px;}
+           h2 {font-size: 30px;}
+           h3 {font-size: 24px;}
+           h4 {font-size: 18px;}
+           h5 {font-size: 16px;}
+           h6 {font-size: 12px;}
+           code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+           pre:not([class]) { background-color: white }</style>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="helper_functions/extra.css" type="text/css" />
   </head>
@@ -29,7 +39,7 @@ class: center, middle, inverse, title-slide
 ### <div class="line-block">Dr. Gabriel Geisler Mesevage<br />
 <a href="mailto:gabriel.mesevage@kcl.ac.uk" class="email">gabriel.mesevage@kcl.ac.uk</a><br />
 Office Hours: Tues. 9-10am &amp; Thurs. 4-5pm</div>
-### Last update: 18 January, 2021
+### Last update: 12 January, 2022
 
 ---
 
@@ -247,13 +257,13 @@ background-size: cover
 
 ### The path to central banking: ending commercial monopoly
 
-<div id="htmlwidget-cad598e94aad80a59d34" class="timevis html-widget" style="width:100%;height:600px;">
+<div id="htmlwidget-37451605f788fbe9e9ee" class="timevis html-widget" style="width:100%;height:600px;">
 <div class="btn-group zoom-menu">
 <button type="button" class="btn btn-default btn-lg zoom-in" title="Zoom in">+</button>
 <button type="button" class="btn btn-default btn-lg zoom-out" title="Zoom out">-</button>
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-cad598e94aad80a59d34">{"x":{"items":[{"id":"1","content":"Allow General<br>Joint-Stock Banking.<br>No regulation<br>No limited liability","start":"1825"},{"id":"2","content":"Clarify act of 1825<br>and rights.<br>Sharp growth.","start":"1833"},{"id":"3","content":"Bank Charter Act (1844)<br>banks may not<br> issue notes","start":"1844"},{"id":"4","content":"Joint Stock<br>Banking Act (1844)<br>banks need charter<br>extensive regultion","start":"1844"},{"id":"5","content":"Joint Stock<br> Companies Act (1856)<br> Limited Liablity, <br> extended to banks <br> by 1860","start":"1856"},{"id":"6","content":"Companies Act (1879)<br>helps Unlimited<br>Liability Banks<br>Convert to<br>Limited Liability","start":"1879"}],"groups":null,"showZoom":false,"zoomFactor":0.5,"fit":true,"options":[],"height":600,"api":[]},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-37451605f788fbe9e9ee">{"x":{"items":[{"id":"1","content":"Allow General<br>Joint-Stock Banking.<br>No regulation<br>No limited liability","start":"1825"},{"id":"2","content":"Clarify act of 1825<br>and rights.<br>Sharp growth.","start":"1833"},{"id":"3","content":"Bank Charter Act (1844)<br>banks may not<br> issue notes","start":"1844"},{"id":"4","content":"Joint Stock<br>Banking Act (1844)<br>banks need charter<br>extensive regultion","start":"1844"},{"id":"5","content":"Joint Stock<br> Companies Act (1856)<br> Limited Liablity, <br> extended to banks <br> by 1860","start":"1856"},{"id":"6","content":"Companies Act (1879)<br>helps Unlimited<br>Liability Banks<br>Convert to<br>Limited Liability","start":"1879"}],"groups":null,"showZoom":false,"zoomFactor":0.5,"fit":true,"options":[],"height":600,"timezone":null,"api":[]},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -385,7 +395,7 @@ class: inverse, center, middle
 
 &lt;br&gt;
 
-&gt; What accounts (in your view) for the decline of unlimited liability in Britain?
+&gt; What accounts (in your view) for the decline of unlimited liability in Britain? 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

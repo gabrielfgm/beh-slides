@@ -267,6 +267,7 @@ timevis(data, showZoom = F, fit = T, height = 600)
 
 ```{r bankgraph, out.width='80%', fig.height=4.5, fig.width=6, fig.retina=4}
 library(ggrepel)
+library(tidyverse)
 
 bdata <- data.frame(type = rep(c("State-chartered bank", 
                                  "Unlimited-liability JS",
