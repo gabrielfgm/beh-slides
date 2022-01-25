@@ -88,6 +88,8 @@ invdat |>
 
 + Investment abroad is large
 + Investment abroad is cyclical
++ Why so different from the present?
+  - Free-standing company structure perhaps (Wilkins 1988)?
 ]
 
 ---
