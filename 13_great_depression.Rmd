@@ -1,49 +1,36 @@
 ---
-title: "The Great Depression, 1873-96" 
+title: "Week 13: The Great Depression and the Decline in Agriculture, 1873-96" 
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Wed. 10-11am & Thurs. 2-3pm
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+    | Office Hours: Tues. 11 & Weds. 11
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
     nature:
-      beforeInit: "macros.js"
+      beforeInit: "helper_functions/macros.js"
+      ratio: '16:9'
     lib_dir: libs
-    css: xaringan-themer.css
+    css: ["xaringan-themer.css", "helper_functions/extra.css"]
 ---
 
-<style type="text/css">
-.white { color: white; }
-.large { font-size: 130% }
-.small { font-size: 70% }
-.pull-right40{ 
-  float: right;
-  width: 40%;}
-.pull-left60{
-  float: left;
-  width: 60%;
-}
-.scale120{
-  float: left;
-  width: 120%;
-}
-.scale80{
-  float: right;
-  width: 80%
-}
-</style>
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
 
+```
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-solarized_light()
-source("~/Dropbox/teaching/lecture_ggplot2_theme.R")
+style_solarized_light()
+source("helper_functions/theme_lecture.R")
+xaringanExtra::use_webcam()
+xaringanExtra::use_tile_view()
+library(tidyverse)
 ```
+
 
 ## The perception of decline
 
@@ -75,12 +62,12 @@ widespred discussion of decline
 
 ## Giffen and the fall in prices
 
-.pull-left[
-![:scale 100%](giffen.jpg)
+.pull-left.center[
+![:scale 70%](figures/giffen.jpg)
 ]
 
 .pull-right[
-![:scale 100%](giffen_table.png)
+![:scale 90%](figures/giffen_table.png)
 
 + Robert Giffen, "The Fall of Prices and Commodities in Recent Years", *Journal of the Royal Statistical Society*, Vol. 42, 1879.
 ]
@@ -97,11 +84,11 @@ Giffen
 
 ## The fall in British prices
 
-```{r price_plot, fig.align='center', fig.retina=3, out.width="100%", fig.width=6, fig.height=4}
+```{r price_plot, fig.align='center', fig.retina=4, out.width="80%", fig.width=6, fig.height=3.5}
 
 library(tidyverse)
 
-df <- read_csv("uk_cpi_1850-1914.csv", skip = 1)
+df <- read_csv("data/uk_cpi_1850-1914.csv", skip = 1)
 
 df %>% 
   ggplot(aes(Year, `Retail Price Index (2010 = 100)`)) +
@@ -170,14 +157,13 @@ Money is confusing
 
 > "There is a greater strain upon gold through the discarding of silver in very important countries..."<br> -Goschen, Manchester Chamber of Commerce, 1885
 
-<br>
 
-![global](global_prices.png)
+![:scale 80%](figures/global_prices.png)
 #### Source Flandreau et. al. 2008
 ]
 
 .pull-right[
-![:scale 100%](crime_73.jpg)
+![:scale 90%](figures/crime_73.jpg)
 ]
 
 ???
@@ -204,18 +190,22 @@ Transition
 
 ### Why were prices falling? Global grain market integration
 
-.center[
-![:scale 70%](harley_freight_rates.png)
-]
-
+.left-column[
 + Major productivity gains in **transportation**
 + Both shipping and significant railway building in the US
+]
+
+.right-column.center[
+![:scale 70%](figures/harley_freight_rates.png)
+]
 
 ---
 
 ### Why were prices falling? Global grain market integration
 
-![:scale 90%](anglo_us_wheat.png)
+.center[
+![:scale 60%](figures/anglo_us_wheat.png)
+]
 
 ???
 
@@ -257,7 +247,7 @@ O'Rourke raises the broader question of structural transformation
 
 ---
 
-```{r uk_factors, fig.align='center', fig.retina=3, out.width="100%", fig.width=6, fig.height=4.5}
+```{r uk_factors, fig.align='center', fig.retina=4, out.width="70%", fig.width=6, fig.height=4.5}
 library(tidyverse)
 library(ggthemes)
 
@@ -307,11 +297,11 @@ The money tenants pay to landlords we call rent
 
 ---
 
-```{r wage_rent_ratios, fig.align='center',fig.retina=3, out.width="100%", fig.width=6, fig.height=4.5}
+```{r wage_rent_ratios, fig.align='center',fig.retina=3, out.width="70%", fig.width=6, fig.height=4.5}
 library(readxl)
 library(ggrepel)
 
-wr <- read_xlsx("wage_rent_ratios.xlsx")
+wr <- read_xlsx("data/wage_rent_ratios.xlsx")
 
 wr <- wr %>% gather("Country", "Index", - Year) %>% 
   mutate(Continent = ifelse(Country %in% c("Australia", "US"), 
@@ -353,7 +343,7 @@ Not just a British story, a European story:
 
 ## Not all farmers
 
-```{r different indices, fig.align='center',fig.retina=3, out.width="100%", fig.width=6, fig.height=3.75}
+```{r different indices, fig.align='center',fig.retina=3, out.width="70%", fig.width=6, fig.height=3.75}
 
 fpi <- data.frame(Year = rep(seq(1870, 1900, by = 5), 3),
                   Product = rep(c("Wheat", "Sheep", "Milk"), each = 7),
@@ -423,9 +413,10 @@ Agriculture was not the only affected industry
     
 ---
 
+.pull-left60[
+
 ## New opportunities!
 
-.pull-left60[
 > "...the soapmakers, sorry for themselves though they often were, never really felt the pinch of the 'Great Depression'. Quite the contrary, in fact, for **the very influences which, by producing low wholesale prices, worked against the capital goods industries, worked in favour of consumer goods** by raising retail customers' purchasing power." <br> -Reader, "The United Kingdom Soapmakers' Association and the English Soap Trade, 1867-1896", pp. 83.
 
 + Low prices of food and wholesale products promps **growth in consumer goods**
@@ -433,7 +424,7 @@ Agriculture was not the only affected industry
 
 .pull-right40[
 .right[
-![:scale 90%](hovis.jpg)
+![:scale 100%](figures/hovis.jpg)
 ]]
 
 ???
@@ -449,19 +440,19 @@ We already saw with pasture that the fall in prices could benefit some industrie
 
 ---
 
-### New opportunities!
+.pull-right60[
 
-.pull-left60[
-
-![lewis_store](lewis_manchester.jpg)
+![:scale 70%](figures/lewis_manchester.jpg)
 
 .center[
-![:scale 40%](davidlewis.jpg)]
+![:scale 40%](figures/davidlewis.jpg)]
 ]
 
-.pull-right40[
-.right[
-![:scale 90%](Cadbury's_Cocoa_advert_with_rower_1885.jpg)]
+.pull-left40[
+### New opportunities!
+
+.left[
+![:scale 70%](figures/Cadbury's_Cocoa_advert_with_rower_1885.jpg)]
 ]
 
 ???
