@@ -119,6 +119,38 @@ The drop in prices
 
 ### What might explain the fall in prices?
 
+.center.Large[
+
+#### Equation of exchange (**not causal!**)
+
+**MV=PT**
+
+]
+
+.Large[
+
++ **M**: stock of money
++ **V**: velocity of money
++ **P**: price level
++ **T**: transactions
+
+]
+
+.pull-left.Large[
+#### Income version
+MV=PY
+]
+
+.pull-right.Large[
+#### Cambridge version
+
+M= kPY
+]
+
+---
+
+### What might explain the fall in prices?
+
 > "There is an immense **diminution in the production of gold.**"<br> -Goschen, Manchester Chamber of Commerce, 1885
 
 + Less **supply** of gold $\rightarrow$ lower prices
