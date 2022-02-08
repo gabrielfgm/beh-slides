@@ -3,7 +3,7 @@ title: "Did Victorian Britain Fail?"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Mon. 10:30-11:30am & Fri. 2-3pm
+    | Office Hours: Tues. 11am and Weds 11am (online)
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
@@ -49,11 +49,15 @@ background-size: contain
 
 .large[
 .red[
-1. "...output grew too slowly because of sluggish demand..."
-2. "...too much was invested abroad because of imperfect capital markets..."]
+1. "...output grew too slowly because of sluggish demand..."]
+<ol start=2>
+.blue[
+<li> "...too much was invested abroad because of imperfect capital markets..."
+</ol>]
+.green.large[
 <ol start=3>
 <li> "...productivity stagnated because of inept entrepreneurship..."
-</ol>
+</ol>]
 ]
 
 .pull-left[
@@ -61,14 +65,106 @@ background-size: contain
 .red[
 + We will discuss this today
 ]
+.blue[
++ This was last week
+]
 ]
 ]
 
 .pull-right[
-.large[
+.large.green[
 + This is for next week
 ]
 ]
+
+---
+
+```{r, comparative_perspective, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
+
+library(ggrepel)
+
+maddison <- read_xlsx(path = "data/mpd2018.xlsx", 
+                      sheet = "Full data")
+
+plotdf <- maddison %>% filter(year >= 1830, 
+                    year <= 1913, 
+                    countrycode %in% c("GBR", "FRA",
+                                       "DEU", "USA"),
+                    !is.na(cgdppc))
+
+plotdf %>% 
+  ggplot(aes(year, cgdppc, 
+             group = countrycode,
+             color=countrycode)) +
+  ggtitle("British GDP per capita in comparison", 
+          subtitle = "Source: Maddison project") +
+  geom_line() +
+  geom_point() +
+  geom_label_repel(data = plotdf %>%
+              group_by(countrycode) %>% 
+              filter(year == last(year)) %>% 
+              ungroup(), 
+            aes(label = country, x = year, y=cgdppc, color=countrycode)) +
+  guides(color = FALSE) +
+  scale_color_brewer(type = "qual", palette = 2) +
+  ylab("Real GDP/pc in 2011 US$") +
+  xlab("") +
+  theme_lecture
+```
+
+---
+
+```{r, growth_rates, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
+
+plotdf |> 
+  filter(year >= 1850) |> 
+  group_by(countrycode) |> 
+  mutate(index = rgdpnapc/rgdpnapc[year == 1870] * 100) |> 
+  ggplot(aes(year, index, group = country, color = country)) +
+  ggtitle("GDP growth rates in comparison", 
+          subtitle = "Source: Maddison project") +
+  geom_line() +
+  geom_point() +
+  geom_vline(xintercept = 1870, linetype = "dashed") +
+  scale_color_brewer(type = "qual", palette = 2) +
+  #scale_y_log10() +
+  ylab("GDP/pc relative growth, 1870=100") +
+  xlab("") +
+  theme_lecture + theme(legend.position = "right")
+
+```
+
+---
+
+## Why might poorer countries grow faster?
+
+.Large[
+
+The most simple **neoclassical growth theory** model suggests that as poorer countries increase the capital they use in production they should **grow more quickly** than richer countries. This flows from an assumption of **diminishing returns to capital**.
+
+If this is true, poor countries should grow faster than rich countries and we should see global incomes converging.
+
+Tests of this model are called tests of **unconditional convergence**: do the incomes of poor countries 'converge on' the incomes of rich countries.
+]
+
+---
+
+## Looking for convergence
+
++ Tests of convergence in the 1990s were pessimistic
+  - **unconditionally** looked like the rich countries were pulling ahead (Barro 1991, Pritchett 1997)
++ This led on the one hand to a focus on **conditional** convergence
+  - If you adjust for some 'growth correlates' like institutions, education, policies then net of these factors can see convergence
++ A second effort was to complicate growth models
+  - This led to the rise of **endogenous growth theory**: productivity and technological change across economies varies (Romer 1990)
+  
+--
+
+## Convergence in the 19th century
+
++ 20th century economic historians described a 'Victorian failure'
+  - Slowing growth rates; a 'climacteric' in the pace of output
++ In 1970s cliometricians rejected this relying on intuition around the **neoclassical model**
 
 ---
 
@@ -150,211 +246,52 @@ $$
 
 ---
 
-### 2. "...too much was invested abroad because of imperfect capital markets..."
+## The neo-classical view reconsidered
 
->  "By reallocating resources, of course, any one sector of the economy could have grown faster: industry could have grown at the expense of services and exports at the expense of production for home consumption had labour and capital been allocated differently. The most popular target for hypothetical reallocation has been Britain's enormous hold- ings of capital abroad in the late nineteenth century." <br> -McCloskey, p. 451.
-
----
-
-### Where did LSE investors put their money?
-
-```{r market_weights, fig.retina=4, fig.height=4, fig.width=6}
-library(tidyverse)
-weights <- read_csv("data/michie_lse_weights.csv")
-
-weights <- weights %>% mutate(Market_Weight = as.numeric(Market_Weight))
-
-weights %>% 
-  ggplot(aes(Security, Market_Weight, fill = Security,
-             label = Market_Weight)) +
-  facet_wrap(~Year, nrow = 1) +
-  geom_col(position = "dodge") +
-  geom_text(nudge_y = .075) +
-  theme_lecture +
-  scale_fill_hc() +
-  xlab("") +
-  ylab("Market Weight") +
-  guides(fill = FALSE) +
-  coord_flip() +
-  theme(axis.text.x=element_text(angle=45, hjust=1)) +
-  labs(caption = "Source: Chabot & Kurz, Table 6") 
-```
-
----
-
-## The export of capital debate: a simple critique
-
-### McCloskey
-
-.pull-left40[
-+ Overseas investment earns income
-+ If you don't invest abroad need to do something else with the money
-+ If you invest at home:
-    - Maybe home investments yield lower returns (per Edelstein)
-    - Anyway **additional** home investment should push the yield on domestic capital downward
-+ Ergo investing more at home $\rightarrow$ fall in income
+.center.Large[
+$$
+K = \frac{1}{s_K} \Big(Q - s_LL - T \Big)
+$$
 ]
 
-.pull-right60[
->"The most popular target for hypothetical reallocation has been Britain's enormous holdings of capital abroad... It is not clear, however, that exchanging domestic for foreign capital would have raised British national income. **The question is how bringing capital home could be expected to increase income and how large the increase would have been**."<br> -McCloskey 1970, p. 451
-]
----
+.Large[
+McCloskey rejects the view that $T$ (productivity growth rate) could have been made much higher. This is a rejection of the idea that productivity growth is **endogenous**.
 
-### Key assumptions of McCloskey
-
-+ Investors *could* have invested at home or abroad
-    - They *knew* about all the options
-    - Equivalently, markets are integrated
-+ Their decision to invest abroad tells us about relative foreign/domestic rates of return
-    - This can be and has been empirically checked e.g. Edelstein, Chabot & Kurz, Goetzman & Ukov
-    - "...in emphasizing the rationality of entrepreneurs denies the very notion of failure" (Kirby 1992)
-+ Rates of return do not depend on investment decisions
-    - Returns $\rightarrow$ investment **not** investment $\rightarrow$ returns
-
-### Bottom line
-
-+ This is an argument over a **counterfactual claim**: what would have happened in Britain if foreign investment had been diverted into domestic investment?
-+ Counterfactual claims can only be answered with a **theory**!!
-
----
-
-## Framing the debate
-
-### Two broad questions
-
-  1. Was it in the interests of investors to invest abroad?
-  2. Was it in the "national interest" for investors to invest abroad?
-      - The term "national interest" is poorly defined but usually taken here to mean grown in GDP/pc
-      
----
-
-### Was it rational for the British investor to invest so much abroad?
-
-### Probably yes
-
-
-> "When investors are given the opportunity to divide their money between home and foreign assets, the expected rate of return on domestic assets can exceed the expected rate of return on foreign assets and an unbiased, rational investor will still choose to invest a portion of her wealth overseas if the diversification benefits of foreign investment outweigh the loss of return." <br> -Chabot & Kurz, 2010
-
-+ 518,224 individual stock or bond 28 day returns
-+ The question is not whether investors should have picked foreign or investment, the question is the **optimal mix**
-+ The authors compute returns by sector, test portfolios
-
-> "The real benefit of international investing was the diversification benefit of holding foreign assets that had a low correlation with their domestic counterparts." <br> -Chabot & Kurz, 2010
-
----
-
-```{r returns_variance, fig.align='center', fig.height=4, fig.width=6, fig.retina=4}
-library(tidyverse)
-library(ggrepel)
-
-returns_df <- read_csv("data/portfolio_returns.csv")
-
-returns_df %>% 
-  ggplot(aes(`Std. Dev. (%)`, `28-Day Mean Return (%)`,
-             label = Portfolio)) +
-  geom_point(aes(color = Portfolio), size=3) +
-  theme_lecture +
-  geom_text_repel() +
-  scale_color_hc() +
-  theme(legend.position = "none") +
-  ggtitle("Asset Portfolio Returns and Standard Deviations") +
-  labs(caption = "Source: Chabot & Kurz 2010")
-
-```
-
----
-
-```{r returns_covariance, fig.align='center', fig.height=5, fig.width=6, fig.retina=4}
-
-cor_mat <- read_csv("data/asset_correlation_matrix.csv")
-
-cor_mat %>% gather("Asset2", "cor", -Asset) %>% 
-  mutate(cor = as.numeric(cor)) %>% 
-  ggplot(aes(Asset, Asset2, fill = cor, label = cor)) +
-  geom_tile() +
-  geom_text() +
-  theme_lecture +
-  scale_fill_viridis_c() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.position = "right") +
-  labs(fill="Correlation", caption = "Source: Chabot & Kurz 2010") +
-  xlab("") + ylab("") +
-  ggtitle("Correlation between asset classes")
-```
-
----
-
-## Was it *socially* optimal for so much investment to go abroad?
-
-### Much harder question
-
-1. Were there industries that *could* have raised long-run growth if pursued?
-    - E.g. electrification and chemicals which become important in 20th century
-    - Can investment raise productivity? Where does innovation come from?
-2. Were there large social costs to foreign investments born by the public and not investors?
-    - The costs of formal and informal empire in protecting the investments abroad
-3. Is the market price the right metric? Maybe we should consider the amount *originally invested*?
-    - Price of a security is what current holder can sell it for, **not** necessarily a reflection of the money the company got
-
----
-
-## Were key domestic industries neglected?
-
->"Potentially successful frustrated borrowers leave no trace" <br> -Kindleberger, *Economic Growth in France and Britain*, p. 38
-
-+ We can directly compare **observed** foreign and domestic investment
-    - We cannot directly compare foreign investment and **hypothetical** domestic investment
-    - Broader question of **sample selection bias**: we compare stock-exchange listed companies but this is not a random sample!
-+ The case for more domestic investment:
-    - Some key industries that appear important in hindsight are not extensively developed: e.g. motor industry, new techniques in steel, electricity
-    - Assumption of diminishing marginal return to capital unproven: 
-    
-> "...in view of the fact that capital is the changing, the transforming, the dynamic element in the economy, and that it is neither homogeneous nor easily divisible, but usually lumpy and highly specific, it is by no means certain that adding to its quantity will necessarily lower its returns"<br> -Pollard, p. 502.
-
----
-
-## Today's Plan: Debate!
-
-.center[
-![:scale 70%](figures/dem_debate.jpg)]
-
----
-.pull-left[
-
-## Rules
-
-+ 2 Teams
-+ You have **15 minutes** to prepare
-+ I will spend half of time helping each team
-
-#### Presentations
-+ each team gets a 5 minute chance to talk
-+ each team gets a 2 minute rebuttal
-+ The judge (in his wisdom) deliberates and declares a winner
-]
-
-.pull-right[
-## Judging Criteria
-
-### Making a coherent argument
-
-- Assertions without evidence (-)
-- Obvious strawmanning (-)
-
-### Compelling presentation
-
-+ Use of visuals (+)
-+ Bonus points for humor (++)
-
-### Evidence of Breadth
-
-+ Full use of the team (+)
-
+Is it plausible that productivity growth rates could not have been higher?
 ]
 
 ---
 
-class: inverse, center, middle
+## The endogenous growth view: McCloskey's thesis for other reasons
 
-# Debate Question:
-# "Did Britain invest too much capital abroad?"
+> "The final, and crucial, element of McCloskey's (1970) argument was that Britain's productivity gorwth could not have been higher. The more recent endogenous growth literature offers reason to believe this claim, but instead of basing the point on a neoclassical assumption of common productivity growth everywhere, the new growth theory emphasizes that Britain did not offer especially fertile soil for growth." <br> &mdash; Crafts, 1998, p. 206.
+
+.large[
+
++ Not good prospects for learning and productivity gains in what British economy was doing.
++ E.g. Crafts reports that in early 20th c. US is spending .25 of GDP on R&D vs .02 in UK
+]
+
+---
+
+## Endogenous growth: is this an exogeneration?
+
+.Large[
+Crafts views **endogenous growth theory** as largely agreeing with McCloskey's message if not her methods.
+
+But acknowledges that "it is clearly somewhat worrying that Britain's productivity growth fell from a mid-19th century high of .75 percent per year to an average of .45 percent in 1873-1913".
+
+And that Britain was **expanding R&D and education** so endogenous growth suggests it should be growing.
+
+Moreover, surely in endogenous growth framework there are more policy variables?]
+
+---
+
+## Endogenous growth as an indictment
+
+.Large[
+
+Learning is very important in **endogenous growth** models: Crafts notes that with large share of overseas investment there is "a different stream of learning and externalities than would have been the case with more home investment" (203).
+
+If R&D and education are what matter (the **supply of ideas**) should the Victorians have provided more of this?
+]

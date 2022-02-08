@@ -3,10 +3,11 @@
   <head>
     <title>Did Victorian Britain Fail?</title>
     <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
     <script src="libs/xaringanExtra-webcam-0.0.1/webcam.js"></script>
     <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
-    <link href="libs/tile-view-0.2.3/tile-view.css" rel="stylesheet" />
-    <script src="libs/tile-view-0.2.3/tile-view.js"></script>
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="helper_functions/extra.css" type="text/css" />
   </head>
@@ -16,9 +17,10 @@ class: center, middle, inverse, title-slide
 
 # Did Victorian Britain Fail?
 ### <div class="line-block">Dr. Gabriel Geisler Mesevage<br />
-<a href="mailto:gabriel.mesevage@kcl.ac.uk" class="email">gabriel.mesevage@kcl.ac.uk</a><br />
-Office Hours: Mon. 10:30-11:30am &amp; Fri. 2-3pm</div>
-### Last update: 08 February, 2021
+<a href="mailto:gabriel.mesevage@kcl.ac.uk"
+class="email">gabriel.mesevage@kcl.ac.uk</a><br />
+Office Hours: Tues. 11am and Weds 11am (online)</div>
+### Last update: 08 February, 2022
 
 ---
 
@@ -46,11 +48,15 @@ background-size: contain
 
 .large[
 .red[
-1. "...output grew too slowly because of sluggish demand..."
-2. "...too much was invested abroad because of imperfect capital markets..."]
+1. "...output grew too slowly because of sluggish demand..."]
+&lt;ol start=2&gt;
+.blue[
+&lt;li&gt; "...too much was invested abroad because of imperfect capital markets..."
+&lt;/ol&gt;]
+.green.large[
 &lt;ol start=3&gt;
 &lt;li&gt; "...productivity stagnated because of inept entrepreneurship..."
-&lt;/ol&gt;
+&lt;/ol&gt;]
 ]
 
 .pull-left[
@@ -58,14 +64,57 @@ background-size: contain
 .red[
 + We will discuss this today
 ]
+.blue[
++ This was last week
+]
 ]
 ]
 
 .pull-right[
-.large[
+.large.green[
 + This is for next week
 ]
 ]
+
+---
+
+&lt;img src="14_failure_files/figure-html/comparative_perspective-1.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+&lt;img src="14_failure_files/figure-html/growth_rates-1.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Why might poorer countries grow faster?
+
+.Large[
+
+The most simple **neoclassical growth theory** model suggests that as poorer countries increase the capital they use in production they should **grow more quickly** than richer countries. This flows from an assumption of **diminishing returns to capital**.
+
+If this is true, poor countries should grow faster than rich countries and we should see global incomes converging.
+
+Tests of this model are called tests of **unconditional convergence**: do the incomes of poor countries 'converge on' the incomes of rich countries.
+]
+
+---
+
+## Looking for convergence
+
++ Tests of convergence in the 1990s were pessimistic
+  - **unconditionally** looked like the rich countries were pulling ahead (Barro 1991, Pritchett 1997)
++ This led on the one hand to a focus on **conditional** convergence
+  - If you adjust for some 'growth correlates' like institutions, education, policies then net of these factors can see convergence
++ A second effort was to complicate growth models
+  - This led to the rise of **endogenous growth theory**: productivity and technological change across economies varies (Romer 1990)
+  
+--
+
+## Convergence in the 19th century
+
++ 20th century economic historians described a 'Victorian failure'
+  - Slowing growth rates; a 'climacteric' in the pace of output
++ In 1970s cliometricians rejected this relying on intuition around the **neoclassical model**
 
 ---
 
@@ -104,161 +153,55 @@ $$
 
 ---
 
-### 2. "...too much was invested abroad because of imperfect capital markets..."
+## The neo-classical view reconsidered
 
-&gt;  "By reallocating resources, of course, any one sector of the economy could have grown faster: industry could have grown at the expense of services and exports at the expense of production for home consumption had labour and capital been allocated differently. The most popular target for hypothetical reallocation has been Britain's enormous hold- ings of capital abroad in the late nineteenth century." &lt;br&gt; -McCloskey, p. 451.
-
----
-
-### Where did LSE investors put their money?
-
-&lt;img src="14_failure_files/figure-html/market_weights-1.png" width="75%" style="display: block; margin: auto;" /&gt;
-
----
-
-## The export of capital debate: a simple critique
-
-### McCloskey
-
-.pull-left40[
-+ Overseas investment earns income
-+ If you don't invest abroad need to do something else with the money
-+ If you invest at home:
-    - Maybe home investments yield lower returns (per Edelstein)
-    - Anyway **additional** home investment should push the yield on domestic capital downward
-+ Ergo investing more at home `\(\rightarrow\)` fall in income
+.center.Large[
+$$
+K = \frac{1}{s_K} \Big(Q - s_LL - T \Big)
+$$
 ]
 
-.pull-right60[
-&gt;"The most popular target for hypothetical reallocation has been Britain's enormous holdings of capital abroad... It is not clear, however, that exchanging domestic for foreign capital would have raised British national income. **The question is how bringing capital home could be expected to increase income and how large the increase would have been**."&lt;br&gt; -McCloskey 1970, p. 451
-]
----
+.Large[
+McCloskey rejects the view that `\(T\)` (productivity growth rate) could have been made much higher. This is a rejection of the idea that productivity growth is **endogenous**.
 
-### Key assumptions of McCloskey
-
-+ Investors *could* have invested at home or abroad
-    - They *knew* about all the options
-    - Equivalently, markets are integrated
-+ Their decision to invest abroad tells us about relative foreign/domestic rates of return
-    - This can be and has been empirically checked e.g. Edelstein, Chabot &amp; Kurz, Goetzman &amp; Ukov
-    - "...in emphasizing the rationality of entrepreneurs denies the very notion of failure" (Kirby 1992)
-+ Rates of return do not depend on investment decisions
-    - Returns `\(\rightarrow\)` investment **not** investment `\(\rightarrow\)` returns
-
-### Bottom line
-
-+ This is an argument over a **counterfactual claim**: what would have happened in Britain if foreign investment had been diverted into domestic investment?
-+ Counterfactual claims can only be answered with a **theory**!!
-
----
-
-## Framing the debate
-
-### Two broad questions
-
-  1. Was it in the interests of investors to invest abroad?
-  2. Was it in the "national interest" for investors to invest abroad?
-      - The term "national interest" is poorly defined but usually taken here to mean grown in GDP/pc
-      
----
-
-### Was it rational for the British investor to invest so much abroad?
-
-### Probably yes
-
-
-&gt; "When investors are given the opportunity to divide their money between home and foreign assets, the expected rate of return on domestic assets can exceed the expected rate of return on foreign assets and an unbiased, rational investor will still choose to invest a portion of her wealth overseas if the diversification benefits of foreign investment outweigh the loss of return." &lt;br&gt; -Chabot &amp; Kurz, 2010
-
-+ 518,224 individual stock or bond 28 day returns
-+ The question is not whether investors should have picked foreign or investment, the question is the **optimal mix**
-+ The authors compute returns by sector, test portfolios
-
-&gt; "The real benefit of international investing was the diversification benefit of holding foreign assets that had a low correlation with their domestic counterparts." &lt;br&gt; -Chabot &amp; Kurz, 2010
-
----
-
-&lt;img src="14_failure_files/figure-html/returns_variance-1.png" width="75%" style="display: block; margin: auto;" /&gt;
-
----
-
-&lt;img src="14_failure_files/figure-html/returns_covariance-1.png" width="75%" style="display: block; margin: auto;" /&gt;
-
----
-
-## Was it *socially* optimal for so much investment to go abroad?
-
-### Much harder question
-
-1. Were there industries that *could* have raised long-run growth if pursued?
-    - E.g. electrification and chemicals which become important in 20th century
-    - Can investment raise productivity? Where does innovation come from?
-2. Were there large social costs to foreign investments born by the public and not investors?
-    - The costs of formal and informal empire in protecting the investments abroad
-3. Is the market price the right metric? Maybe we should consider the amount *originally invested*?
-    - Price of a security is what current holder can sell it for, **not** necessarily a reflection of the money the company got
-
----
-
-## Were key domestic industries neglected?
-
-&gt;"Potentially successful frustrated borrowers leave no trace" &lt;br&gt; -Kindleberger, *Economic Growth in France and Britain*, p. 38
-
-+ We can directly compare **observed** foreign and domestic investment
-    - We cannot directly compare foreign investment and **hypothetical** domestic investment
-    - Broader question of **sample selection bias**: we compare stock-exchange listed companies but this is not a random sample!
-+ The case for more domestic investment:
-    - Some key industries that appear important in hindsight are not extensively developed: e.g. motor industry, new techniques in steel, electricity
-    - Assumption of diminishing marginal return to capital unproven: 
-    
-&gt; "...in view of the fact that capital is the changing, the transforming, the dynamic element in the economy, and that it is neither homogeneous nor easily divisible, but usually lumpy and highly specific, it is by no means certain that adding to its quantity will necessarily lower its returns"&lt;br&gt; -Pollard, p. 502.
-
----
-
-## Today's Plan: Debate!
-
-.center[
-![:scale 70%](figures/dem_debate.jpg)]
-
----
-.pull-left[
-
-## Rules
-
-+ 2 Teams
-+ You have **15 minutes** to prepare
-+ I will spend half of time helping each team
-
-#### Presentations
-+ each team gets a 5 minute chance to talk
-+ each team gets a 2 minute rebuttal
-+ The judge (in his wisdom) deliberates and declares a winner
-]
-
-.pull-right[
-## Judging Criteria
-
-### Making a coherent argument
-
-- Assertions without evidence (-)
-- Obvious strawmanning (-)
-
-### Compelling presentation
-
-+ Use of visuals (+)
-+ Bonus points for humor (++)
-
-### Evidence of Breadth
-
-+ Full use of the team (+)
-
+Is it plausible that productivity growth rates could not have been higher?
 ]
 
 ---
 
-class: inverse, center, middle
+## The endogenous growth view: McCloskey's thesis for other reasons
 
-# Debate Question:
-# "Did Britain invest too much capital abroad?"
+&gt; "The final, and crucial, element of McCloskey's (1970) argument was that Britain's productivity gorwth could not have been higher. The more recent endogenous growth literature offers reason to believe this claim, but instead of basing the point on a neoclassical assumption of common productivity growth everywhere, the new growth theory emphasizes that Britain did not offer especially fertile soil for growth." &lt;br&gt; &amp;mdash; Crafts, 1998, p. 206.
+
+.large[
+
++ Not good prospects for learning and productivity gains in what British economy was doing.
++ E.g. Crafts reports that in early 20th c. US is spending .25 of GDP on R&amp;D vs .02 in UK
+]
+
+---
+
+## Endogenous growth: is this an exogeneration?
+
+.Large[
+Crafts views **endogenous growth theory** as largely agreeing with McCloskey's message if not her methods.
+
+But acknowledges that "it is clearly somewhat worrying that Britain's productivity growth fell from a mid-19th century high of .75 percent per year to an average of .45 percent in 1873-1913".
+
+And that Britain was **expanding R&amp;D and education** so endogenous growth suggests it should be growing.
+
+Moreover, surely in endogenous growth framework there are more policy variables?]
+
+---
+
+## Endogenous growth as an indictment
+
+.Large[
+
+Learning is very important in **endogenous growth** models: Crafts notes that with large share of overseas investment there is "a different stream of learning and externalities than would have been the case with more home investment" (203).
+
+If R&amp;D and education are what matter (the **supply of ideas**) should the Victorians have provided more of this?
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
