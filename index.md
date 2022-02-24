@@ -12,6 +12,7 @@
 + [10-lecture](10_grain_invasion.html)
 + [11-lecture](11_boe_money_finance.html)
 + [12-lecture](12_export_capital.html)
++ [13-lecture](13_great_depression.html)
 + [14-lecture](14_failure.html)
 + [15-lecture](15_entrepreneurial.html)
 + [16-lecture](16_imperialism.html)
