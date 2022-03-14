@@ -3,7 +3,7 @@ title: "The Economy and WWI"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Mon. 10:30-11:30am & Fri. 2-3pm
+    | Office Hours: Tues. & Weds. 11am
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
