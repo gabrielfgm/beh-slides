@@ -330,20 +330,27 @@ debt_inf %>%
 
 ---
 
-## Preview
+### Preview
 
-1. Next week:
+.Large[
+.pull-left[
+### Week 19
   + Fiscal and monetary consequences of the war
     - Reperations
     - Webs of international war loans
     - Currency instability
     - Crisis
-    
-2. Week after:
+]
+
+.pull-right[
+### Week 20
   + Problems for the British economy after the war
     - Currency management
     - Wage levels
     - Export markets
     - Industrial structure
     
-    
+]
+
+**Because of the strike I will lecture on these themes together next week**
+]
