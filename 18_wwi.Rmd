@@ -37,35 +37,42 @@ library(ggplot2)
 
 ### 1. Economics and the Origins and Conduct of the War
 
+.Large[
++ Domestic economy as a cause of the war
++ The global economy as a cause of the war
++ Economic constraints on the *conduct* of the war
+]
+
 ### 2. The British Economy during the War
 
 ---
 
-# Did WWI have an economic origin?
+## Did WWI have an economic origin?
 
-### Some theorists suggesting that it might...
+.pull-left[
 
 #### Mercantilism
 
 + Ideas of economic nationalism
 + Mackinder/Mahan "affected by current notions of Social Darwinism that regarded nations and especially races as engaged in a constant struggle"
 
-#### Imperialism
+#### Inequality & Imperialism
 
 + Smith/Marx/Hobson/Lenin/Luxembourg theories that tie imperialism to global conflict
 
 > "The theme of the competition of capitalists for raw materials overseas as leading to war ...The competition of empires led to war." <br> —Offer, p. 10.
+]
 
----
+.pull-right[
+#### Global Growth & balance of power
 
-![tooze fertik](figures/tooze_fertik_header.png)
++ Fertik & Tooze/O'Rourke suggest growth could be de-stabilizing of geopolitical balance
 
-> "The aim of this essay is to question this common sense view of World War I as disrupting the world economy and putting an end to an era of globalization. ...We offer a narrative sketch of how one might write **a history in which the war figured not as an exogenous shock**, but as a moment of convulsive and violent realignment endogenous to that history. ...what is at stake are **the destabilizing consequences of convergence**, the basic prediction of any neoclassical vision of globalization. ...Being converged upon by Imperial Russia was every bit as unsettling to the powers of Western Europe before 1914, as the rise of China is to the United States today."<br>
--Tooze & Fertik
+#### Economics *precludes* war
 
-### A cause of WWI?
++ Bloch/Angel argue that global economic system would be so disrupted by war that war **cannot** have an economic explanation
 
-> "...capital flows and technology transfer helped Russia converge on the established powers. This disrupted pre-existing geopolitical equilibria and led Germany in particular to devise military strategies to counter the threat. ...the spread of the Industrial Revolution to Germany had earlier undermined the geopolitical equilibrium in Europe.." (O'Rourke 2019, 373).
+]
 
 ---
 
@@ -79,17 +86,48 @@ library(ggplot2)
 + Normal Angell's *The Great Illusion* (1910):
   - international web of credit/trade would be destroyed by war
 
-**************
-  
-> "What is an *economic* interpretation of the First World War? ...two possible approaches. **One** is to regard the war as a problem of management, to consider the endowment[s] ...and how it affected the preperations for, the conduct and the outcome of the war. **Another** is to seek for patterns of rationality in the planning conudct and conclusion of the war. But rationality is a slippery concept." <br> —Offer, p. 15
+---
+
+.pull-left60[
+## Inequality, Colonies and War
+
+> "...the economic causes of war, namely the pressure of population and the competitive struggle for markets. It is the second factor, which probably played a predominant part in the nineteenth century, and might again." <br>&mdash;Keynes quoted in Milanovic (2016), p. 95
+
++ Milanovic argues for the causal channel
+  1. Domestic inequality leads to
+  2. Search for profit abroad leads to
+  3. Imperial rivalry leads to
+  4. War!
++ Argument is old marxist argument: Marx/Hobson/Luxemburg/Lenin
++ See also Hauner, Milanovic & Naidu, "Inequality, Foreign Investment, and Imperialism Prior to World War I"
+
+]
+
+.pull-right40[
+.center[
+![:scale 70%](figures/milanovic-frontis.jpg)
+]
+
++ The argument is **internalist**
+  - War arises from internal characteristics of the countries
+]
 
 ---
 
-## Economics and Planning for War
+![tooze fertik](figures/tooze_fertik_header.png)
+
+> "...We offer a narrative sketch of how one might write **a history in which the war figured not as an exogenous shock**, but as a moment of convulsive and violent realignment endogenous to that history. ...what is at stake are **the destabilizing consequences of convergence**, the basic prediction of any neoclassical vision of globalization. ...Being converged upon by Imperial Russia was every bit as unsettling to the powers of Western Europe before 1914, as the rise of China is to the United States today."<br>
+-Tooze & Fertik
+
+### Convergence as a cause of war
+
+> "...capital flows and technology transfer helped Russia converge on the established powers. This **disrupted pre-existing geopolitical equilibria** and led Germany in particular to devise military strategies to counter the threat. ...the spread of the Industrial Revolution to Germany had earlier undermined the geopolitical equilibrium in Europe.." (O'Rourke 2019, 373).
+
+---
 
 ### Offer's thesis
 
-> "...Britain's late-Victorian policy of free trade led to the Edwardian naval arms race and became a source of insecurity and instability. British naval hegemony, the condition of peace, was no longer tenable in a world of so many workshops. ...The real assets of British security were the bonds and resources of the English-speaking world overseas: economic, social, political, sentimental, forming a complex but effective system of practical kinship. This formidable system failed to deter, because it was not sufficiently visible to Germany, whose view of the world was circumscribed and limited to Europe."<br> —Offer, p. 6
+> "...**Britain's late-Victorian policy of free trade led to the Edwardian naval arms race and became a source of insecurity and instability**. British naval hegemony, the condition of peace, was no longer tenable in a world of so many workshops. ...The real assets of British security were the bonds and resources of the English-speaking world overseas: economic, social, political, sentimental, forming a complex but effective system of practical kinship. This formidable system failed to deter, because it was not sufficiently visible to Germany, whose view of the world was circumscribed and limited to Europe."<br> —Offer, p. 6
 
 + Britain depends on food imports
 + So does Germany to a lesser degree
@@ -98,6 +136,52 @@ library(ggplot2)
 > "...for Britain to face the Atlantic and not the Channel: to rely on overseas assets, to align with the Dominions and the United States, and to avoid a military commitment to Europe"
 
 + Offer suggests pushes towards naval build-up.
+
+---
+
+## Economics and domestic vs systemic accounts of war
+.large[
+
+### Domestic explanations
+
++ War arises because of **internal characteristics of states**
+  - E.g. "this state is war-like because it is autocratic"
+  - Generally unpopular position in international relations
+  
+### Systemic explanations
+
++ War arises because of **properties of the system in which states are embedded**
+
+The economic convergence thesis is **clearly systemic** and Milanovic is explicit that his account is **domestic**. Offer is somewhere in between: characteristics of domestic economy lead to arms race. Arms race is systemic.
+]
+
+---
+
+## Economics and Planning for War
+
+.Large[
+> "What is an *economic* interpretation of the First World War? ...two possible approaches. **One** is to regard the war as a problem of management, to consider the endowment[s] ...and how it affected the preperations for, the conduct and the outcome of the war. **Another** is to seek for patterns of rationality in the planning conduct and conclusion of the war. But rationality is a slippery concept." <br> —Offer, p. 15
+
++ How did the structure of the British economy influence war planning and conduct?
+]
+
+
+---
+
+## Britain's economy and the conduct of the war
+
+.pull-left60[
+.Large[
++ Offer is linking the first world war to "the emergence of a global agrarian economy on which Europe depended for food" (Martin 2021)
+  - Conditions decisions to pursue naval arms race
++ Also affects **how the war is fought**
+  - Gallipoli campaign is aimed at accessing Russian wheat
+]
+]
+
+.pull-right40.center[
+![:scale 70%](figures/lambert-frontis.jpeg)
+]
 
 ---
 
