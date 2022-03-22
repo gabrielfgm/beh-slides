@@ -281,6 +281,36 @@ cpi %>% filter(Year > 1910, Year <= 1938) %>%
 
 ---
 
+
+.pull-left[
+### Why return to Gold at the pre-war parity?
+
+#### Arguments justifying decision
+
+1. Return to gold was popular
+  - But plenty of critics...
+2. Price-gaps hard to estimate
+  - But BoE at the time thought it was not right
+3. Things were bad anyway so don't blame monetary policy
+  - Economic hardship makes the mistake *worse*!
+4. Other prices were wrong e.g. French exchange rate, British wages
+  - Unreasonable to insist everyone else must adjust
+]
+
+--
+
+.pull-right[
+
+### Vested interests: a simpler explanation?
+
+> "The decision of the monetary authorities in this period cannot become fully intelligible until it is realized that they were dominated by a narrow section of the City ... and by its spokesman and representative, the Bank of England." <br>&mdash;Pollard (1970), p. 13.
+
+<br>
+> "To restore the value of the pre-war holdings by Deflation means ... raising the total claims of the rentier class not only beyond what they are entitled to, but to an intolerable proportion of the total income of the community." <br>&mdash;Keynes cited in Edgerton (2019), p. 123.
+]
+
+---
+
 ```{r us_uk_xr, fig.align='center', fig.retina=4, out.width="80%",fig.height=4.5, fig.width=6}
 library(tidyverse)
 library(ggrepel)
