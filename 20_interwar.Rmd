@@ -395,8 +395,8 @@ conc_df %>%
   theme_lecture + 
   ggtitle("Share of largest 100 firms", subtitle = "Manufacturing net output")  +
   scale_y_percent() + 
-  ylim(c(.13, .27)) +
-  ylab("Output share (%)") + 
+  ylim(c(.10, .3)) +
+  ylab("Output share") + 
   xlab("") 
 
 
@@ -488,7 +488,7 @@ ind_conc %>%
 
 ## Taking the long view
 
->  "Economic history is distinguished from economics by a predisposition to focus upon the long run. When looking at the inter-war... the timespan (1921-37) is short and punctuated by a uniquely severe depression (1929-32). Thus in arguments about the efficacy of government policies, inspired by Keynesian and anti-Keynesian conceptions of the period, historians are inclined to bring Britain's structural problems to the fore. The origins of these problems can be traced back to the 1870s and they became serious during the last great international boom of the Liberal era, 1899-1914, when the productivity of industry failed to grow at all. Britain entered the First World with an economy specialized upon a narrow range of staple industries, under intensifying threat from foreign competition."<br> —O'Brien, 128
+>  "**Economic history is distinguished from economics by a predisposition to focus upon the long run.** When looking at the inter-war... the timespan (1921-37) is short and punctuated by a uniquely severe depression (1929-32). Thus in arguments about the efficacy of government policies, inspired by Keynesian and anti-Keynesian conceptions of the period, historians are inclined to bring Britain's structural problems to the fore. The origins of these problems can be traced back to the 1870s and they became serious during the last great international boom of the Liberal era, 1899-1914, when the productivity of industry failed to grow at all. Britain entered the First World with an economy specialized upon a narrow range of staple industries, under intensifying threat from foreign competition."<br> —O'Brien, 128
 
 + Is the interwar subject to special problems apart from the recession?
 + Or is this just the continuation of a longer-term trajectory of decline?
