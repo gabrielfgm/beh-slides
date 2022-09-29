@@ -45,15 +45,14 @@ class: center, inverse, middle
 ## Today's goals
 
 + Some preliminary remarks on how classes will work
++ What this course will cover
++ How you will be assessed
 + Part I
   - A quantitative overview of British economic history
   - A critical look at GDP
 + Part II
   - A consideration on the rise in population
   - Productivity: a worked example
-+ Part III
-  - What this course will cover
-  - How you will be assessed
 ]
 
 ---
@@ -92,6 +91,52 @@ You should take from this...
 ]
 
 ---
+
+## Useful references
+
+.pull-left[
+![f1](figures/flood_mccloskey.jpg)
+]
+.pull-right[
+![f2](figures/floud_humphries_johnson.jpg)
+]
+
+---
+
+## Assessed work
+
++ 2 essays: 30%
+    - 2,000 words each
+    - Each essay counts towards 15% of grade
++ Exam: 60%
+    * Past exams are available on the Keat's page
++ Presentation: 10%
+
+---
+
+## Essays
+
++ A short list of essay questions is on Keats
+    - You are **encouraged** to develop your own essay question
+    - You must get my approval for your own essay question
++ I cannot give extentions
+    - If you cannot submit on the deadline you must request MCF in advance
++ **Talk to me about your essay plan**
++ I want you to make an argument!
+
+---
+
+## Presentation
+
++ Presentations start in week 6
++ Can sign up for presentations starting in week 3
+    * No more than two presenters a day
+    * Slots allocated to whoever signs up first
++ Presentation questions for each week posted on Keats
+    - You may propose an alternative presentation question to me if you like.
+
+---
+
 
 class: inverse, center, middle
 
@@ -376,7 +421,7 @@ name: nhavalue
     - Existing wage series `r AutoCite(bib["clarkConditionWorkingClass2005", "clark1381MalthusDelusion2013"])` [did not seem to match other historical evidence!](#clarkvbroadberry) `r AutoCite(bib["broadberryBritishEconomicGrowth2012"])`
     - Macro/micro ways of approaching the problem are in dialogue
 
---
+--p
 
 ## Is sausage healthy?
 
@@ -560,56 +605,6 @@ knitr::include_graphics("figures/watch_prices.png")
 
 ---
 
-class: inverse, center, middle
-
-# Part III
-
----
-
-## Useful references
-
-.pull-left[
-![f1](figures/flood_mccloskey.jpg)
-]
-.pull-right[
-![f2](figures/floud_humphries_johnson.jpg)
-]
-
----
-
-## Assessed work
-
-+ 2 essays: 30%
-    - 2,000 words each
-    - Each essay counts towards 15% of grade
-+ Exam: 60%
-    * Past exams are available on the Keat's page
-+ Presentation: 10%
-
----
-
-## Essays
-
-+ A short list of essay questions is on Keats
-    - You are **encouraged** to develop your own essay question
-    - You must get my approval for your own essay question
-+ I cannot give extentions
-    - If you cannot submit on the deadline you must request MCF in advance
-+ **Talk to me about your essay plan**
-+ I want you to make an argument!
-
----
-
-## Presentation
-
-+ Presentations start in week 6
-+ Can sign up for presentations starting in week 3
-    * No more than two presenters a day
-    * Slots allocated to whoever signs up first
-+ Presentation questions for each week posted on Keats
-    - You may propose an alternative presentation question to me if you like.
-
----
 
 class: inverse, center, middle
 
