@@ -566,42 +566,6 @@ class: inverse, center, middle
 
 ---
 
-.center.pull.Large.black[Course outline]
-
-.pull-left[
-### Semester 1
-
-1. Introduction
-2. Agricultural revolution
-3. Industrious revolution
-4. Government & the financial revolution
-5. The industrial revolution: an introduction and the factory system
-6. Causes of the industrial revolution
-7. The industrial revolution and international trade
-8. The standard of living debate
-9. The Poor Law and Social Assistance
-10. 19th century globalization and trade
-]
-
---
-
-.pull-right[
-### Semester 2
-
-11. The Bank of England and monetary and financial stability
-12. Britain and the export of capital
-13. Decline in British Agriculture 1850-1890
-14. Did Victorian Britain fail?
-15. Entrepreneurial Failure?
-16. The economics of empire
-17. Unemployment assistance, the labour market and trade
-18. The economics of WWI
-19. The interwar monetary and financial crisis
-20. The interwar economy
-]
-
----
-
 ## Useful references
 
 .pull-left[
@@ -679,26 +643,3 @@ name: clarkvbroadberry
 
 [return](#nhavalue)
 
----
-
-## References
-
-```{r biblliography, results='asis'}
-print_bib_rmd(bib, start = 1, stop = 6)
-```
-
----
-
-## References, contd
-
-```{r bib2, results='asis'}
-print_bib_rmd(bib, start = 7, stop = 12)
-```
-
----
-
-## References, contd
-
-```{r bib3, results='asis'}
-print_bib_rmd(bib, start = 13)
-```
