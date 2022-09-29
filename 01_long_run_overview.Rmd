@@ -60,6 +60,7 @@ class: center, inverse, middle
 
 name: return
 
+.pull-left[
 ## Preliminaries 
 
 I want you to...
@@ -74,6 +75,21 @@ You should take from this...
 
 + An overview of British economic development, but also...
 + Highly transferable analytic skills!
+]
+
+--
+
+.pull-right[
+
+## A word on Pedagogy
+
+> “The most basic principle that every teacher should know about teaching ... is that **the brain learns the thinking it practices, but little else**. To have students learn to recognize relevant features and make relevant decisions more like an expert in the field, they must practice doing exactly this.” ([Wieman, 2019, p. 56](zotero://select/library/items/8FHZL6E7)) ([pdf](zotero://open-pdf/library/items/GS25SSVR?page=11&annotation=A2HBXC33))
+
++ I will cold-call
+  - But you can reply that you don't have anything to add!
++ I will try not to lecture excessively
++ I would like you to talk to each other
+]
 
 ---
 
