@@ -3,7 +3,6 @@ title: "Week 3: Consumption in the 18th Century"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
@@ -37,8 +36,6 @@ xaringanExtra::use_tile_view()
 ```
 
 # Today's Plan
-
-### Shorter videos about key themes
   
 .Large[
 1. Consumption goods
