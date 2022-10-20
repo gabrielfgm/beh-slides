@@ -364,7 +364,7 @@ class: inverse, center, middle
 ### Criticizing the link to the financial revolution
 
 + Growing body of evidence pushing Financial Revolution back in time
-    - e.g. Ann Murphy, *Origins of English Financial Markets*, Sussman (2019 -- a few weeks ago!) on Corporation of London
+    - e.g. Ann Murphy, *Origins of English Financial Markets*, Sussman (2019) on Corporation of London
 + Clark, "Political Foundations" (1996) computes rates of return on other assets (e.g. mortgages) and finds no fall in rates after 1688
 ]
 
