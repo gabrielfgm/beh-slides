@@ -425,20 +425,6 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
-
-# Discussion
-
-> Carlos and Neal describe the Netherlands as a 'bank-oriented system' and Britain as a 'market-oriented system': what do they mean by this? What evidence do they point to?
-
---
-
-<br> 
-
-> Carlos and Neal recount British and Dutch finance as displaying "...a symbiosis that proved highly beneficial for both financial systems." Is it misleading to speak of a financial revolution in *England*? Is financial history inimical to history narrated in national terms? Is the interpenetration of English and Dutch markets problematic for the story told by North and Weingast?
-
----
-
 class: inverse, middle, center
 
 # Discussion
@@ -451,5 +437,10 @@ class: inverse, middle, center
 
 > "Whatever the situation when it came to the administration of law and order, in the fiscal-military sphere the state gained a hold as never before. This grip did not, however, become the stranglehold of autocracy, which raises, of course, the question of why Britain was able to enjoy the fruits of military prowess without the misfortunes of a *dirigiste* or despotic regime." How do we reconcile Brewer's narrative of the rise of centralized state power with North and Weingast's account of checks on political authority? 
 
+---
 
+class: inverse, center, middle
 
+# Discussion
+
+> "Arguably, what was crucial was not the security of property (save in the sense of the importance of a commitment to contract, due process and the rule of law) but the existence of effective avenues to allow it to be alienated, to be used by those who would employ it more efficiently." Do you agre with this claim by Hoppit?
