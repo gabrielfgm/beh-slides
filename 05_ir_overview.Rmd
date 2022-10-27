@@ -3,7 +3,6 @@ title: "Week 5: The Industrial Revolution, Context and Overview"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
@@ -42,13 +41,13 @@ xaringanExtra::use_tile_view()
 
 .pull-left[
 
-#### Video 1
+#### Part 1
 
 + The debate about the industrial revolution
     - Was there an industrial revolution?
     - The process of industrial transformation
     
-#### Video 3
+#### Part 3
 
 + The industrial revolution's history
     - Early views
@@ -58,7 +57,7 @@ xaringanExtra::use_tile_view()
 
 .pull-left[
 
-#### Video 2
+#### Part 2
 
 + Inventions and key sectors
     - Energy
