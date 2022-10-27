@@ -497,7 +497,7 @@ growth_data %>%
 
 ## Rehabilitating the industrial revolution: Mokyr's Example
 
-```{r animation, fig.retina=3, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE, out.width="50%"}
+```{r animation, fig.retina=3, fig.align='center', cache=F, warning=FALSE, message=FALSE, out.width="50%"}
 library(tidyverse)
 library(gganimate)
 
