@@ -1,9 +1,8 @@
 ---
-title: "Week 8: Living Standards & the Industrial Revolution" 
+title: "Week 9: Living Standards & the Industrial Revolution" 
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
@@ -138,7 +137,7 @@ lw_feinstein %>%
 
 .pull-right40[
 
-+ LW computed wages and found an 80% rise in real wages between 1780 and 1850
++ LW (*EHR* 1983) computed wages and found an 80% rise in real wages between 1780 and 1850
     - To compute a real wage:
         - Measure wages in all sectors in a year $w_{1,1840}, w_{2, 1840}, ...$ (e.g. agriculture)
         - Measure how big each sector is in a year $s_{1, 1840}, s_{2, 1840}, ...$ (e.g. 30%)
@@ -149,8 +148,8 @@ lw_feinstein %>%
 <br> 
 
 \begin{equation}
- \texttt{realwage}_{1840} = [s_{1, 1840}*w_{1,1840} + \\
- s_{2, 1840}*w_{2, 1840}+...]/p_{1840}
+ \texttt{realwage}_{1840} = [s_{1, 1840} \times w_{1,1840} + \\
+ s_{2, 1840} \times w_{2, 1840}+...]/p_{1840}
 \end{equation}
 
 ]
@@ -236,8 +235,8 @@ lw_feinstein %>%
 <br> 
 
 \begin{equation}
- \texttt{realwage}_{1840} = [s_{1, 1840}*w_{1,1840} + \\
- s_{2, 1840}*w_{2, 1840}+...]/\underbrace{p_{1840}}_{\texttt{Revised}}
+ \texttt{realwage}_{1840} = [s_{1, 1840} \times w_{1,1840} + \\
+ s_{2, 1840} \times w_{2, 1840}+...]/\underbrace{p_{1840}}_{\texttt{Revised}}
 \end{equation}
 
 ]
@@ -332,7 +331,7 @@ The concept of **biological well-being**
 
 .pull-left30[
 
-On **average** it is not genes
+On **average** height is not genetic
 
 >  "Newcomers to the idea that stature measures important aspects of the standard of living should not be sidetracked by genetic issues. **Genes are important determinants of individual height, but genetic differences approximately cancel in comparisons of averages across most populations**, and in these situations heights accurately reflect health status." <br> —Steckel, "Stature", p. 1903
 ]
