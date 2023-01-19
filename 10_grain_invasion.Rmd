@@ -1,9 +1,8 @@
 ---
-title: "Week 10: 19th century globalization and trade" 
+title: "Week 11: 19th century globalization and trade" 
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
