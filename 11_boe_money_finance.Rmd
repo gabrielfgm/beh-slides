@@ -1,9 +1,8 @@
 ---
-title: "Week 11: Banking, Money and Finance" 
+title: "Week 12: Banking, Money and Finance" 
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Tues. 9-10am & Thurs. 4-5pm
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
@@ -260,7 +259,8 @@ data <- data.frame(
   end     = c(NA, NA, NA, NA, NA, NA)
 )
 
-timevis(data, showZoom = F, fit = T, height = 600)
+timevis(data)
+
 ```
 
 ---
