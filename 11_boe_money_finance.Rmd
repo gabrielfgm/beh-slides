@@ -385,7 +385,7 @@ class: inverse, center, middle
 ### 1866
 
 + lends extensively on collateral (discounts)
-![old_lady](figures/old-lady-of-threadneedle-street-mary-evans-picture-library.jpg)
+![:scale 80%](figures/old-lady-of-threadneedle-street-mary-evans-picture-library.jpg)
 
 ]
 
@@ -395,7 +395,8 @@ class: inverse, center, middle
 
 ### Why do we see this pattern?
 
-![:scale 90%](figures/Screenshot 2020-01-16 at 16.28.53.png)
+.center[
+![:scale 80%](figures/Screenshot 2020-01-16 at 16.28.53.png)]
 
 ---
 
@@ -421,3 +422,4 @@ class: inverse, center, middle
 <br>
 
 > What accounts (in your view) for the decline of unlimited liability in Britain? 
+
