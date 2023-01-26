@@ -304,7 +304,9 @@ bdata %>% filter(type != "State-chartered bank") %>%
 
 ## Network Growth and Consolidation: a cartel?
 
-![:scale 80%](figures/grossman_concentration.png)
+.center[
+![:scale 70%](figures/grossman_concentration.png)
+]
 
 ---
 
