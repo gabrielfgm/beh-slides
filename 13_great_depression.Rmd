@@ -3,7 +3,6 @@ title: "Week 13: The Great Depression and the Decline in Agriculture, 1873-96"
 author: | 
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
-    | Office Hours: Tues. 11 & Weds. 11
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 output: 
   xaringan::moon_reader:
@@ -168,9 +167,9 @@ Money is confusing
 
 --
 
-> "...the recent course of prices... is the result in part of the diminished production **and the increased extroardinary demands upon the supply of gold.**"<br> -Giffen, *Contemporary Review*, 1885.
+> "...the recent course of prices... is the result in part of the diminished production **and the increased extraordinary demands upon the supply of gold.**"<br> -Giffen, *Contemporary Review*, 1885.
 
-+ Less **demand** for gold $\rightarrow$ lower prices
++ More **demand** for gold $\rightarrow$ lower prices
 
 --
 
