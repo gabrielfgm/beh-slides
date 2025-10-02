@@ -6,7 +6,7 @@ author: |
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 format:
   revealjs:
-    theme: serif
+    theme: simple
     slide-number: true
     css: ["helper_functions/extra.css"]
     beforeInit: "helper_functions/macros.js"
@@ -93,7 +93,7 @@ You should take from this...
 :::
 
 ::: {.column width="50%" .r-fit-text}
--   Exam: 60%
+-   Exam: 75%
     -   Past exams are available on the Keat's page
     -   In person and **written by hand**
 -   I will dedicate class time to discussing assignments
@@ -334,20 +334,23 @@ knitr::include_graphics("figures/broadberry_et_al.jpg")
 
 ## How the sausage gets made: GDP
 
-:::{.r-fit-text}
-Three ways to measure GDP
+:::{.smaller}
+Three ways to measure GDP:
 
-1.  Income:
-
-$GDP =(\texttt{daily wage-rates} \times \texttt{days worked}) + \\ (\texttt{return on capital} \times \texttt{capital stock}) + \\ (\texttt{rent} \times \texttt{land area})$
-
-2.  Expenditure:
-
-$GDP = \texttt{consumption} + \texttt{investment} + \texttt{government spending} + \\ \texttt{net exports}$
-
-3.  Output:
-
-$GDP = \texttt{agricultural value added} + \texttt{industrial value added} + \\  \texttt{services value added}$
+\begin{align}
+  GDP_{Income} &= \begin{aligned}[t]
+         &(\text{wages} \times \text{days}) + (\text{return} \times \text{capital}) \\
+         &+ (\text{rent} \times \text{land})
+       \end{aligned} \\
+  GDP_{Expenditure} &= \begin{aligned}[t]
+         &\text{consumption} + \text{investment} + \text{govt. spending} \\
+         &+ \text{net exports}
+       \end{aligned} \\
+  GDP_{Output} &= \begin{aligned}[t]
+         &\text{ag. value added} + \text{ind. value added} \\
+         &+ \text{serv. value added}
+       \end{aligned}
+\end{align}
 
 @broadberry2012 attempt the *output* approach.
 :::
