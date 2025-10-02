@@ -1,0 +1,290 @@
+---
+title: "Did Victorian Britain Fail?" 
+author: | 
+    | Dr. Gabriel Geisler Mesevage 
+    | gabriel.mesevage@kcl.ac.uk
+    | Office Hours: Tues. 11am and Weds 11am (online)
+date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
+format:
+  revealjs:
+    theme: solarized
+    transition: slide
+    transition-speed: fast
+    slide-number: true
+    footer: "British Economic History"
+    css: ["helper_functions/extra.css":::
+    beforeInit: "helper_functions/macros.js"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
+                      message = FALSE, fig.align='center', fig.retina=3,
+                      out.width="75%")
+
+
+```
+
+```{r setup-theme, include = FALSE}
+source("helper_functions/theme_lecture.R")
+```
+
+background-image: url("figures/mccloskey_frontis.png")
+background-size: contain
+
+---
+
+# 3 Arguments
+
+::: {.large}
+1. "...output grew too slowly because of sluggish demand..."
+2. "...too much was invested abroad because of imperfect capital markets..."
+3. "...productivity stagnated because of inept entrepreneurship..."
+:::
+
+---
+
+# 3 Arguments
+
+::: {.large}
+.red[
+1. "...output grew too slowly because of sluggish demand...":::
+<ol start=2>
+.blue[
+<li> "...too much was invested abroad because of imperfect capital markets..."
+</ol>:::
+.green::: {.large}
+<ol start=3>
+<li> "...productivity stagnated because of inept entrepreneurship..."
+</ol>
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.large}
+.red[
++ We will discuss this today
+:::
+.blue[
++ This was last week
+
+
+::: {.column width="50%"}
+.large.green[
++ This is for next week
+
+
+---
+
+```{r, comparative_perspective, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
+
+library(ggrepel)
+
+maddison <- read_xlsx(path = "data/mpd2018.xlsx", 
+                      sheet = "Full data")
+
+plotdf <- maddison %>% filter(year >= 1830, 
+                    year <= 1913, 
+                    countrycode %in% c("GBR", "FRA",
+                                       "DEU", "USA"),
+                    !is.na(cgdppc))
+
+plotdf %>% 
+  ggplot(aes(year, cgdppc, 
+             group = countrycode,
+             color=countrycode)) +
+  ggtitle("British GDP per capita in comparison", 
+          subtitle = "Source: Maddison project") +
+  geom_line() +
+  geom_point() +
+  geom_label_repel(data = plotdf %>%
+              group_by(countrycode) %>% 
+              filter(year == last(year)) %>% 
+              ungroup(), 
+            aes(label = country, x = year, y=cgdppc, color=countrycode)) +
+  guides(color = FALSE) +
+  scale_color_brewer(type = "qual", palette = 2) +
+  ylab("Real GDP/pc in 2011 US$") +
+  xlab("") +
+  theme_lecture
+```
+
+---
+
+```{r, growth_rates, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
+
+plotdf |> 
+  filter(year >= 1850) |> 
+  group_by(countrycode) |> 
+  mutate(index = rgdpnapc/rgdpnapc[year == 1870::: * 100) |> 
+  ggplot(aes(year, index, group = country, color = country)) +
+  ggtitle("GDP growth rates in comparison", 
+          subtitle = "Source: Maddison project") +
+  geom_line() +
+  geom_point() +
+  geom_vline(xintercept = 1870, linetype = "dashed") +
+  scale_color_brewer(type = "qual", palette = 2) +
+  #scale_y_log10() +
+  ylab("GDP/pc relative growth, 1870=100") +
+  xlab("") +
+  theme_lecture + theme(legend.position = "right")
+
+```
+
+---
+
+### Why might poorer countries grow faster?
+
+::: {.large}
+
+The most simple **neoclassical growth theory** model suggests that as poorer countries increase the capital they use in production they should **grow more quickly** than richer countries. This flows from an assumption of **diminishing returns to capital**.
+
+If this is true, poor countries should grow faster than rich countries and we should see global incomes converging.
+
+Tests of this model are called tests of **unconditional convergence**: do the incomes of poor countries 'converge on' the incomes of rich countries.
+:::
+
+---
+
+### Looking for convergence
+
++ Tests of convergence in the 1990s were pessimistic
+  - **unconditionally** looked like the rich countries were pulling ahead (Barro 1991, Pritchett 1997)
++ This led on the one hand to a focus on **conditional** convergence
+  - If you adjust for some 'growth correlates' like institutions, education, policies then net of these factors can see convergence
++ A second effort was to complicate growth models
+  - This led to the rise of **endogenous growth theory**: productivity and technological change across economies varies (Romer 1990)
+  
+--
+
+### Convergence in the 19th century
+
++ 20th century economic historians described a 'Victorian failure'
+  - Slowing growth rates; a 'climacteric' in the pace of output
++ In 1970s cliometricians rejected this relying on intuition around the **neoclassical model**
+
+---
+
+### 1. "...output grew too slowly because of sluggish demand..."
+
+```{r trade_growth, fig.retina=4, fig.height=4, fig.width=6}
+library(tidyverse)
+library(readxl)
+
+trade <- read_excel("data/a-millennium-of-macroeconomic-data-for-the-uk.xlsx", sheet = "A35. Trade volumes and prices", 
+                    range = "A556:G626", col_names = FALSE)
+
+
+trade <- trade[,c(1,7):::
+names(trade) <- c("Date", 
+                  "Composite Export Index (2013 prices)")
+
+trade <- trade %>%
+  mutate(period = ifelse(Date > 1870, "post-1870", "pre-1870"),
+         ln_index = log(`Composite Export Index (2013 prices)`))
+
+reg_pre_1870 <- broom::tidy(lm(ln_index ~ Date, 
+                               data = trade %>% 
+                                 filter(period == "pre-1870")))
+
+reg_post_1870 <- broom::tidy(lm(ln_index ~ Date, 
+                               data = trade %>% 
+                                 filter(period == "post-1870")))
+
+trade %>% 
+  ggplot(aes(Date, log(`Composite Export Index (2013 prices)`), 
+             color = period)) +
+  stat_smooth(method = "lm") +
+  geom_point() + geom_line() +
+  annotate("text", x = 1860, y = 8, 
+           label = paste0("Average annual change of ", 
+                          scales::percent(reg_pre_1870$estimate[2:::, 
+                                          accuracy = .01)),
+           color = "blue") +
+  annotate("text", x = 1860, y = 10, 
+           label = paste0("Average annual change of ", 
+                          scales::percent(reg_post_1870$estimate[2:::, 
+                                          accuracy = .01)),
+           color = "red") +
+  theme_lecture +
+  ggtitle("Log composite export index with estimated growth rates",
+          subtitle = "1830-1869 vs 1870-1900") +
+  scale_color_manual(values = c("red", "blue"))
+```
+
+---
+
+### Could things have been better?
+
+#### Population growth
+
+> "The argument that Britain's output grew more slowly because of slower growing exports, however, **assumes that aggregate demand alone determined output**, when **in fact there were constraints of supply**. Indeed, there is evidence that they were the only binding constraints. ...the labour force at the end of the period would have had to have been twice as large as the actual labour force and two-fifths larger than the entire population aged 15 and over." <br> -McCloskey, p. 448-449.
+
+#### Savings rate
+
+::: {.columns}
+::: {.column width="50%"}
++ Simple accounting exercise
+
+$$
+Q = s_K K + s_L L + T
+$$
++ Total growth (Q) comes from labor growth (L) with proportion $s_L$ and capital growth (K) with proportion $s_K$ and getting better at doing things (T).
+
+::: {.column width="50%"}
++ Re-arranging
+
+$$
+K = \frac{1}{s_K} \Big(Q - s_LL - T \Big)
+$$
+
++ plug in plausible values and growth in $K$ has to be huge implying extraordinary high savings rate.
+:::
+
+---
+
+### The neo-classical view reconsidered
+
+.center::: {.large}
+$$
+K = \frac{1}{s_K} \Big(Q - s_LL - T \Big)
+$$
+ {.large}
+McCloskey rejects the view that $T$ (productivity growth rate) could have been made much higher. This is a rejection of the idea that productivity growth is **endogenous**.
+
+Is it plausible that productivity growth rates could not have been higher?
+:::
+
+---
+
+### The endogenous growth view: McCloskey's thesis for other reasons
+
+> "The final, and crucial, element of McCloskey's (1970) argument was that Britain's productivity gorwth could not have been higher. The more recent endogenous growth literature offers reason to believe this claim, but instead of basing the point on a neoclassical assumption of common productivity growth everywhere, the new growth theory emphasizes that Britain did not offer especially fertile soil for growth." <br> &mdash; Crafts, 1998, p. 206.
+
+::: {.large}
+
++ Not good prospects for learning and productivity gains in what British economy was doing.
++ E.g. Crafts reports that in early 20th c. US is spending .25 of GDP on R&D vs .02 in UK
+:::
+
+---
+
+### Endogenous growth: is this an exogeneration?
+
+::: {.large}
+Crafts views **endogenous growth theory** as largely agreeing with McCloskey's message if not her methods.
+
+But acknowledges that "it is clearly somewhat worrying that Britain's productivity growth fell from a mid-19th century high of .75 percent per year to an average of .45 percent in 1873-1913".
+
+And that Britain was **expanding R&D and education** so endogenous growth suggests it should be growing.
+
+Moreover, surely in endogenous growth framework there are more policy variables?:::
+
+---
+
+### Endogenous growth as an indictment
+
+::: {.large}
+
+Learning is very important in **endogenous growth** models: Crafts notes that with large share of overseas investment there is "a different stream of learning and externalities than would have been the case with more home investment" (203).
+
+If R&D and education are what matter (the **supply of ideas**) should the Victorians have provided more of this?
+:::

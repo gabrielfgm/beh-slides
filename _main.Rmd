@@ -4,13 +4,15 @@ author: |
     | Dr. Gabriel Geisler Mesevage 
     | gabriel.mesevage@kcl.ac.uk
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
-output: 
-  xaringan::moon_reader:
-    nature:
-      beforeInit: "helper_functions/macros.js"
-      ratio: '16:9'
-    lib_dir: libs
-    css: ["xaringan-themer.css", "helper_functions/extra.css"]
+format: 
+  revealjs:
+    theme: solarized
+    transition: slide
+    transition-speed: fast
+    slide-number: true
+    footer: "British Economic History"
+    css: ["helper_functions/extra.css"]
+    beforeInit: "helper_functions/macros.js"
 ---
 
 ```{r setup, include=FALSE}
@@ -27,21 +29,17 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
-class: center, inverse, middle
+::: {.center .inverse .middle}
 
 # Outline
 
 ---
 
-.Large[
+::: {.large}
 ## Today's goals
 
 + Some preliminary remarks on how classes will work
@@ -77,7 +75,7 @@ You should take from this...
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part I
 
@@ -393,7 +391,7 @@ ag_share %>%
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II
 
@@ -401,14 +399,16 @@ class: inverse, center, middle
 
 ### Overcoming 'Organic'/Malthusian constraints
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 + Ricardo describes diminishing *marginal* returns from land `r AutoCite(bib["wrigleyPovertyProgressPopulation2004"])`
     - What does *marginal* mean?
 ]
 
 --
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r dimmarg, fig.retina=3, fig.align="center", out.width="70%"}
 Input <- 1:100
 Output <- Input^.5
@@ -429,8 +429,11 @@ df %>%
 ```
 ]
 --
-.right-column[
-.pull.center[**And yet population grows!**]
+:::
+::: {.column width="50%"}
+::: {.center}
+**And yet population grows!**
+:::
 ]
 ---
 
@@ -544,15 +547,18 @@ knitr::include_graphics("figures/watch_prices.png")
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III
 
 ---
 
-.center.pull.Large.black[Course outline]
+::: {.center .large .black}
+Course outline
+:::
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Semester 1
 
 1. Introduction
@@ -569,7 +575,7 @@ class: inverse, center, middle
 
 --
 
-.pull-right[
+] {.column width="50%"}
 ### Semester 2
 
 11. The Bank of England and monetary and financial stability
@@ -588,10 +594,11 @@ class: inverse, center, middle
 
 ## Useful references
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ![f1](figures/flood_mccloskey.jpg)
 ]
-.pull-right[
+] {.column width="50%"}
 ![f2](figures/floud_humphries_johnson.jpg)
 ]
 
@@ -631,7 +638,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Appendix 
 
@@ -719,12 +726,8 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 # Outline
@@ -739,7 +742,7 @@ xaringanExtra::use_tile_view()
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part I: Feeding Britain: an overview
 
@@ -819,7 +822,8 @@ cap %>% ggplot(aes(date, index, color=input, label=index)) +
 
 ---
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r, change_per_acre, out.width="100%", fig.height=4, fig.width=6}
 
 pc <- data.frame(date = unique(df$date),
@@ -850,7 +854,8 @@ pc %>% mutate(tot_cap = tot_cap/tot_cap[1]) %>%
 ```
 ]
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 + A consequence of increasing farm size
     - Enclosure, more below
 ]
@@ -866,7 +871,7 @@ pc %>% mutate(tot_cap = tot_cap/tot_cap[1]) %>%
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part 2: Agricultural revolution
 
@@ -911,7 +916,7 @@ At least 4 interpretations `r AutoCite(bib["overtonAgriculturalRevolutionEngland
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # The traditional view of the agricultural revolution
 
@@ -955,7 +960,7 @@ class: inverse, center, middle
 
 ## Agricultural technological innovation
 
-.Large[
+::: {.large}
 + Crop rotation
 + Husbandry
 + Land improvement
@@ -1052,7 +1057,8 @@ knitr::include_graphics("figures/tull_seed_drill.jpg")
 
 ## The 'Great Men' of the agricultural revolution
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r, great_men_young, out.width="60%"}
 knitr::include_graphics("figures/arthur_young.jpg")
 ```
@@ -1060,7 +1066,7 @@ knitr::include_graphics("figures/arthur_young.jpg")
 + Arthur Young
 ]
 
-.pull-right[
+] {.column width="50%"}
 ```{r, great_men_tull, out.width="60%"}
 knitr::include_graphics("figures/jethro_tull.jpg")
 ```
@@ -1107,7 +1113,7 @@ knitr::include_graphics("figures/jethro_tull.jpg")
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part 3: Enclosure
 
@@ -1175,7 +1181,9 @@ Allen suggests two flavors of Agrarian Fundamentalism
 
 + Enclosure is labor-shedding: frees workers to go to manufacturing
 
-.large[**Both view it as necessary component of industrialization!**]
+::: {.large}
+**Both view it as necessary component of industrialization!**
+:::
 
 #### Allen's view:
 
@@ -1185,7 +1193,8 @@ Allen suggests two flavors of Agrarian Fundamentalism
 
 ## The view from development economics
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Contemporary studies of peasant production suggest:
     
 1. Production usually exhibits constants returns to scale
@@ -1196,7 +1205,7 @@ Allen suggests two flavors of Agrarian Fundamentalism
 5. *Purchased* capital goods and fertilizers tend to give large farms an advantage because they borrow at cheaper rates
 ]
 
-.pull-right[
+] {.column width="50%"}
 ```{r, boserup, out.width="50%"}
 knitr::include_graphics("figures/Ester_Boserup.jpg")
 ```
@@ -1246,13 +1255,14 @@ yeomen's and the much more famous landlords'" <br> —`r AutoCite(bib["allenEncl
 
 ## Two revolutions?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r, two_revs_1, out.width="100%"}
 knitr::include_graphics("figures/allen_first_ar.png")
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 ```{r, two_revs_2, out.width="100%"}
 knitr::include_graphics("figures/allen_second_ar.png")
 ```
@@ -1314,13 +1324,13 @@ Enclosure
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Discussion
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 ## Questions about Allen, "Tracking"
 
@@ -1344,7 +1354,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 ## Part 4: Preview of next week: how to read a regression table
 
@@ -1359,7 +1369,8 @@ knitr::include_graphics("figures/horrell_reg_examp.png")
 + Look at each row
 
 ---
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## A Closer Look
 
 + The true relationships is:
@@ -1369,7 +1380,8 @@ $$ave(y) = 40 + 1.5 x$$
 + They estimate $a$ and $b$ by picking values that put the points 'close to' the line
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r, reg_manual, out.width="100%", fig.height=4.5, fig.width=6}
 set.seed(42)
 x <- rnorm(100)
@@ -1405,7 +1417,8 @@ fd %>%
 ]
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## A simple regression
 
 + Regression with 100 observations
@@ -1414,7 +1427,8 @@ fd %>%
   - 39.912 $\approx$ 40
 ]
 
-.right-column[.Large[
+:::
+::: {.column width="50%"}::: {.large}
 ```{r, reg_output, results='asis'}
 stargazer::stargazer(reg, header = FALSE, 
                      title = "Example Regression Table",
@@ -1425,14 +1439,16 @@ stargazer::stargazer(reg, header = FALSE,
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### **Assumptions**: linearity
 
 + Here true relationship is $$ave(y) = 40 + 1.5 x^2$$
 + But estimated relationship assumes $$ave(y) = a + b x$$
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r, reg_manual_nl, out.width="100%", fig.height=4.5, fig.width=6}
 set.seed(42)
 x <- rnorm(100)
@@ -1461,14 +1477,16 @@ fd %>%
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### **Assumptions**: nothing omitted
 
 + The relationship between any two variables can change when you introduce a third
 + *correlation $\neq$ causation*
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r, reg_manual_ovb, out.width="100%", fig.height=4.5, fig.width=6}
 set.seed(4242)
 alpha <- 40
@@ -1533,7 +1551,8 @@ cowplot::plot_grid(p1, p2)
   - Is the size of the relationship big enough to matter?
 
 ---
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### If you want to learn more...
 
 + 2 books on regression
@@ -1541,8 +1560,10 @@ cowplot::plot_grid(p1, p2)
 + Feel free to talk to me about it!
 ]
 
-.right-column[
-.pull-left[
+:::
+::: {.column width="50%"}
+::: {.columns}
+::: {.column width="50%"}
 
 ```{r, regression_stories, out.width="50%"}
 knitr::include_graphics("figures/regression_stories_frontis.jpg")
@@ -1554,7 +1575,7 @@ knitr::include_graphics("figures/mastering_metrics_frontis.jpg")
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ```{r, history_numbers, out.width="50%"}
 knitr::include_graphics("figures/history_numbers_frontis.jpg")
@@ -1615,19 +1636,15 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 # Today's Plan
 
 ### Shorter videos about key themes
   
-.Large[
+::: {.large}
 1. Consumption goods
 2. The industrious revolution hypothesis
 3. Backward bending labor supply curves
@@ -1635,7 +1652,7 @@ xaringanExtra::use_tile_view()
 ]
 ---
 
-class: center, inverse, middle
+::: {.center .inverse .middle}
 
 # Part I: Consumption
 
@@ -1650,7 +1667,8 @@ background-size: cover
 .black { color: black; }
 </style>
 
-.pull-left[.black[
+::: {.columns}
+::: {.column width="50%"}.black[
 
 Tea & Sugar
 + 1722: 1oz of tea per person per year
@@ -1722,7 +1740,7 @@ knitr::include_graphics("figures/consumerism-shopping-fabric-D40089-62.jpg")
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 ## The source: Old Bailey Thefts
 
@@ -1769,13 +1787,14 @@ $$\Big [ \texttt{Intuition: after prices and income you own what you prefer.}\Bi
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II: the industrious revolution hypothesis
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## The puzzle
 
 Probate inventories (and other sources) say consumption rising **but** wage data is flat
@@ -1789,14 +1808,16 @@ knitr::include_graphics("figures/clark_v_probate.png")
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## The puzzle
 
 Probate inventories say consumption rising **but** wage data is flat
 
 **How to reconcile?**]
 
-.right-column[
+:::
+::: {.column width="50%"}
 > "**Consumer demand grew**, even **in the face of contrary real wage trends**, and the productive achievements of industry and agriculture in the century before the Industrial Revolution could occur **because of reallocations of the productive resources of households.** In England, but in fact through much of Northwestern Europe and Colonial America, a broad range of **households made decisions that increased both the supply of marketed commodities and labor and the demand for goods offered in the marketplace.** This combination of changes in household behavior constituted an "industrious revolution"" (de Vries, 1994, 255)
 ]
 
@@ -1804,7 +1825,8 @@ Probate inventories say consumption rising **but** wage data is flat
 
 ## The industrious revolution
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + If wages were stable...
 + But consumption increased
 
@@ -1820,13 +1842,14 @@ $\rightarrow$ they might work **less** if paid **more**
 
 ]
 
-.pull-right[<img src="figures/industrious_rev.jpg" width="300">]
+] {.column width="50%"}<img src="figures/industrious_rev.jpg" width="300">]
 
 ---
 
 ## The Building Blocks of de Vries Industrious Revolution
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Contextual factors
 
 **The Revolt of the Early Modernists**: as we saw in the Agricultural revolution lecture the 17th and 18th centuries were far from static.
@@ -1836,7 +1859,7 @@ $\rightarrow$ they might work **less** if paid **more**
 
 --
 
-.pull-right[
+] {.column width="50%"}
 #### Theoretical building blocks
 
 **The Western European Marriage Pattern**: a critical element in de Vries' theory of a family that is adaptable to the market, but whose behavior is not wholly determined by market forces.
@@ -1848,7 +1871,8 @@ $\rightarrow$ they might work **less** if paid **more**
 
 ## A model of the family
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 
 + Families can allocate their time ( $T$ ) towards
@@ -1867,7 +1891,7 @@ $\rightarrow$ they might work **less** if paid **more**
 
 --
 
-.pull-right[
+] {.column width="50%"}
 + Family welfare is the sum of what they consume ( $\sum_i z_i \pi_i$ )
 + **But** what we measure of family welfare is the sum of the goods they purchase/the wage they receive ( $\sum_i x_i p_i$ )
 + We are missing
@@ -1903,7 +1927,7 @@ class: center, middle, inverse
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III: Backward bending labor supply curves
 
@@ -1917,13 +1941,14 @@ class: inverse, center, middle
 
 --
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Leisure is a superior good 
 
 > On laborers: "if by Fours Days labor in a Week they can maintain themselves, will hardly be persuaded to work the fifth" (Mandeville, 1924, 1723, 509).
 ]
 
-.pull-right[
+] {.column width="50%"}
 > The poor "just work so much and no more, as may maintain them in that mean condition to which they have been accustomed" (Sir Joshua Childs in Koyama 2012)
 ]
 
@@ -1937,20 +1962,22 @@ class: inverse, center, middle
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## Backward Bending Labor Supply Curves?
 
 Implies some wage rate $w^*$ above which higher wages result in less work and more leisure
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ![bblsc](figures/bblsc.png)
 ]
 
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part IV: Time use
 
@@ -1968,7 +1995,7 @@ class: inverse, center, middle
 
 ## Voth's approach
 
-.Large[
+::: {.large}
 + Look at Old Bailey reports
   + What do witnesses say they were doing and **what time do they say they were doing it!**
 ]
@@ -1981,7 +2008,8 @@ class: inverse, center, middle
 
 ## Why do we work so much?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r working_hours}
 
 work_time <- data.frame(Date = c(1760, 1800, 1830, 1870, 2000),
@@ -1994,14 +2022,14 @@ knitr::kable(work_time, format = "html", caption = "Estimated Annual working hou
 
 + In 1930, JM Keynes famously predicted that in the future we would have a 15 hour work week.]
 
-.pull-right[
+] {.column width="50%"}
 
 ![vothgraph](figures/voth_graph.png)
 ]
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Questions about time use
 
@@ -2063,12 +2091,8 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 class: center, middle, inverse
@@ -2079,7 +2103,8 @@ class: center, middle, inverse
 
 ## Lecture Outline
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 #### Video 1
 
@@ -2097,7 +2122,7 @@ class: center, middle, inverse
   + Sussman & Yafeh on Britain vs the Netherlands
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 #### Video 2
 
@@ -2112,7 +2137,7 @@ class: center, middle, inverse
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part I
 
@@ -2120,11 +2145,13 @@ class: inverse, center, middle
 
 ## The financial revolution
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ![fin_rev](figures/fin_rev.jpg)
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 
 + P.G.M Dickson, *The Financial Revolution in England: A Study in the Development of Public Credit, 1688-1756*, 1967.
 + Influential history of administrative and bureaucratic reform underpinning the development of the market for public debt
@@ -2140,23 +2167,27 @@ class: inverse, center, middle
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## Debt and war
 
 + War is a catalyst for borrowing capacity
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ![:scale 90%](figures/dickson_borrowing_table.png)
 ]
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ![:scale 100%](figures/sinews.jpg)
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 
 ### The 'Fiscal-Military State'
 
@@ -2165,10 +2196,12 @@ class: inverse, center, middle
 ]
 
 ---
-.right-column[
+:::
+::: {.column width="50%"}
 ![tax_graph](figures/tax_brewer.png)]
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### Tax Power
 
 + Note the rise of excise and fall of land tax
@@ -2188,13 +2221,14 @@ class: inverse, center, middle
 
 ## The state, credibility, and restraint
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 >"Other expedients to finance war which might have been tried (and were, by other powers), such as inflation of the currency or writing off accumulated debts, were by definition self-defeating in anything except the short run." (Dickson, pp. 10-11)
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 > "The land tax, despite its heavy incidence on the landed classes, was preferred by the House of Commons over other taxes because it was the most limited case of the exercise of executive power... Opting for the land tax, then, was one of several parliamentary strategies designed to reduce the growth of the fiscal-military state." (Brewer, pp. 81)
 
@@ -2208,7 +2242,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II
 
@@ -2216,13 +2250,14 @@ class: inverse, center, middle
 
 ## Douglass North
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ![:scale 70%](figures/north_headshot.jpg)
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 + Shared the Econ Nobel in 1993 with Robert Fogel
     - Important figure in popularizing a particular way of writing economic history
@@ -2235,7 +2270,8 @@ class: inverse, center, middle
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Cliometrics
 
 + Douglass North and Robert Fogel win Nobel for being "pioneers in the branch of economic history that has been called the ‘new economic history,’ or cliometrics."
@@ -2248,7 +2284,7 @@ class: inverse, center, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### New Institutional Economics
 
 + Ronald Coase and Oliver Williamson
@@ -2262,11 +2298,13 @@ class: inverse, center, middle
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### North's work and influence
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ![:scale 23%](figures/institutions_institutional_change_north.png) ![:scale 23%](figures/violence_north.jpg) ![:scale 23%](figures/markets_states_bates.jpg)
 
 ![:scale 23%](figures/analytic_narratives_frontis.png) ![:scale 23%](figures/institutions_grief.jpg) ![:scale 23%](figures/why_nations_fail_acemoglu.png)
@@ -2284,7 +2322,8 @@ class: inverse, center, middle
 --
 
 
-.right-column[
+:::
+::: {.column width="50%"}
 
 ***
 
@@ -2304,7 +2343,8 @@ class: inverse, center, middle
 
 ## 'Constitutions and Commitment': the argument
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Features
 
 + Glorious revolution creates checks on executive power
@@ -2314,7 +2354,7 @@ class: inverse, center, middle
 ]
 
 --
-.pull-right[
+] {.column width="50%"}
 #### Mechanisms
 
 + Previous removal of monarchs gives Parliament 'credible threat'
@@ -2335,13 +2375,15 @@ class: inverse, center, middle
 
 
 ---
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### 'Constitutions and Commitment': the evidence
 
 + Interest rates decline in ~60 years after revolution
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r interest_loans, fig.height=3.5, fig.width=5, out.width="100%"}
 library(tidyverse)
 library(ggthemes)
@@ -2368,11 +2410,12 @@ irates %>%
 ]
 
 ---
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## 'Constitutions and Commitment': the consequences
 ]
 
-.pull-right[
+] {.column width="50%"}
 .center[
 > "The institutions leading to the growth of a stable market for public debt provided a large and positive externality for the parallel development of a market for private debt." (North and Weingast, pp. 825).
 ]
@@ -2380,20 +2423,21 @@ irates %>%
 
 <br>
 
-.Large[
+::: {.large}
 .center[
 BoE & security in property $\rightarrow$ growth in banking, bill market, and financial activity
 ]
 ]
 
 ---
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## 'Constitutions and Commitment': the critique
 
 ### Criticizing the link to the financial revolution
@@ -2405,7 +2449,7 @@ class: inverse, center, middle
 
 --
 
-.pull-right[
+] {.column width="50%"}
 ### Criticizing the link to lowered borrowing costs
 
 + Sussman and Yafeh, "Institutional reforms", (2006)
@@ -2416,7 +2460,8 @@ class: inverse, center, middle
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Clark's Critique
 
@@ -2427,7 +2472,7 @@ class: inverse, center, middle
 > "Did any of the supposedly important political events of the sixteenth and seventeenth century affect rates of return in the private capital market? ...The private rates of return change slowly with time, indicating no dramatic upward movement in any of the periods of political uncertainty..." <br>(p. 578)
 ]
 
-.pull-right[
+] {.column width="50%"}
 .center[
 ![:scale 80%](figures/clark_return_farmland.png)
 ![:scale 80%](figures/clark_return_farmland.png)
@@ -2436,14 +2481,15 @@ class: inverse, center, middle
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Sussman and Yafeh's Critiques
  
 >  "The main conclusion that emerges from the present study is that financial markets do not reward countries for institutional reforms in the short run. "Good" institutions may well be important for long-run growth, but the mechanism relating institutions and growth is apparently something other than an immediate reaction of financial markets and a reduction in the cost of capital. ...We believe that Britain's ascendancy to a position of supremacy in Europe and in the world was the outcome of very long processes... The evidence on the importance of the Glorious Revolution and the institutional changes of the seventeenth century as a turning point remains elusive." <br> (p. 929).
 ]
 
-.pull-right[
+] {.column width="50%"}
 .center[
 ![:scale 80%](figures/sussman_yafeh_interest_rates.png)
 ![:scale 80%](figures/sussman_yafeh_debt_pc.png)
@@ -2452,7 +2498,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Questions
 
@@ -2460,7 +2506,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Discussion
 
@@ -2521,19 +2567,16 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 # Outline of Today's Lecture
 
 --
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 #### Video 1
 
@@ -2549,7 +2592,8 @@ xaringanExtra::use_tile_view()
     - Rehabilitating the 'revolutionary' character
 ]
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 #### Video 2
 
@@ -2578,13 +2622,15 @@ class: center, middle, inverse
 >"Was there an industrial revolution? The absurdity of the question is not that it is taken seriously but that the term is taken seriously ... by scholars who should know better" (Cameron, 1990 in Mokyr, "Editor's introduction")
 
 ---
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### The process of industrial transformation
 
 + Hard to see in aggregate
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r broadberry_et_al_headline, fig.height=4, fig.width=5.5, out.width="100%"}
 library(tidyverse)
 library(readxl)
@@ -2618,7 +2664,8 @@ real_gdp_eng %>%
 
 ## Urbanization & the fall in agricultural employment
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r ag_share, fig.align='center', fig.retina=3, out.width="80%", fig.width=5, fig.height=4}
 library(ggalt)
 library(ggrepel)
@@ -2641,7 +2688,7 @@ ag_share %>%
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 ```{r, out.width="80%"}
 knitr::include_graphics("figures/flax_spinning.png")
 ```
@@ -2654,11 +2701,13 @@ knitr::include_graphics("figures/flax_spinning.png")
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## Urbanization & the fall in agricultural employment
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r urbanization, fig.align='center', fig.retina=3, , out.width="100%", fig.width=5.5, fig.height=4}
 
 urban <- data.frame(date = c(1520, 1600,
@@ -2700,7 +2749,8 @@ class: center, middle, inverse
 
 ## Inventions: a vocabulary
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Process versus Product
 
@@ -2710,7 +2760,7 @@ class: center, middle, inverse
 
 --
 
-.pull-right[
+] {.column width="50%"}
 ### Macro vs Micro
 
 + **Macro** inventions -- "door opening breakthroughs"
@@ -2720,7 +2770,9 @@ class: center, middle, inverse
 --
 <br>
 
-.pull.center.Large[ None of these distinctions are very clean]
+::: {.center .large}
+None of these distinctions are very clean
+:::
 
 ---
 
@@ -2737,7 +2789,8 @@ background-size: contain
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Energy: Steam Engine
 
 + Converting *heat* energy into *work* energy
@@ -2750,7 +2803,7 @@ background-size: contain
         + Clear prototype for fossil fuels
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![newcomen_gif](https://upload.wikimedia.org/wikipedia/commons/1/16/Newcomen_atmospheric_engine_animation.gif)
 ]
 
@@ -2774,14 +2827,16 @@ background-image: url(figures/Spinning-jenny.jpg)
 background-position: right
 background-size: cover
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Textiles
 ]
 
 ---
 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Textiles
 
 + Cotton paradigmatic industry for showcasing inventiveness
@@ -2794,7 +2849,7 @@ background-size: cover
 
 --
 
-.pull-right[
+] {.column width="50%"}
 + Hargreaves, Spinning Jenny, 1764
     - Small and compatible with cottage production
     - Over 150,000 in use by 1811
@@ -2812,7 +2867,8 @@ background-size: cover
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Metallurgy
 
 Iron ore $\rightarrow$ pig iron $\rightarrow$ wrought iron
@@ -2825,7 +2881,7 @@ Iron ore $\rightarrow$ pig iron $\rightarrow$ wrought iron
 >"It is conceivable to imagine an industrial revolution based on water power and linen or wool -- in fact in many places that is precisely what happened. There was no substitute for iron, however, in thousands of uses, from nails to engines. As its price fell, iron invaded terrains traditionally dominated by timber, such as bridges, ships and eventually buildings" (Mokyr, p. 27).
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![henry_cort](figures/HenryCort.jpg)
 ]
 
@@ -2843,7 +2899,7 @@ class: center, middle, inverse
 ![:scale 75%](figures/toynbee.png)
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 > "...the essence of the industrial revolution is the substitution of competition for the medieval regulations which had previously controlled the production and distribution of wealth." (Toynbee 1884)
 
@@ -2868,7 +2924,7 @@ knitr::include_graphics("figures/stages_rostow.png")
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 ```{r thompson, out.width="45%", fig.align='center'}
 knitr::include_graphics("figures/making_thompson.jpg")
 ```
@@ -2939,7 +2995,7 @@ growth_data %>%
 
 ---
 
-.pull.center[
+::: {.center}
 ![:scale 60%](figures/manchester-ship-canal.jpg)]
 
 ### Revisionists: The dynamism of the 17th & 18th centuries
@@ -2964,7 +3020,7 @@ growth_data %>%
 + "...growth rates on their own are inadequate to the task of identifying and comprehending the industrial revolution"
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ### What should we focus on?
 
@@ -3075,7 +3131,8 @@ output:
 
 ## Today's Plan
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 .large[
 ### Part 1
 
@@ -3084,7 +3141,7 @@ output:
 ]
 ]
 
-.pull-right[
+] {.column width="50%"}
 .large[
 ### Part 2
 
@@ -3093,7 +3150,8 @@ output:
 
 ]]
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 .large[
 ### Part 3
 
@@ -3116,12 +3174,8 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 ---
@@ -3135,7 +3189,8 @@ class: center, middle, inverse
 
 ## Some brief advice on writing essays
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Answer the question!!
 
 + ...by presenting and interpreting other scholars answers to the question
@@ -3148,7 +3203,7 @@ class: center, middle, inverse
 + Say what you will do and then do it
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### Things not to worry about
 
 + Don't worry about your essay "not being economics-y enough"
@@ -3164,8 +3219,9 @@ class: center, middle, inverse
 ---
 ## Some brief advice on writing essays: essay structure
 
-.pull-left[
-.Large[
+::: {.columns}
+::: {.column width="50%"}
+::: {.large}
 + 2,000 words $\approx$ 5 paragraphs (400 words/paragraph)
     + Each paragraph should make a point
     + Subtracting intro and conclusion you can only make ~3 points. Make them count!
@@ -3173,8 +3229,8 @@ class: center, middle, inverse
 
 --
 
-.pull-right[
-.Large[
+] {.column width="50%"}
+::: {.large}
 + How to write an introduction
   + What you will argue and what you will cover
   + *Do not* put definitions
@@ -3196,7 +3252,8 @@ class: center, middle, inverse
 + Revolves around the idea of a **counterfactual**
     - Had you not taken an aspirin would you still have a headache?
 
-.pull-left[    
+::: {.columns}
+::: {.column width="50%"}    
 ```{r causality, fig.align='center', out.height="70%"}
 library(DiagrammeR)
 
@@ -3209,7 +3266,7 @@ graph LR
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 + Difference in headache status is the causal effect
 + **Can never be observed!**
     - Attributing a cause is about defining the unobserved counterfactual
@@ -3219,18 +3276,21 @@ graph LR
 
 ## Counterfactuals and history
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 + Counterfactuals are debated in history
 + Much more common in economic history/social-scientific history
     - Why?
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ![:scale 80%](figures/virtual_history.jpg)]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 80%](figures/altered_pasts.jpg)]
 ]
 ---
@@ -3243,7 +3303,8 @@ class: inverse, middle, center
 
 ## Allen on Why the Industrial Revolution was British
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ```{r allen_graph, fig.align='center', fig.retina=3, out.width="100%"}
 library(DiagrammeR)
@@ -3277,7 +3338,7 @@ style H fill:#93a1a1
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 + Allen's theory is multi-causal
     - High relative wages are one important component
 + He mainly wants to explain the adoption of technology in production -- industrial innovation
@@ -3291,7 +3352,8 @@ style H fill:#93a1a1
 
 ## Allen: Core causal mechanism
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r allen_graph_3, fig.align='center', fig.retina=3, out.width="100%"}
 
 mermaid("
@@ -3322,7 +3384,7 @@ style H fill:#93a1a1
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 + The core elements of the theory are
     * The price of labor
     * The price of capital
@@ -3336,7 +3398,8 @@ style H fill:#93a1a1
 
 ## Allen: additional supply factors
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r allen_graph_core, fig.align='center', fig.retina=3, out.width="100%"}
 
 mermaid("
@@ -3367,7 +3430,7 @@ style H fill:#dc322f
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 + The **supply** of innovation increased by
     + Availability of education
         - Product of high wages (as education is costly)
@@ -3380,7 +3443,8 @@ style H fill:#dc322f
 
 ## Allen: causes of the causes, why were wages high?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r allen_graph_4, fig.align='center', fig.retina=3, out.width="100%"}
 
 mermaid("
@@ -3411,7 +3475,7 @@ style H fill:#93a1a1
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 - Thinks wages grew through external trade/colonialism
 - Thinks low energy prices stem from geography: availability of coal deposits
     + Also trade drives commercial adoption of coal through urbanization
@@ -3441,13 +3505,14 @@ style H fill:#93a1a1
 > "...the bills that have been interpreted in the past as reports of wages received by labourers and craftsmen did not, in fact, state the pay of workers, but the rates charged by major building contractors to clients for types of service. ...Once contractors’ margins are taken into account, the actual wage in London construction was significantly below the levels reported in the series that have been used by Allen and others."
 
 ---
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ## Mokyr, on the Intellectual Origins of the Industrial Revolution
 
@@ -3475,7 +3540,7 @@ style G fill:#93a1a1
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 + **cultural** account grounded in Enlightenment
     - Cultures that produce **useful knowledge**
 + Prime movers are small fraction of high human capital individuals
@@ -3484,7 +3549,8 @@ style G fill:#93a1a1
 ]
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ## Mokyr, on the Intellectual Origins of the Industrial Revolution
 
@@ -3512,7 +3578,7 @@ style G fill:#93a1a1
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 + Core idea is a particular form of Enlightenment: **Industrial Enlightenment**
     - More focussed on science/engineering than elsewhere
     - Devoted to creating *useful knowledge*
@@ -3521,7 +3587,8 @@ style G fill:#93a1a1
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ## Mokyr, on the Intellectual Origins of the Industrial Revolution
 
@@ -3549,7 +3616,7 @@ style G fill:#dc322f
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 + *Knowledge production*: both scientific but also descriptive
     - Effect is more than cumulative as knowledge interacts
 + *Access costs* to information
@@ -3561,7 +3628,8 @@ style G fill:#dc322f
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ## Mokyr, on the Intellectual Origins of the Industrial Revolution
 
@@ -3589,7 +3657,7 @@ style G fill:#93a1a1
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 + *Belief in progress* as attainable in many domains (politics, ethics, natural philosophy) seen as important cultural view
     - Supports will to experiment in production
 + *Baconian science*:
@@ -3667,17 +3735,14 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 ## Today's Plan
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 .large[
 ### Part I
 
@@ -3687,7 +3752,7 @@ xaringanExtra::use_tile_view()
 ]
 ]
 
-.pull-right[
+] {.column width="50%"}
 .large[
 
 ### Part II
@@ -3711,20 +3776,21 @@ class: center, middle, inverse
 
 ## Why trade could matter
 
-.center.Large[**It usually does!!**]
+.center::: {.large}**It usually does!!**]
 
 <br>
 
 > "One of the ways -- the commonest perhaps -- by which an economy can develop from a pre-industrial to an industrial state is to exploit the opportunities open to it from international trade." (Deane, p. 51).
 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Profits of trade and the IR 
 + Marxist (and other, e.g. Williams) theorists thought profits from trade might have financed IR
     - Mostly financed out of business
 
 ]
-.pull-right[
+] {.column width="50%"}
 ![williams](figures/capitalism_slavery.jpg)
 ]
 ---
@@ -3737,7 +3803,8 @@ class: center, middle, inverse
 
 ## The Commercial Revolution
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Direct Impacts
 
 + Incomes
@@ -3751,19 +3818,21 @@ class: center, middle, inverse
     + Insurance
     ]
     
-.pull-right[
+] {.column width="50%"}
 ![tradestats](figures/trade_stats.png)
 ]
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## The early case for trade
 
 + Trade as a share of output and manufacturing output
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 
 ```{r trade_growth, fig.align='center', fig.retina=3, fig.width=6, fig.height=4.5, out.width="100%"}
 library(tidyverse)
@@ -3808,7 +3877,7 @@ df %>% gather("indicator", "share", -date) %>%
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II
 
@@ -3860,7 +3929,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III
 
@@ -3888,7 +3957,8 @@ class: inverse, center, middle
 
 ## Rehabilitating trade: Findlay & O'Rourke
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 + Britain faced continuously deteriorating terms-of-trade
     - Thus supply was outstripping demand
@@ -3905,7 +3975,7 @@ class: inverse, center, middle
 + Extent of technological change depended in part on trade openess
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![tot](figures/findlay_orourke_terms_of_trade.png)
 > "Both arguments rely crucially on the well-known fact that **trade systematically raises the elasticities of supply and demand** facing an economy." (Findlay & O'Rourke, p. 339)
 
@@ -3917,7 +3987,8 @@ class: inverse, center, middle
 
 ## Rehabilitating trade: Findlay & O'Rourke
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 + The Triangular trade
     + Americas
@@ -3931,7 +4002,7 @@ class: inverse, center, middle
         - Import primary products
  ]
     
-.pull-right[
+] {.column width="50%"}
 > "On both the supply and the demand sides, trade increased elasticities, meaning that a given domestic impulse (in this case, technological change) propelled the British economy much farther than would otherwise have been the case." (Findlay & O'Rourke, p. 343)
 
 ]
@@ -3999,8 +4070,9 @@ output:
 
 ### Welfare in multiple dimensions
 
-.pull-left[
-#### .Large[I will cover..].
+::: {.columns}
+::: {.column width="50%"}
+#### ::: {.large}I will cover..].
 
 ### Wages
 
@@ -4008,7 +4080,7 @@ output:
 - Wages vs family income
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### Heights?
 
 - The promise and pitfalls of anthropometrics
@@ -4034,23 +4106,19 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part I
 
 ---
 
-class: center, inverse, middle
+::: {.center .inverse .middle}
 
 ## The standard of living debate
 
@@ -4223,14 +4291,16 @@ lw_feinstein %>%
 ]
 
 ---
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## The verdict on wages
 
 + Mixed: grow, but slowly enough that dis-amenities of urban life could dominate
 + For instance, hard to argue for an 'improved' standard of living with small rise in income and big fall in life-expectancy!
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r life_expec, fig.align='center', fig.retina=3, fig.height=5, fig.width=7, out.width="90%"}
 
 le <- data.frame(year = seq(1800, 1890, 10),
@@ -4266,13 +4336,13 @@ le %>%
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 > "The present account of trends in living standards also seems **more plausible in relation to other indicators** of well-being. It accords better with the evidence of a sharp deterioration in infant and child mortality. It eliminates the paradox of the decline in nutritional status indicated by the early nineteenth-century height data occurring at a time of an allegedly swift advance in living standards." <br> -Feinstein, p. 652
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II
 
@@ -4280,7 +4350,8 @@ class: inverse, center, middle
 
 ## Height as a measure of human welfare?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Anthropometrics
 
 + A *net* measure
@@ -4298,7 +4369,7 @@ class: inverse, center, middle
 
 ]
 
-.pull-right[.center[
+] {.column width="50%"}.center[
 
 The concept of **biological well-being** 
 
@@ -4358,19 +4429,20 @@ On **average** it is not genes
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 # Child Labor
 
 ![frontis](figures/childhood_frontis.jpg)
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![jane](figures/jane_humphries.jpg)
 + Professor Jane Humphries<br>CBE, BA, MA, PhD, FBA
 + Draws on 600+ biographies of working men to study child labor
@@ -4378,7 +4450,8 @@ class: inverse, center, middle
 ]
 
 ---
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## Distribution of work-starting ages by cohort
 
 + "...the sons of miners, factory workers, outworkers, casual workers, and soldiers all on average started work below the age of 10." <br> Humphries, p. 406.
@@ -4467,7 +4540,8 @@ output:
 
 ## Today's Plan
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 .large[
 1. Presentation
     * Presentation discussion
@@ -4488,13 +4562,13 @@ solarized_light()
 
 ---
 
-class: center, inverse, middle
+::: {.center .inverse .middle}
 
 ## Presentation
 
 ---
 
-class: center, inverse, middle
+::: {.center .inverse .middle}
 
 ## Lecture
 
@@ -4502,7 +4576,8 @@ class: center, inverse, middle
 
 ## What were the corn laws?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 
 ### Tariffs on imported grain
@@ -4522,7 +4597,7 @@ class: center, inverse, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![bread](cheap_bread.jpeg)
 ]
 
@@ -4530,11 +4605,12 @@ class: center, inverse, middle
 
 ### The 'repeal' of the corn laws
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ![repeal_celeb](repeal_celebration.png.webp)
 ]
 
-.pull-right[
+] {.column width="50%"}
 + A symbolic victory because of **who** voted for repeal.
 + Major re-allignment within conservative party
     - Peelites vs Non-Peelites
@@ -4548,7 +4624,8 @@ class: center, inverse, middle
 
 ## Why?: Two broad categories of explanation
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 #### Ideas
 
@@ -4558,7 +4635,7 @@ class: center, inverse, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 #### Interests
 
@@ -4568,7 +4645,8 @@ class: center, inverse, middle
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## The political economy of repeal
 
 |  | group | | |
@@ -4584,7 +4662,7 @@ class: center, inverse, middle
 + The high price of grain hurts manufacturers (-) by forcing them to pay higher wages
 
 ]
-.pull-right[
+] {.column width="50%"}
 ![static](static_repeal.png)
 
 > "The impact of repeal on worker... depends on the ability of manufacturing to absorb the rural emigrants... They will **gain** if food is a large component of the consumption basket, but they **could lose** otherwise." <br> -O'Rourke & Williamson, p. 80
@@ -4597,7 +4675,8 @@ class: center, inverse, middle
 > "The findings of this book tell a simple but compelling story: **economic interests accounted for the momentum behind repeal**, a momentum that overshadowed almost all else. ...these same interests, left unsatisfied, could have snowballed into revolution — as Peel and others feared... Interests account for most of the dynamics of repeal, **but they do not on their own explain why reform rather than revolution emerged**... To understand that last (quite important) fraction of the whole, we require an understanding of how **the engine of interests was shaped by the forces of ideas and institutions**."<br> -SB, p. 2
 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Schonhardt-Bailey's Argument
 
 + Anti-Corn Law League
@@ -4605,7 +4684,7 @@ class: center, inverse, middle
 + Weakening opposition (aristocratic portfolio diversification)
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 > "Peel characterized repeal as a means to preserve the traditional institutions of the British government — and, in particular, the aristocracy."<br> -SB, p. 41
 ]
@@ -4635,7 +4714,8 @@ class: center, inverse, middle
 
 ## Peel's appeal to a 'territorial democracy'
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + Anti-Corn Law League threatened marginal MPs
 + Shift some Cons toward repeal
 + Peel offers argument in conservative terms: 
@@ -4643,7 +4723,7 @@ class: center, inverse, middle
 > "Peel characterized repeal as a means to **preserve the traditional institutions of the British government** — and, in particular, the aristocracy." (SB, 41)
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![exeter](exeter_acll_meeting.jpg)
 ]
 ********
@@ -4654,7 +4734,8 @@ class: center, inverse, middle
 
 ### The effect of repeal
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 #### If Britain is a 'small' economy
 
@@ -4666,7 +4747,7 @@ class: center, inverse, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 #### If Britain is a 'large' economy
 
@@ -4717,7 +4798,7 @@ class: center, inverse, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 ## Questions
 
@@ -4754,7 +4835,8 @@ output:
 
 ## Lecture Outline
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Part I: Background
 
@@ -4768,7 +4850,7 @@ output:
 + The revisionists
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### Part III: The economics of the poor law
 
 + Boyer's model
@@ -4801,7 +4883,7 @@ library(tidyverse)
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part I: Backgroound
 
@@ -4809,7 +4891,8 @@ class: inverse, center, middle
 
 ### The 'Old Poor Law'
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### A *relatively* generous system (a low bar!)
 
 > "English poor relief was probably the most generous in Europe in the late eighteenth and the early nineteenth centuries, absorbing around 2 per cent of the national product" <br> —Kidd, p. 10
@@ -4822,13 +4905,14 @@ class: inverse, center, middle
 + Predominant in wheat growing regions of the south
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 95%](figures/blaug_graph.png)
 ]
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### The Critique of the 'Old Poor Law'
 
 <br>
@@ -4840,17 +4924,18 @@ class: inverse, center, middle
 
 ![:scale 150%](figures/malthus.jpg)
 ]
-.right-column[
+:::
+::: {.column width="50%"}
 
-+ .Large[Malthus]
++ ::: {.large}Malthus]
 
 > "[The] first obvious tendence [of the Poor Laws] is to increase population without increasing the food or its support. A poor man may marry with little or no prospect of being able to support a family without parish assistance. **They may be said, therefore, to create the poor which they maintain.**" <br> —Malthus
 
-+ .Large[But...]
++ ::: {.large}But...]
 
 > **To a generation drunk on Malthusian wine, the population argument seemed irrefutable. But nowadays we are inclined to treat this type of reasoning with more skepticism**, particularly if the subsidy is modest in amount, increases less than proportionately with each additional child, and is continuously scaled down year after year; ...all three things were true under the Old Poor Law." <br> —Blaug, p. 153
 
-+ .Large[But but...] 
++ ::: {.large}But but...] 
     - Boyer disagrees ("Malthus was right after all" *JPE*, 1989)
 ]
 
@@ -4884,9 +4969,10 @@ class: inverse, center, middle
 
 + Expresses view that Old Poor Law encourages able-bodied workers to depend on relief
 
-.pull-left[![:scale 90%](figures/nassau_senior.jpg)]
+::: {.columns}
+::: {.column width="50%"}![:scale 90%](figures/nassau_senior.jpg)]
 
-.pull-right[![:scale 90%](figures/chadwick.png)]
+] {.column width="50%"}![:scale 90%](figures/chadwick.png)]
 ]
 
 
@@ -4898,11 +4984,12 @@ class: inverse, center, middle
 + Based on *Royal Commission* of 1832-34
 + Written by Edwin Chadwick (Bentham's secretary) & Nassau Senior
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 > "...a narrower and increasingly more punitive approach to adult applicants for relief." <br> —Kidd, p. 8
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 > "The answer, Chadwick believed, was to deter pauperdom ...deprive the pauper of his liberty, split up his family and incarcerate them in a workhouse." —Porter, p. 116  
 
@@ -4920,7 +5007,8 @@ background-size: cover
 
 ## The workhouse
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + Categorize individuals (age, gender, infirm)
 + Family separation
 + Daily 10 hour labor in summer, 9 hour labor in winter
@@ -4930,16 +5018,18 @@ background-size: cover
 + Varied regional implementation
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![workhouse](figures/workhouse_men_eating.jpg)
 ]
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 
 "Industrial development reduced the relative importance of agriculture in the economy, but **left the burden of poor rates primarily on landed income**. Is it surprising, then, that in the 1830s **a parliament dominated by landowners managed to impose restrictions on relief expenditure?**" <br> —Solar, p. 18.
 ]
-.right-column[
+:::
+::: {.column width="50%"}
 ```{r poor_law, fig.align='center', fig.retina=3, fig.width=7, fig.height=5, out.width="85%"}
 library(readxl)
 pl <- read_xlsx("data/boyer_pl.xlsx")
@@ -4968,7 +5058,7 @@ pl %>%
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II: Historiography
 
@@ -4976,7 +5066,8 @@ class: inverse, center, middle
 
 ## The economics of the Old Poor Law
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Boyer's classification
 
@@ -4990,7 +5081,7 @@ class: inverse, center, middle
   + Blaug, also Baugh, Digby, McCloskey in part
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 60%](figures/boyer_frontis.jpg)]
 
 ---
@@ -5054,7 +5145,7 @@ class: inverse, center, middle
 
 .pull-right70[
 
-.center.Large[Critiquing the Poor Law Report]
+.center::: {.large}Critiquing the Poor Law Report]
 
 >  The Poor Law Commissioners of 1834 ... **selected the facts so as to impeach the existing administration on predetermined lines**. ...what evidence they did present consisted of little more than picturesque anecdotes of maladministration. Even the elaborate questionnaire which they circulated among the parishes was never analyzed..."<br> —Blaug, pp. 177
 
@@ -5066,7 +5157,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III
 
@@ -5074,7 +5165,8 @@ class: inverse, center, middle
 
 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Why the Old Poor Law?
 
 #### Boyer's model: Key features
@@ -5093,7 +5185,7 @@ class: inverse, center, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ![:scale 80%](figures/boyer-table-3.1.png)
 <br>
@@ -5107,7 +5199,8 @@ class: inverse, center, middle
 
 > "...this article also speculates on the effects of relief on economic development. Some simple economic reasoning is used to draw out the implications of the essential features of the English system. One line of argument looks at poor relief as a system of insurance and focuses on the behaviour of beneficiaries. The other examines the way in which relief was financed and how this affected the behaviour of the property owners who paid for the system." —Solar, p. 3
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Poor Law different from continent in that
 
 1. More uniform and comprehensive
@@ -5117,7 +5210,7 @@ class: inverse, center, middle
 > "Poor relief, the quintessential function of local government in England, is ripe for inclusion in this new political economy of English development in the seventeenth and eighteenth centuries." —Solar, p. 1
 ]
 
-.pull-right[
+] {.column width="50%"}
 #### Effects
 
 + Larger than those who are recipients (insurance)
@@ -5162,18 +5255,15 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 
 ## Today's Plan
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Part I
 
 + Globalization and History
@@ -5184,7 +5274,7 @@ xaringanExtra::use_tile_view()
 + Political Economy of Free Trade
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### Part III
 
 + Heckscher-Ohlin trade theory
@@ -5193,7 +5283,7 @@ xaringanExtra::use_tile_view()
 
 ]
 ---
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part I: Globalization and history
 
@@ -5201,13 +5291,14 @@ class: inverse, center, middle
 
 ## Globalization in History
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### When was globalization?
 
 + The 1500s vs the 1800's
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### What should we consider globalization?
 
 + The existence of trading links?
@@ -5216,18 +5307,19 @@ class: inverse, center, middle
 
 <br>
 
-.center.Large[**Need to define the term globalization**]
+.center::: {.large}**Need to define the term globalization**]
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Plausible globalizations
 
 > "There have been few times in history when the world has been so closely interconnected — not only economically, but also in culture and tradition." <br> - Beatrice Manz cited in Cooper, *Colonialism in Question*, p. 100.
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 100%](figures/pax_mongolica.png)
 ]
 
@@ -5237,7 +5329,7 @@ class: inverse, center, middle
 + Janet Abu-Lughod (before 1350)
 + Frank and Gills: "the existence of the same world system in which we live stretches back at least 5,000 years"
 
-.pull.center[**Clearly definitions matter!**]
+::: {.center}**Clearly definitions matter!**]
 
 ---
 
@@ -5287,7 +5379,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II: The Corn Laws and the Political Economy of Free Trade
 
@@ -5295,7 +5387,8 @@ class: inverse, center, middle
 
 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## What were the corn laws?
 
 ### Tariffs on imported grain
@@ -5315,7 +5408,7 @@ class: inverse, center, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 80%](figures/cheap_bread.jpeg)
 ]
 
@@ -5323,11 +5416,12 @@ class: inverse, center, middle
 
 ### The 'repeal' of the corn laws
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ![:scale 80%](figures/repeal_celebration.png.webp)
 ]
 
-.pull-right[
+] {.column width="50%"}
 + A symbolic victory because of **who** voted for repeal.
 + Major re-allignment within conservative party
     - Peelites vs Non-Peelites
@@ -5341,7 +5435,8 @@ class: inverse, center, middle
 
 ## Why?: Two broad categories of explanation
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 #### Ideas
 
@@ -5351,7 +5446,7 @@ class: inverse, center, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 #### Interests
 
@@ -5361,7 +5456,8 @@ class: inverse, center, middle
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## The political economy of repeal
 
 |  | group | | |
@@ -5377,7 +5473,7 @@ class: inverse, center, middle
 + The high price of grain hurts manufacturers (-) by forcing them to pay higher wages
 
 ]
-.pull-right[
+] {.column width="50%"}
 ![:scale 80%](figures/static_repeal.png)
 
 > "The impact of repeal on worker... depends on the ability of manufacturing to absorb the rural emigrants... They will **gain** if food is a large component of the consumption basket, but they **could lose** otherwise." <br> -O'Rourke & Williamson, p. 80
@@ -5390,7 +5486,8 @@ class: inverse, center, middle
 > "The findings of this book tell a simple but compelling story: **economic interests accounted for the momentum behind repeal**, a momentum that overshadowed almost all else. ...these same interests, left unsatisfied, could have snowballed into revolution — as Peel and others feared... Interests account for most of the dynamics of repeal, **but they do not on their own explain why reform rather than revolution emerged**... To understand that last (quite important) fraction of the whole, we require an understanding of how **the engine of interests was shaped by the forces of ideas and institutions**."<br> -SB, p. 2
 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Schonhardt-Bailey's Argument
 
 + Anti-Corn Law League
@@ -5398,7 +5495,7 @@ class: inverse, center, middle
 + Weakening opposition (aristocratic portfolio diversification)
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 > "Peel characterized repeal as a means to preserve the traditional institutions of the British government — and, in particular, the aristocracy."<br> -SB, p. 41
 ]
@@ -5428,7 +5525,8 @@ class: inverse, center, middle
 
 ## Peel's appeal to a 'territorial democracy'
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + Anti-Corn Law League threatened marginal MPs
 + Shift some Cons toward repeal
 + Peel offers argument in conservative terms: 
@@ -5436,7 +5534,7 @@ class: inverse, center, middle
 > "Peel characterized repeal as a means to **preserve the traditional institutions of the British government** — and, in particular, the aristocracy." (SB, 41)
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 70%](figures/exeter_acll_meeting.jpg)
 ]
 ********
@@ -5447,7 +5545,8 @@ class: inverse, center, middle
 
 ### The effect of repeal
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 #### If Britain is a 'small' economy
 
@@ -5459,7 +5558,7 @@ class: inverse, center, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 #### If Britain is a 'large' economy
 
@@ -5481,7 +5580,8 @@ class: inverse, center, middle
 
 > "the Laws appear to have made little difference to British grain prices; the ability of contemporaries to understand their own affairs is discredited, and the whole Corn Law controversy is made to seem pointless and 'much ado about nothing'"<br> -Fairly in O'Rourke and Williamson, p. 81.
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + But this does not interrogate the counter-factual
     - What would prices have been in the absence of repeal?
     - Crimean War, American Civil War
@@ -5489,14 +5589,15 @@ class: inverse, center, middle
 + O'Rourke (1994) simulates counterfactual
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 100%](figures/counterfactual_prices.png)
 ]
 
 ---
 
 ## The Impact of Repeal
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + The big effects of repeal seem to emerge after the 1870s
 + Repeal appears to shift the composition of agricultural output
     - Farms move increasingly into non-tradables
@@ -5505,7 +5606,7 @@ class: inverse, center, middle
 + More extreme shift in Ireland
 ]
 
-.pull-right[
+] {.column width="50%"}
 > "The Emerald Isle was a lot greener in the second half of the nineteenth century" <br> OW, p. 89
 ]
 
@@ -5515,7 +5616,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III: Heckscher-Ohlin and Factor Prices
 
@@ -5523,13 +5624,14 @@ class: inverse, center, middle
 
 ## Heckscher-Ohlin
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ![heckscher](figures/Eli_Heckscher.jpg)
 + Eli Heckscher
 + Bertil Ohlin
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![ohlin](figures/Bertil_Ohlin.jpg)
 ]
 
@@ -5547,7 +5649,8 @@ class: inverse, center, middle
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Land Abundant Exporters
 
 Factors   |  Technology  |  Exports
@@ -5564,7 +5667,7 @@ D --> E((Food))")
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### Labor Abundant Exporters
 Factors   |  Technology  |  Exports
 ```{r ho_mermaid_2}
@@ -5583,7 +5686,8 @@ D --> E((Manuf.<br>goods))")
 
 ## Convergence in Factor Markets: The Evidence
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + OW compute a measure of how 'spread out' the data is
 
 ![rw_early](figures/real_wage_dispersion_1830_1870.png)
@@ -5592,7 +5696,7 @@ D --> E((Manuf.<br>goods))")
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 \begin{equation}
 C(N) = \frac{\sum_{i=1}^N(x_i - \bar{x})^2}{\bar{x}^2}, \ \bar{x} = \frac{\sum_{i=1}^N x_i}{N}
 \end{equation}
@@ -5672,10 +5776,12 @@ wr %>%
 ```
 
 ---
-.right-column[
+:::
+::: {.column width="50%"}
 ![:scale 100%](figures/anglo_us_wheat.png)]
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### Price of Wheat Convergence
 + Factor price convergence implies commodity market integration
 + The **European Grain Invasion**
@@ -5683,11 +5789,13 @@ wr %>%
 
 ---
 
-.right-column[
+:::
+::: {.column width="50%"}
 ![:scale 95%](figures/harley_freight_rates.png)
 ]
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### What accounts for convergence?
 
 + Transport costs fall so quickly tariffs are almost insufficient!
@@ -5717,12 +5825,13 @@ wr %>%
 
 ### Consequences: The Age of Mass Migration
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ![em](figures/emigration_europe.png)
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![im](figures/immigration_us.png)
 ]
 
@@ -5803,12 +5912,8 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 
@@ -5834,7 +5939,7 @@ xaringanExtra::use_tile_view()
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part I
 
@@ -5870,7 +5975,8 @@ class: inverse, center, middle
 
 ## Leverage, Risk and Liability: Why do banks fail?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Liability-side risks
 
 .large[
@@ -5883,7 +5989,7 @@ class: inverse, center, middle
 ]
 ]
 
-.pull-right[
+] {.column width="50%"}
 .large[
 ### Asset-side risks
 
@@ -5898,7 +6004,8 @@ class: inverse, center, middle
 
 ## Leverage, Risk and Liability: Why do banks fail?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Why take on so much risk?
 
 .large[
@@ -5910,7 +6017,7 @@ class: inverse, center, middle
 ]
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### Why do depositors allow it?
 
 .large[
@@ -5922,17 +6029,18 @@ class: inverse, center, middle
 
 <br>
 
-.Large[**Why not have banks hold 100% deposits in reserves?**]
+::: {.large}**Why not have banks hold 100% deposits in reserves?**]
 
 ---
 
 ## Leverage, Risk and Liability: solutions?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ![bic](figures/banking_in_crisis.jpg)
 ]
 
-.pull-right[
+] {.column width="50%"}
 .large[
 
 ### Turner Suggests 2:
@@ -5965,7 +6073,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II
 
@@ -6082,7 +6190,7 @@ bdata %>% filter(type != "State-chartered bank") %>%
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part III
 
@@ -6090,7 +6198,8 @@ class: inverse, center, middle
 
 ## The Path to Central Banking: Crisis Intervention
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Crises
 
@@ -6113,7 +6222,7 @@ class: inverse, center, middle
 + These rules are never exactly explicitly given
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 
 .center[
@@ -6143,7 +6252,8 @@ class: inverse, center, middle
 
 ## Development of Lender of Last Resort
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### 1825
 
 + BoE refuses liquidity provision initially
@@ -6153,7 +6263,7 @@ class: inverse, center, middle
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### 1866
 
 + lends extensively on collateral (discounts)
@@ -6171,7 +6281,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Discussion
 
@@ -6227,12 +6337,8 @@ source("helper_functions/helper_print_bib.R")
 bib <- ReadBib("pres.bib")
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 
@@ -6350,11 +6456,12 @@ widespred discussion of decline
 
 ## Giffen and the fall in prices
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ![:scale 100%](giffen.jpg)
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 100%](giffen_table.png)
 
 + Robert Giffen, "The Fall of Prices and Commodities in Recent Years", *Journal of the Royal Statistical Society*, Vol. 42, 1879.
@@ -6438,7 +6545,8 @@ Money is confusing
 
 ### Why were prices falling? Supply and demand for money
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 + US: Crime of '73
 + **A global phenomenon**
@@ -6451,7 +6559,7 @@ Money is confusing
 #### Source Flandreau et. al. 2008
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 100%](crime_73.jpg)
 ]
 
@@ -6661,7 +6769,8 @@ Productivity gains in transport and american farming pushed down prices of **tra
 
 ## Other sectors
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Coal & Steel
 
@@ -6674,7 +6783,7 @@ Productivity gains in transport and american farming pushed down prices of **tra
 + Were there disadvantages to industrializing first?
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ### Textiles/Manufactures for Export
 
@@ -6751,11 +6860,12 @@ This was a time for the expansion of major retail
 
 ## Was there a Great Depression?
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 > "The 'Great Depression' years were in fact years not only of crisis but of new growth, sometimes actual, sometimes potential."<br> -Wilson, "Economy and Society in Late Victorian Britain", pp. 198.
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 > "As regards the 'Great Depression' itself, surely the major outcome of modern research has been to destroy once and for all the idea of the existence of such a period in any unified sense." <br> -Saul, *The Myth of the Great Depression, 1873-1896*, pp. 54.
 ]
@@ -6795,12 +6905,8 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
 
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 background-image: url("figures/mccloskey_frontis.png")
@@ -6829,7 +6935,8 @@ background-size: contain
 </ol>
 ]
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 .large[
 .red[
 + We will discuss this today
@@ -6837,7 +6944,7 @@ background-size: contain
 ]
 ]
 
-.pull-right[
+] {.column width="50%"}
 .large[
 + This is for next week
 ]
@@ -6902,7 +7009,8 @@ trade %>%
 
 #### Savings rate
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + Simple accounting exercise
 
 $$
@@ -6911,7 +7019,7 @@ $$
 + Total growth (Q) comes from labor growth (L) with proportion $s_L$ and capital growth (K) with proportion $s_K$ and getting better at doing things (T).
 ]
 
-.pull-right[
+] {.column width="50%"}
 + Re-arranging
 
 $$
@@ -7092,7 +7200,8 @@ cor_mat %>% gather("Asset2", "cor", -Asset) %>%
 ![:scale 70%](figures/dem_debate.jpg)]
 
 ---
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ## Rules
 
@@ -7106,7 +7215,7 @@ cor_mat %>% gather("Asset2", "cor", -Asset) %>%
 + The judge (in his wisdom) deliberates and declares a winner
 ]
 
-.pull-right[
+] {.column width="50%"}
 ## Judging Criteria
 
 ### Making a coherent argument
@@ -7127,7 +7236,7 @@ cor_mat %>% gather("Asset2", "cor", -Asset) %>%
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Debate Question:
 # "Did Britain invest too much capital abroad?"
@@ -7158,17 +7267,14 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
 
 ```
 
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
+```{r setup-theme, include = FALSE}
 source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
 ```
 
 # Today's Plan
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### 1. Can entrepreneurs be irrational?
 
 + Some history of economic history
@@ -7178,7 +7284,7 @@ xaringanExtra::use_tile_view()
 + Critiquing the institutionalists
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### 2. A case study: the Lancashire cotton industry
 
 + Lancashire cotton as an ideal case
@@ -7188,7 +7294,7 @@ xaringanExtra::use_tile_view()
 ]
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part I
 
@@ -7212,7 +7318,8 @@ class: inverse, center, middle
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Professionalization
 
 + Research is still very interdisciplinary
@@ -7221,7 +7328,7 @@ class: inverse, center, middle
   - Again, a mix of economists, historians and sociologists
 ]
 
-.pull-right[
+] {.column width="50%"}
   > "The starting point for [RCEH's] thinking was Joseph Schumpeter’s concept of entrepreneurship as a creative act that in discontinuous fashion shifted outward the economy’s production possibility frontier (Schumpeter 1934). Entrepreneurship was important to study, they believed, because this kind of creativity was the key to greater economic well-being." <br> -Lamoreaux, "Beyond", p. 7
 ]
   
@@ -7235,12 +7342,13 @@ class: inverse, center, middle
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 > "The fuss about counterfactual history was itself, however, largely **a proxy war for a more fundamental disagreement about the importance of entrepreneurial innovation to economic growth.** Fogel promoted the neoclassical view that **technological change was induced by movements in relative prices** that signaled opportunities for profit. In the absence of the railroad, he argued, not only was it likely that the canal system would have expanded to meet the demand for low-cost transportation services in the U.S., but the automobile could well have been developed earlier: “The axiom of indispensability proceeds on the implicit and unverified assumption that the success of railroads did not choke off the search for other solutions to the problem of overland transportation” (Fogel 1964: 14-15)." <br> —Lamoreaux, "Beyond", p. 13.
 ]
 
-.pull-right[
+] {.column width="50%"}
 ## Conflict
 
 ![:scale 49%](figures/The_Visible_Hand_book_cover.jpg)
@@ -7250,7 +7358,8 @@ class: inverse, center, middle
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## Framing the problem
 
 ]
@@ -7313,7 +7422,8 @@ plotdf %>%
 
 ### McCloskey & Sandberg's Critique
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 #### Core of critique:
 
@@ -7324,7 +7434,8 @@ plotdf %>%
 > "...the orthodox neoclassical, or 'cliometric' approach, which in emphasizing the rationality of entrepreneurs denies the very notion of failure." <br> —Kirby, p. 637.
 ]
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Some general pertinent critiques
 
 + Argument by residual
@@ -7366,7 +7477,8 @@ plotdf %>%
 
 ## Elbaum & Lazonick Institutionalist Response, Cont'd
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Critique
 
 > "...the issue of Britain's decline has largely been avoided by neoclassical economic historians who have been preoccupied with demonstrating that turn-of-the-century British managers "did the best they could" by optimizing subject to given constraints" (568)
@@ -7374,7 +7486,7 @@ plotdf %>%
 + Even if entrepreneurs were not irrational, this does not address the issue of decline!!
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### Argument
 
 > "The managerial organization and technology employed by nineteenth- century British firms were comparatively simple. Characteristically, firms were run by owner-proprietors or close family associates." (569)
@@ -7388,7 +7500,8 @@ plotdf %>%
 
 ---
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ## Elbaum & Lazonick's Claim
 
 + Is 20th century economic growth a story of states/firms subordinating markets?
@@ -7413,7 +7526,7 @@ plotdf %>%
   
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Part II
 ---
@@ -7449,14 +7562,15 @@ class: inverse, center, middle
   - Rings need higher quality (more expensive) input or fibers break
   - Mules possibly more labor but cheaper input
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ### Leunig's approach
 
 + $2 \times 2 \times product$ design
 + For each thread count
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 + Compare NE to Lanc
   - For rings
@@ -7497,7 +7611,7 @@ class: inverse, center, middle
 
 ## Interpretation
 
-> .Large["I argue ...the most plausible proximate cause of Lancashire's success was external economies of scale, and that this reflects a deeper underlying advantage: vigorous competition." (108)]
+> ::: {.large}"I argue ...the most plausible proximate cause of Lancashire's success was external economies of scale, and that this reflects a deeper underlying advantage: vigorous competition." (108)]
 
 + Some vindication for McCloskey & Sandberg!
 + External economies of scale:
@@ -7571,7 +7685,7 @@ library(ggplot2)
 
 # The question
 
-.center.Large[
+.center::: {.large}
 > "Whether this complex institutional edifice of supranational power ... brought tangible gains to anything like a majority of British people" <br> —O'Brien, p. 163.
 ]
 
@@ -7653,7 +7767,8 @@ library(ggplot2)
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Offer's critique
 
 ### Critique along 2 dimensions
@@ -7666,7 +7781,7 @@ library(ggplot2)
   - Thinks costs of defence mismeasured
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 > "But even if the accounting estimates of historical capital were sound, they do not necessarily form an appropriate basis for estimating economic performance. In economics, past investments are sunk costs, water under the bridge. The constant review of expectations and prospects is the essence of economic life. Investments are sold in financial markets precisely in order to facilitate this constant review, and to convert lumpy chunks of physical capital into tradeable financial assets. That is why marketable securities were issued in the first place, so it is wrong to value such enterprises by historical cost methods, even if they are updated mechanically. **The market is a more objective and public mechanism for updating values. The Edelstein methodology of relying on market valuations is thus theoretically superior.**" <br> —Offer, p. 219
 ]
@@ -7786,7 +7901,8 @@ def_costs %>%
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Cobden/Hobson Model
 
@@ -7799,7 +7915,7 @@ def_costs %>%
     - War less likely?
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ### "Constructive imperialism"
 
@@ -7874,12 +7990,13 @@ library(ggplot2)
 
 # Wages, Living Standard and Precarity
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 > "However steady a man may be, however good a worker, he is never exempt from the fear of losing his job from ill-health or from other causes which are out of his control. . . . To the insufficiency of a low wage is added the horror that it is never secure." <br> —Reeves in Boyer, p. 1
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 #### The industrial economy introduces new sources of risk
 
 > "the peasant is insecure, but he curses the weather, not social institutions." <br> —Tawney in Boyer, p. 3
@@ -7964,7 +8081,8 @@ insec_dat %>%
 # The Campaign Against Outrelief
 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + Non-legislative initiative to push for more poor law provision **indoors**
 + Coupled with broader mid-Victorian 'ethic of respectability and self-help'
 
@@ -7973,7 +8091,7 @@ insec_dat %>%
 > “simple industry and thrift will go far towards making any person of ordinary working faculty comparatively independent in his means. Even a working man may be so, provided he will carefully husband his resources.” <br> —Smiles, in Boyer, p. 78.
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 100%](figures/av_toast.png)
 ]
 
@@ -8013,7 +8131,8 @@ wage_dat %>%
 
 ****************
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + The prior system:
   - Parishes nested in Poor Law unions
       + Each parish relieves its *own* poor
@@ -8025,7 +8144,7 @@ wage_dat %>%
           - Particularly effective in cities with large migrant labor pools
 ]
 
-.pull-right[
+] {.column width="50%"}
 > "Poor Law unions’ boards of guardians typically were dominated by members from the wealthier parishes, who responded to the increase in their taxes by looking for ways to reduce relief costs." —Boyer, p. 84
 
 .center[**Union Chargeability Act makes tax contributions based on property values and allows 'settlement' within 1 year**]
@@ -8037,7 +8156,8 @@ wage_dat %>%
 
 ## Changes in Poor Relief
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r boyer_plot, fig.height=4, fig.width=4, out.width="90%"}
 
 boyer_text <- "1861 108 709 817 4.1 1,830 9.2 13.2 1862 119 743 862 4.3 1,931 9.6 13.8 1863 123 872 995 4.9 2,229 10.9 12.4 1864 120 844 964 4.7 2,159 10.5 12.4 1865 118 783 901 4.3 2,018 9.7 13.1 1866 118 746 864 4.1 1,935 9.2 13.7 1867 122 755 877 4.1 1,964 9.2 13.9 1868 134 801 935 4.3 2,094 9.7 14.3 1869 140 817 957 4.4 2,144 9.8 14.6 1870 141 838 979 4.4 2,193 9.9 14.4 1871 140 843 983 4.4 2,202 9.8 14.2 1872 133 791 924 4.1 2,070 9.1 14.4 1873 128 702 830 3.6 1,859 8.0 15.4 1874 127 646 773 3.3 1,732 7.4 16.4 1875 129 616 745 3.1 1,669 7.0 17.3 1876 125 567 692 2.9 1,550 6.5 18.1 1877 130 530 660 2.7 1,478 6.1 19.7 1878 139 527 666 2.7 1,492 6.0 20.9 1879 147 555 702 2.8 1,572 6.3 20.9 1880 159 582 741 2.9 1,660 6.5 21.5 1881 161 561 722 2.8 1,617 6.3 22.3 1882 161 557 718 2.8 1,608 6.2 22.4 1883 162 551 713 2.7 1,597 6.0 22.7 1884 160 534 694 2.6 1,555 5.8 23.1 1885 162 533 695 2.6 1,557 5.8 23.3 1886 164 542 706 2.6 1,581 5.8 23.2 1887 167 555 722 2.6 1,617 5.9 23.1 1888 170 554 724 2.6 1,622 5.8 23.5 1889 168 548 716 2.6 1,604 5.7 23.5 1890 166 530 696 2.5 1,559 5.5 23.9 1891 163 515 678 2.4 1,519 5.3 24.0 1892 163 499 662 2.2 1,483 5.0 24.6 1893 169 505 674 2.3 1,510 5.1 25.1 1894 180 519 699 2.4 1,566 5.3 25.8 1895 184 523 707 2.4 1,584 5.3 26.0 1896 187 535 722 2.4 1,617 5.3 25.9 1897 186 530 716 2.3 1,604 5.2 26.0 1898 188 525 713 2.3 1,597 5.1 26.4 1899 190 538 728 2.3 1,631 5.2 26.1 1900 188 500 688 2.2 1,541 4.8 27.3 1901 204 494 698 2.2 1,564 4.8 29.2"
@@ -8077,7 +8197,7 @@ p1
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ```{r boyer_plot2, fig.height=4, fig.width=4, out.width="90%"}
 p2
@@ -8106,7 +8226,8 @@ p2
 
 ## The CAO and Self-Help
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r bank_depos, fig.height=5, fig.width=5, out.width="90%"}
 
 bank_depos <- tibble(date = seq(1850, 1910, 5),
@@ -8124,7 +8245,7 @@ bank_depos %>%
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 ```{r fstubens, fig.height=5, fig.width=5, out.width="90%"}
 
 fstu <- tibble(date = c("1871", "1891", "1911"),
@@ -8172,14 +8293,15 @@ Seebohm Rowntree
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ## Poverty Lines and Wages at the end of the 19th C.
 
 ![:scale 90%](figures/boyer-6.3.png)
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ![:scale 90%](figures/boyer-6.4.png)
 
@@ -8192,7 +8314,8 @@ Seebohm Rowntree
 ### The Royal Commission on the Poor Laws and the Relief of Distress
 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 .center[
 ![:scale 40%](figures/rc-poor-law-relief-distress.jpg)
 ]
@@ -8200,7 +8323,7 @@ Seebohm Rowntree
 > “never can so important a Royal Commission have produced so little in the way of immediate action.” <br> —Derek Fraser
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ![:scale 49%](figures/Beatrice_Webb,_c1875.jpg) ![:scale 49%](figures/Helen_Bosanquet.jpg)
 
@@ -8237,14 +8360,15 @@ Beatrice Webb & Helen Bosanquet
 
 # The political economy of reform
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + The role of voice?
     - Extension of the franchise
 + Political competition?
     - The rise of labor
 ]
 
-.pull-right[
+] {.column width="50%"}
 > “unless we can prove . . . that there is no necessity for a separate party to press forward the legitimate claims of Labour, you will find that . . . the Liberal Party will be practically wiped out and that, in its place, you will get a more extreme and revolutionary party.” <br> —Lloyd George
 
 ]
@@ -8259,7 +8383,8 @@ Beatrice Webb & Helen Bosanquet
 + Britain is also under-performing its GDP/pc rankings
   - Welfare is 'high' relative to europe in GDP/pc terms but middling in terms of biological welfare/schooling 
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Copying?
 
 + Daniel Rogers has argued for international diffusion of policy ideas within the atlantic world:
@@ -8271,7 +8396,7 @@ Beatrice Webb & Helen Bosanquet
 + Huberman & Meissner
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 .center[![:scale 60%](figures/huberman-meissner-diffusion.png)]
 
@@ -8282,7 +8407,7 @@ Beatrice Webb & Helen Bosanquet
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Conclusion
 
@@ -8424,7 +8549,8 @@ library(ggplot2)
 
 > "...Austria’s belligerent ultimatum to Serbia on Thursday 23 July — that transformed risk perceptions of the possibility of a major European war. It ‘came like a bombshell’, stated Bankers’ Magazine under the headline ‘The Great Crisis’. As fear supplanted greed there was a universal dash for cash, preferably gold. All sellers and no buyers meant that markets quickly ceased to function." <br> —Roberts, p. 5
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 #### Why did the LSE close?
 
 + International webs of credit flow to LSE
@@ -8434,7 +8560,7 @@ library(ggplot2)
 + **Example of fragility of interrupted interdependence**
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 90%](figures/ft-29-08-1914.png)
 ]
 
@@ -8442,14 +8568,16 @@ library(ggplot2)
 
 ## The war effort and the economy
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 ### The Scale of mobilization
 
 + Comparable to WWII
 + Unprecedented
 ]
 
-.right-column[
+:::
+::: {.column width="50%"}
 ![:scale 90%](figures/broadberry-wwi-expenditure-share-gdp.png)
 ]
 
@@ -8529,14 +8657,15 @@ debt_inf %>%
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ## Taxes
   
 > "The excess profits duty was **probably the most significant wartime fiscal innovation.** It was **the first tax to be levied on companies as opposed to their shareholders**. ...it taxed profits in excess of a stipulated peacetime standard. The rate was initially 50 per cent, but was increased to 60 per cent in April 1916 and then to 80 per cent in May 1917. There is no doubt that it was subject to much evasion and fraud (Stamp 1932: 216), but even so it was spectacularly successful as a revenue generator. By 1918/19 it was generating £285 million for the exchequer, almost a third of total revenue, making it the single most important tax wielded by the state."
 ]
 
-.pull-right[
+] {.column width="50%"}
 + Shift in levels and sources of tax revenue
   - From indirect to direct
   - Growth of tax base as threshold lowered + inflation
@@ -8603,7 +8732,8 @@ library(ggplot2)
 
 ## Today's Plan: The British economy in the interwar
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### Outline
 
@@ -8620,7 +8750,7 @@ library(ggplot2)
   - Why was Britain so quick to abandon Gold?
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ### Themes
 
@@ -8633,7 +8763,8 @@ library(ggplot2)
 
 class: center, middle
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r, comparative_perspective, out.width='100%', fig.height=4.5, fig.width=6, fig.retina=4}
 library(readxl)
 library(tidyverse)
@@ -8674,7 +8805,7 @@ plotdf %>%
 ```
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ```{r, comparative_perspective_percent, out.width='100%', fig.height=4.5, fig.width=6, fig.retina=4}
 plotdf %>% 
@@ -8702,7 +8833,8 @@ plotdf %>%
 
 ## Warfare, Capital Destruction & Growth
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 + Should see growth after war b/c
   - Can build more productive things
@@ -8717,7 +8849,7 @@ plotdf %>%
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ![eich_reg](figures/eichengreen_regression.png)
 ]
@@ -8738,7 +8870,8 @@ plotdf %>%
   
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## The 1920 Recession
 
 + Arguably over-determined
@@ -8755,7 +8888,7 @@ plotdf %>%
   - **supply-shock**
 ]
 
-.pull-right[
+] {.column width="50%"}
 ```{r uk_cpi, fig.align='center', fig.retina=4, out.width="100%",fig.height=3.25, fig.width=4}
 library(tidyverse)
 library(ggrepel)
@@ -8791,10 +8924,12 @@ cpi %>% filter(Year > 1910, Year <= 1938) %>%
 
 ## Unemployment in Comparative Perspective
 
-.right-column[
+:::
+::: {.column width="50%"}
 ![eich_unemp](figures/eichengreen_unemp.png)]
 
-.left-column[
+::: {.columns}
+::: {.column width="50%"}
 + Britain's unemployment problem tends to be worse than other industrialized countries in the 1920s
     - Situation changes after 1931 when Britain abandons the Gold Standard
 ]
@@ -8901,7 +9036,8 @@ xr %>% filter(Year > 1910, Year < 1938) %>%
   
 ### The push for 'orderly competition'
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 + Gov't eager to support business
   - Push significant mergers and amalgamations
   - Allow significant coordination in name of 'managerial capitalism' with economies of scale
@@ -8911,7 +9047,7 @@ xr %>% filter(Year > 1910, Year < 1938) %>%
 > "...as much as half of manufactured output to be produced by cartel members in the mid-1930s (Crafts 1999), leading one contemporary pessimistically to observe that ‘as a feature of industrial and commercial organisation free competition has nearly disappeared from the British scene’ (Lucas 1937: 64)." <br> -Eichengreen
 ]
 
-.pull-right[
+] {.column width="50%"}
 > "Competition was disliked by both socialists and rationalizers, and they both stressed not only scientific and rational, but also humane, values: 'the glamour of the perfect, unselfish mechanism hangs about the system of rationalization'. The business classes were, of course, very much aware of **the need to provide a political and economic alternative to socialism**. It was their position that was endangered by depression and it behoved them to revalidate it by showing that those parts of the market system which were causing trouble could be excised by the reorganization of private capitalism." <br> —Hannah, p. 36
 ]
 ---
@@ -8919,7 +9055,8 @@ xr %>% filter(Year > 1910, Year < 1938) %>%
 
 ### The Corporate Economy and Industrial Concentration
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ```{r industrial_concentration, fig.align='center', fig.retina=4, out.width="100%",fig.height=3.25, fig.width=4}
 library(hrbrthemes)
 
@@ -8942,7 +9079,7 @@ conc_df %>%
 #### Source: Hannah, p. 216
 ]
 
-.pull-right[
+] {.column width="50%"}
 
 ```{r industrial_concentration2, fig.align='center', fig.retina=4, out.width="100%",fig.height=3.25, fig.width=4}
 
@@ -8972,7 +9109,8 @@ ind_conc %>%
 
 ## The Great Depression
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 
 ### 1929
 
@@ -8982,7 +9120,7 @@ ind_conc %>%
 + **demand shock**
 ]
 
-.pull-right[
+] {.column width="50%"}
 ### 1931
 
 + Failures of banks (*Credit Anstalt*) in Austria and Germany
@@ -8993,7 +9131,8 @@ ind_conc %>%
 
 ---
 
-.pull-left[
+::: {.columns}
+::: {.column width="50%"}
 ## Leaving Gold
 
 #### Britain abandons the Gold Standard September 19, 1931
@@ -9009,7 +9148,7 @@ ind_conc %>%
 
 ]
 
-.pull-right[
+] {.column width="50%"}
 ![:scale 90%](figures/eichengreen_ind_prod.png)
 
 #### Britain after 1931
@@ -9033,7 +9172,7 @@ ind_conc %>%
 
 ---
 
-class: inverse, center, middle
+::: {.inverse .center .middle}
 
 # Questions for Discussion
 
