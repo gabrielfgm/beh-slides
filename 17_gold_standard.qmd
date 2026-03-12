@@ -101,12 +101,12 @@ blocking price adjustment.
 > This success, however, was **limited to the more advanced countries**
 > which formed the core of the system, and to those closely linked to
 > them by political as well as economic and financial ties. The exchange
-> rates of other currencies — particularly in Latin America —
-> fluctuated widely, and depreciated enormously, over the period. This
-> contrast between the 'core' countries and those of the 'periphery'
-> can be largely explained by the cyclical pattern of capital movements
-> and terms of trade, which contributed to stability in the first group,
-> and to instability in the second."
+> rates of other currencies — particularly in Latin America — fluctuated
+> widely, and depreciated enormously, over the period. This contrast
+> between the 'core' countries and those of the 'periphery' can be
+> largely explained by the cyclical pattern of capital movements and
+> terms of trade, which contributed to stability in the first group, and
+> to instability in the second."
 >
 > —Triffin, quoted in @dececcco1974 [pp. 18--19]
 
@@ -122,14 +122,12 @@ from mixed metallic systems to the gold standard.
 -   By 1880, "most industrialized nations had moved to gold" — the
     international gold standard was born [@flandreau1996].
 
--   **Why?** And why then? Flandreau's essay "The French Crime of 1873"
-    investigates the collapse of bimetallism in France and its global
-    consequences.
+-   **What explains the shift to gold?**
 
 ## The French Crime of 1873 {.smaller}
 
-Flandreau frames the question by contrasting the gold standard's
-'golden age' (1880–1914) with its 'gloomy age' (1920s–30s):
+Flandreau frames the question by contrasting the gold standard's 'golden
+age' (1880–1914) with its 'gloomy age' (1920s–30s):
 
 > "Indeed, most of the evils at work during the interwar years
 > (competition among nations to attract gold, inability to enforce a
@@ -145,7 +143,7 @@ Flandreau frames the question by contrasting the gold standard's
 
 ## Four theories of gold standard emergence {.smaller}
 
-Why did silver lose out? Flandreau identifies four schools of thought:
+Flandreau identifies four schools of thought for fall of silver:
 
 ::: incremental
 1.  **The fundamentals theory** — rising silver production in the late
@@ -179,12 +177,10 @@ externalities** and **switching costs**:
 -   Growing 19th-c. trade made a common standard attractive — and gold
     nations dominated world trade, making gold a natural focal point.
 
--   But switching from silver to gold was costly: you needed to acquire
-    gold and dispose of demonetized silver at acceptable prices.
+-   Switching from silver to gold was costly: you needed to dispose of
+    demonetized silver at acceptable prices.
 
--   Until the late 1860s these costs *deterred* countries from acting.
-
-## How bimetallism stabilized the system {.smaller}
+## How bimetallic system worked {.smaller}
 
 France's bimetallic system played a crucial stabilizing role — not
 through central bank policy, but through **private arbitrage**.
@@ -201,24 +197,22 @@ Following a logic initially developed by Jean-Baptiste Say:
 -   Because agents *know* the equilibrium ratio is fixed by law, they
     compete to eliminate any discrepancy — **a self-fulfilling peg**.
 
--   Result: between 1850 and 1870, the gold-silver exchange rate was
-    held within a narrow band reflecting only the costs of melting and
-    re-minting.
+-   Between \~1800 and 1870, the gold-silver exchange rate was held
+    within a narrow band by arbitrage.
 
 -   France's monetary holdings adjusted **endogenously** — becoming more
-    intensive in whichever metal was relatively more abundant — buffering
-    global bullion shocks.
+    intensive in whichever metal was relatively more abundant —
+    buffering global bullion shocks.
 :::
 
-## The gold-silver price ratio, 1800–1900
+## The gold-silver price ratio, 1800–1900 {.smaller}
 
 ![](images/flandreau-gold-silver-ratio.png)
 
 -   Ratio held close to **15.5 silver per gold** from 1800 to 1873
--   After 1873: sharp rise, peaking around **35** by 1896 — silver
-    collapses in value
--   The stability was not natural — it was the French bimetallic
-    system at work
+-   After 1873: silver collapses in value
+-   The stability was not natural — it was the French bimetallic system
+    at work
 
 ## The breakdown: Franco-Prussian war {.smaller}
 
@@ -243,28 +237,11 @@ After 1870, the Franco-Prussian war shattered the system:
     strategic miscalculations.
 :::
 
-## Conclusion: failure of cooperation, 1873 {.smaller}
-
-Flandreau's reframing has important implications for how we understand
-the 'golden age' of the gold standard:
-
--   The classical gold standard (1880–1914) is often praised for
-    international cooperation — but the *conditions* that made it
-    possible were established through conflict and accident.
-
--   The dysfunctions of the interwar period (competitive gold
-    attraction, beggar-thy-neighbour policies, Franco-German rivalry)
-    were **not new** — they were present from the start.
-
--   The stability of 1880–1914 reflected a particular — and fragile —
-    political and economic configuration, not a robust cooperative
-    equilibrium.
-
 ## International finance and the gold standard {.smaller}
 
 -   Under the international gold standard central banks worked to make
     sure that their *exchange rate remained stable* against other gold
-    standard currencies [@flandreau2004].
+    standard currencies [@flandreau].
 
     -   A system of **fixed exchange rates**
 
@@ -354,7 +331,7 @@ For more on spurious regression see: @granger1974
 :::
 :::::
 
-## Testing the trilemma: Specifications (Hard! Don't panic)  {.smaller}
+## Testing the trilemma: Specifications  {.smaller}
 
 Focus on relationship between **changes** in interest rates ( $\Delta$
 is often used to symbolize a difference over time)
@@ -370,7 +347,7 @@ $\Delta R_{it} = \alpha + \beta \Delta R_{bit} + \theta (c + R_{i,t-1} - \gamma 
 If no arbitrage costs we predict $\beta = 1$. Practically, expect
 $\beta$ to be much lower even if still binding.
 
-## Results in differences  {.smaller}
+## Results in differences {.smaller}
 
 ::::: columns
 ::: column
@@ -382,13 +359,13 @@ $\beta$ to be much lower even if still binding.
 :::
 
 ::: column
-![:scale 90%](images/Obstfeld-et-al-2005-table1.png){width="540"}
+![:scale 80%](images/Obstfeld-et-al-2005-table1.png){width="540"}
 :::
 :::::
 
 ------------------------------------------------------------------------
 
-## Results with cointegration  {.smaller}
+## Results with cointegration {.smaller}
 
 ::::: columns
 ::: {.column width="60%"}
@@ -425,11 +402,14 @@ df |>
 -   Why is there a trilemma? Do you agree that policy-makers have three
     choices or are there really only two?
 
--   Flandreau argues the gold standard was an 'accident of history'.
-    Does this change how we should interpret the stability of 1880–1914?
+-   Flandreau argues the gold standard was an 'accident of history'. Do
+    you agree?
 
 -   Is the collapse of bimetallism better explained by politics or
     economics? What does this tell us about international monetary
     cooperation more generally?
+
+-   Why was there such a strong political consensus in Britain around
+    the gold standard in the late-19th century?
 
 ## Works Cited
