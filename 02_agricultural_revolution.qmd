@@ -7,31 +7,16 @@ author: |
 date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
 format:
   revealjs:
-    theme: solarized
-    transition: slide
-    transition-speed: fast
+    theme: simple
     slide-number: true
-    footer: "British Economic History"
     css: ["helper_functions/extra.css"]
     beforeInit: "helper_functions/macros.js"
+bibliography: references.bib
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
-                      message = FALSE, fig.align='center', fig.retina=3,
-                      out.width="75%")
-
-library(RefManageR)
-BibOptions(check.entries = FALSE, 
-           bib.style = "authoryear", 
-           style = "markdown",
-           dashed = TRUE, hyperlink = FALSE)
-source("helper_functions/helper_print_bib.R")
-bib <- ReadBib("pres.bib")
-```
-
-```{r setup-theme, include = FALSE}
+```{r}
 source("helper_functions/theme_lecture.R")
+
 ```
 
 # Outline
@@ -44,13 +29,9 @@ source("helper_functions/theme_lecture.R")
 
 ### Part 4: Preview of next week: reading regressions
 
----
-
 # Part I: Feeding Britain: an overview
 
----
-
-### A growth-accounting framework
+## A growth-accounting framework
 
 + Agricultural output is the result of combining
     - Land
