@@ -1,396 +1,289 @@
 ---
-title: "Interwar financial and monetary crisis" 
-author: | 
-    | Dr. Gabriel Geisler Mesevage 
-    | gabriel.mesevage@kcl.ac.uk
-date: "Last update: `r format(Sys.time(), '%d %B, %Y')`"
+title: "Interwar financial and monetary crisis"
+author: "Gabriel Mesevage"
 format:
   revealjs:
-    theme: solarized
-    transition: slide
-    transition-speed: fast
-    slide-number: true
-    footer: "British Economic History"
-    css: ["helper_functions/extra.css":::
-    beforeInit: "helper_functions/macros.js"
+    slide-number: c/t
+    chalkboard:
+      buttons: true
+editor:
+  markdown:
+    wrap: sentence
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE,
                       message = FALSE, fig.align='center', fig.retina=3,
                       out.width="75%")
-
-
-```
-
-```{r xaringan-themer, include = FALSE}
-library(xaringanthemer)
-style_solarized_light()
-source("helper_functions/theme_lecture.R")
-xaringanExtra::use_webcam()
-xaringanExtra::use_tile_view()
-
 library(tidyverse)
 library(ggplot2)
 ```
 
-### Today's topics
+## Today's plan {.smaller}
 
-1. Globalization and money: the 'trilemma' in historical perspective
-  - What is the international monetary 'trilemma'?
-  - What kind of policy trade-offs do counties face?
-  - Thinking about historical monetary regimes
-2. The gold standard
-  - How it worked in the 19th century
-  - How it stopped working in the 20th century
-  - Why it stopped working
-3. Financial crisis
-  - The Central European meltdown
-  - Acceptances: the market for insuring other people's debt
-  - Bank balance sheets as a transmission mechanism
+1.  The interwar monetary system: return to gold and collapse
+2.  What made the interwar gold standard different?
+3.  The 1931 crisis: from Central Europe to London
+4.  Explaining interwar dysfunciton: Kindleberger vs Eichengreen
 
----
+## The interwar return to gold {.smaller}
 
-### Economic globalization over the long-term
+The gold standard was 'paused' during WWI: capital controls, suspension of gold export.
 
-.center::: {.large}
-> "The characterization of economic globalization as a "golden straitjacket" evokes two distinct sets of questions. One can ask how golden the jacket is, or else how strait it is." <br> &mdash;Obstfeld, Shambaugh, Taylor (2005), p. 423
+After WWI there were widespread efforts to **return** to the gold standard — yet the interwar standard proved deeply unstable.
 
- {.large}
-+ **'Golden'**: the way constraints on economic policy from globalization impact growth
-  - E.g. literature on effects of gold standard adherence
-+ **'Strait'**: how binding are these constraints anyway?
-:::
+> The system collapsed in waves: a first wave of departures in 1931–32, and a final wave in the mid-1930s.
 
+## The wave of gold standard adoption and departure
 
----
+```{r wave_chart}
+#| fig-height: 4.5
+#| fig-width: 7
+#| out-width: "90%"
 
-.center[
-![:scale 80%:::(figures/trilemma.png)
+gold <- read_csv("data/eichengreen_table_7_1.csv")
 
-**Examples?**
-:::
+gold_long <- gold |>
+  pivot_longer(-Nation, names_to = "year", values_to = "status") |>
+  mutate(year = as.integer(year),
+         on_gold = status == "X")
 
----
-
-### The Trilemma: historical monetary policy regimes
-
-::: {.columns}
-::: {.column width="50%"}
-::: {.large}
-Can pick **two** out of:
-
-1. Stable exchange rates
-2. free capital mobility
-3. and flexible domestic monetary policy,
-
-
-
-
- {.column width="50%"}
-
-### Regimes
-
-::: {.large}
-1. Classical gold standard (1870s-1914): 1 & 2
-2. Interwar gold standard (1918-1938): **here be dragons...**
-3. Bretton woods (1950s-1973): 1 & 3
-4. Current regime (1970s-present): mostly 2 & 3
-
-
----
-
-### The trilemma: *testing* historical monetary policy regimes
-
-::: {.large}
-
-All the pieces are **hard to measure**.
-
-1. Exchange rate stability is the easiest but still imperfect, e.g. if a currency is **officially** pegged, does it trade at the peg in **practice**?
-2. Capital mobility is difficult to track.
-3. How do we know if domestic monetary policy is being exercised 'flexibly'?
-  + Obstfeld, Shambaugh, Taylor (2005) propose testing **short-run nominal interest rate deviations** from a global benchmark
-  + What if domestic authorities 'flexibly' choose to follow the global benchmark?
-
-:::
-
----
-
-### Adjusting to global interest rate movements
-
- {.column width="50%"}
-```{r, fig.align='center', fig.retina=4, fig.height=4, fig.width=6, out.width="90%"}
-library(tidyverse)
-
-df <- tibble(regime = c("1870-1914: Gold Standard", "1870-1914: Gold Standard", 
-                             "1945-1973: Bretton Woods", 
-                             "1973+: Post-Bretton Woods", "1973+: Post-Bretton Woods"),
-             fixed = c("Peg", "Non-Peg", "Peg", "Peg", "Non-Peg"),
-             theta = c(-.27, -.16, -.11, -.19, -.06),
-             Halflife = c(4.79, 4.44, 9.28, 7.84, 35.16))
-
-df |> 
-  ggplot(aes(fixed, Halflife, fill = fixed)) + 
-  geom_col() +
-  facet_wrap(~regime) + 
-  theme_lecture + 
-  ylab("Number of months adjustment takes") + 
-  guides(fill = F) +
-  labs(caption = "From Obstfeld, Shambaugh, Taylor (2005)")
-
+gold_long |>
+  group_by(year) |>
+  summarise(n_on_gold = sum(on_gold, na.rm = TRUE)) |>
+  ggplot(aes(year, n_on_gold)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  theme_minimal() +
+  labs(title = "Countries on the Gold Standard, 1919–1937",
+       caption = "Source: Eichengreen, Table 7.1",
+       x = "Year", y = "Number of countries")
 ```
- {.columns}
-::: {.column width="50%"}
-+ For the Gold Standard: 'gold points' (costs of arbitrage) plus tendency for British rate to mean-revert means you can partially adjust and wait
-+ But adjustment is still **much faster** than other eras.:::
 
----
+## The Dollar-Pound Exchange Rate
 
-### Why might adjustment be different under the gold standard?
+```{r us_uk_xr}
+#| fig-height: 4.5
+#| fig-width: 6
+#| out-width: "80%"
 
-> "What rendered the commitment to gold credible? In part, there was **little perception that policies required for external balance were inconsistent with domestic prosperity.** There was scant awareness that defense of the gold standard and the reduction of unemployment might be at odds." <br> &mdash;Eichengreen, p. 3
-
---
-
-### Bringing the politics back in
-
-> "The connection between domestic politics and international economics is at the center of this book. The gold standard, I argue, **must be analyzed as a political as well as an economic system**." <br> &mdash;Eichengreen, p. 7
-
----
-
-### The political economy of the gold standard and its demise
-
-::: {.large}
-We have a **rapidly adjusting** international monetary system post-1880 that appears to be stable.
-
-This system is 'paused' during WWI: in particular, during the war there are various **capital controls** including preventing the export of gold.
-
-After WWI there are widespread efforts to return to the Gold Standard system: poor economic performance, Great Depression, destabilizing capital flows. What happened?
-:::
-
----
-
-class: center, middle, inverse
-
-# Monetary problems in the interwar
-
----
-
-### The interwar gold standard: some major interpretations
-
-::: {.columns}
-::: {.column width="50%"}
-#### Charles Kindleberger: **hegemonic stability theory**
-
-![:scale 50%:::(figures/kindleberger-frontis.jpg)
-
-::: {.column width="50%"}
-#### Barry Eichengreen: **credibility** and **cooperation**
-
-![:scale 50%:::(figures/golden-fetters-frontis.jpg)
-:::
-
----
-
-### Hegemonic stability
-
-> "...**the international economic and monetary system needs leadership**. A country that is prepared ... to set standards of conduct ... to take on an undue share of the burdens of the system, and in particular to **take on its support in adversity** by accepting its redundant commodities, maintaining a flow of investment capital, and discounting its paper. Britain performed this role in the century to 1913; the United States in the period after the Second World War.... It is the theme of this book that part of the reason for the length and most of the explanation for the depth of the world depression was the inability of the British to continue their role of underwriter to the system and the reluctance of the United States to take it on until 1936."<br> &mdash; Kindleberger, 1987, p. 11
-
-Key British roles for the system per Kindleberger
-
-1. "accepting its redundant commodities": counter-cyclical buyer
-2. "maintaining a flow of investment capital": counter-cyclical global lender
-3. "discounting its paper": provider of liquidity in extremis
-
----
-
-### Credibility and cooperation
-
-::: {.columns}
-::: {.column width="50%"}
-
-### Credibility
-
-> "If one of these central banks lost gold reserves and its exchange rate weakened, funds would flow in from abroad in anticipation of the capital gains investors in domestic assets would reap once the authorities adopted measures to stem reserve losses and strengthen the exchange rate. ... The very credibility of the official commitment to gold meant that this commitment was rarely tested." <br> &mdash;Eichengreen, p. 3
-
-+ Strengthened by domestic political economy
-
-::: {.column width="50%"}
-
-### Cooperation
-
-+ If global credit conditions are too tight and you want to loosen, difficult for a bank to do so on its own
-  - E.g. if France reduces interest rates, capital will flow out to London. 
-+ Argues that **outside of crises** global banks played 'follow the leader' mimicing London
-+ **During crises** there is formal and explicit cooperation
-+ Concludes **not** a hegemon, a cooperative system that is collectively managed
-:::
-
----
-
-### Credibility, Cooperation and Demise
-
-::: {.large}
-
-In Eichengreen's version after WWI gold-commitment is **much less credible** because of domestic political forces on monetary and fiscal policy.
-
-**Cooperation became much harder** because of 
-
-1. Domestic interest groups.
-2. The international war debt disputes (reparations)
-3. 'competing conceptual frameworks' shaped by uniquely bad monetary experiences during and after the war
-  + E.g. anti-inflationary France vs more interventionist Britain
-:::
-
----
-
-class: center, middle, inverse
-
-# The 1931 Crisis and the UK's exit from the Gold Standard
-
----
-
-```{r us_uk_xr, fig.align='center', fig.retina=4, out.width="80%",fig.height=4.5, fig.width=6}
-library(tidyverse)
 library(ggrepel)
 
 xr <- read_csv("data/EXCHANGEPOUND_1900-1945.csv", skip = 2)
 
-
-xr %>% filter(Year > 1910, Year < 1938) %>% 
+xr |> filter(Year > 1910, Year < 1938) |>
   ggplot(aes(Year, Rate)) +
-  geom_rect(aes(xmin=1914, xmax=1918, ymin=3.5, ymax=5.5), 
+  geom_rect(aes(xmin=1914, xmax=1918, ymin=3.5, ymax=5.5),
             fill='coral', alpha=.25) +
-  annotate('text', x=1913, y=5.25, label="WWI", color="coral")+ 
-  geom_rect(aes(xmin=1925, xmax=1931, ymin=3.5, ymax=5.5), 
+  annotate('text', x=1913, y=5.25, label="WWI", color="coral") +
+  geom_rect(aes(xmin=1925, xmax=1931, ymin=3.5, ymax=5.5),
             fill='royalblue', alpha=.05) +
-  annotate('text', x=1923, y=5.25, label="Return to\nGold at\nParity", 
+  annotate('text', x=1923, y=5.25, label="Return to\nGold at\nParity",
            color = "royalblue") +
   geom_vline(xintercept = 1933) +
   annotate('text', x=1935, y=3.75, label="US leaves\nGold") +
   geom_line() +
   geom_point() +
-  theme_lecture +
-  labs(title = "The Dollar-Pound Exchange Rate", 
-       subtitle = "1910-1938") +
+  theme_minimal() +
+  labs(title = "The Dollar-Pound Exchange Rate",
+       subtitle = "1910–1938") +
   ylab("$ per £")
-
 ```
 
----
+## Interwar differences {.smaller}
 
-### The Great Depression
+::: incremental
+-   Gold bullion standard
+    -   Gold **coins** no longer circulate — replaced by paper backed by gold bars
+-   Gold exchange standard
+    -   Foreign exchange (sterling, dollars) held as central bank reserves **alongside** gold
+    -   US was a notable exception — very uneconomical in its use of gold
+-   Shift in monetary instruments
+    -   Public debt grown larger than commercial paper
+    -   Prioritizes **open market operations** as a key monetary lever
+    -   Increases problem of **sterilizing gold flows**
+    -   France and the US accumulated large gold stocks and sterilized them — draining liquidity from the rest of the world
+:::
 
-::: {.columns}
+## Perceptions of a gold shortage {.smaller}
+
+-   The *ratio* of gold to notes and deposits fell from **48% to 41%** between 1913 and 1925 — not a dramatic change
+-   But gold was **geographically concentrated**: France and the US accumulated large reserves while sterilizing inflows
+-   Deflation heightened the perception of scarcity and created anxiety about adequacy going forward
+
+## Realities of a gold shortage
+
+::::: columns
 ::: {.column width="50%"}
+![](images/clipboard-3939344333.png)
+:::
 
+::: {.column width="50%"}
+![](images/clipboard-230727806.png)
+:::
+:::::
+
++ Output did fall but was offset by conversion of coinage
++ Reserve accumulation however was an unsustainable dynamic
+
+## The gold exchange standard {.smaller}
+
+The gold exchange standard created mutual dependencies that Mlynarski warned about as early as 1929:
+
+> "The banks which have adopted the gold exchange standard will become more and more dependent on foreign gold reserves, and the banks which play the part of gold centres will grow more and more dependent on deposits belonging to foreign banks. ...the gold centres may fall into the danger of an excessive dependence on the banks which accumulate foreign exchange reserves and vice versa the banks which apply the gold exchange standard may fall into an excessive dependence on the gold centres. The latter may be threatened with difficulties in exercising their rights to receive gold, whilst the former may incur the risk of great disturbances in their credit structure in case of a sudden outflow of reserve deposits." <br>— Mlynarski, quoted in Eichengreen
+
+This is a **Triffin dilemma** avant la lettre: the reserve-currency country must run deficits to supply liquidity, but those deficits eventually undermine confidence in the reserve currency.
+
+## The Great Depression {.smaller}
+
+::::: columns
+::: {.column width="50%"}
 ### 1929
 
-+ Crash in US stock market
-  - Spills outward
-  - Hits in particular places UK exports to $\rightarrow$ big falls in UK industrial production
-+ **demand shock**
+-   Crash in US stock market
+    -   Spills outward
+    -   Hits in particular places UK exports to $\rightarrow$ big falls in UK industrial production
+-   **Demand shock**
+:::
 
 ::: {.column width="50%"}
 ### 1931
 
-+ Failures of banks (*Creditanstalt*) in Austria, Hungary, and Germany
-+ Governments introduce capital controls to stem currency depreciations
-  - implies a ban on payments abroad
-+ Financial crisis **imported to London via merchant banks** (Accominotti)
-  - Crash in 1931 damages financial system (see James, *End of Globalization*)
-  - Speculative pressure on pound
+-   Failures of banks (*Creditanstalt*) in Austria, Hungary, and Germany
+-   Governments introduce capital controls to stem currency depreciations
+    -   Implies a ban on payments abroad
+-   Financial crisis **imported to London via merchant banks** (Accominotti)
+    -   Crash in 1931 damages financial system (see James, *End of Globalization*)
+    -   Speculative pressure on pound
+:::
+:::::
+
+## How were UK merchant banks exposed to Central Europe? {.smaller}
+
+> "How did these Central European events affect British banks? ...their balance sheets suggest that the banks' exposure to Central Europe was not mere portfolio exposure. In fact, direct portfolio holdings of Central European debts only accounted for a sixth of the British financial system's exposure to this region in 1931. However, the banks **were** exposed through the bankers' acceptance." <br>—Accominotti (2012), p. 6.
+
+**What are bankers' acceptances and how do they work?**
+
+## Acceptances: operations at origination {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+-   An acceptance is an **insurance contract on a debt**
+-   They underpinned 19th-century trade finance
+-   Now we call them credit-default swaps (CDS)
+-   Facilitate trade finance between counter-parties that don't know each other well
 :::
 
----
-
-
-
-### How were UK merchant banks exposed to Central Europe?
-
-::: {.large}
-> "How did these Central European events affect British banks? ...their balance sheets suggest that the banks' exposure to Central Europe was not mere portfolio exposure. In fact, direct portfolio holdings of Central European debts only accounted for a sixth of the British financial system's exposure to this region in 1931. However, the banks **were** exposed through the bankers' acceptance." <br>&mdash;Accominotti (2012), p. 6.
-
-
-+ **What are bankers' acceptances and how do they work?**:::
-
----
-
-::: {.columns}
 ::: {.column width="50%"}
-### Acceptances
+![Operations at origination (Accominotti et al., 2021)](figures/acceptance_origination.png){width="100%"}
+:::
+:::::
 
-+ An acceptance is an insurance contract on a debt
-+ They underpinned 19th c. trade finance
-+ Now we call them credit-default swaps (CDS)
-+ Facilitate trade finance between counter-parties that don't know each other well
+## Acceptances: operations at maturity {.smaller}
 
+::::: columns
 ::: {.column width="50%"}
-![:scale 100%:::(figures/acceptance_origination.png)
-#### Operations at origination from Accominotti et. al. (2021)
+-   Accepting banks are responsible for paying the debt at maturity
+-   But they expect to be given the money by the importer to do so
+-   The acceptance only costs them money if the importer defaults!
+-   So functionally the bank is **insuring the importer's debt**
 :::
 
----
-
-::: {.columns}
 ::: {.column width="50%"}
-### Acceptances
+![Operations at maturity (Accominotti et al., 2021)](figures/acceptance_liquidation.png){width="100%"}
+:::
+:::::
 
-+ Accepting banks are responsible for paying the debt at maturity
-+ But they expect to be given the money by the importer to do so
-+ The acceptance only costs them money if the imorter defaults!
-+ So functionally the bank is insuring the importer's debt
+## Acceptance defaults and bank runs {.smaller}
 
+::::: columns
 ::: {.column width="50%"}
-![:scale 100%:::(figures/acceptance_liquidation.png)
-#### Operations at maturity from Accominotti et. al. (2021)
+-   The 'standstill' agreements around Central European debts **freeze payments**
+-   Outstanding bills are a **big** fraction of merchant bank capital
+-   Anticipating problems, depositors withdraw from these banks — prompting a run!
 :::
 
----
-
-::: {.columns}
 ::: {.column width="50%"}
-
-### Acceptance defaults and bank runs
-
-+ The 'standstill' agreements around Central European debts freeze payments
-+ Outstanding bills are a **big** fraction of merchant bank capital
-+ Anticipating problems, depositors withdraw from these banks prompting a run!
-
-::: {.column width="50%"}
-
-![:scale 100%:::(figures/standstill_acceptances_and_deposits.png)
+![](figures/standstill_acceptances_and_deposits.png){width="100%"}
 :::
----
+:::::
 
-### From the financial crisis to monetary problems
+## From the financial crisis to monetary problems {.smaller}
 
-::: {.large}
-> "The Central European crisis did not directly cause a balance-of-payment problem in Britain, it weakened the banking system. Nevertheless, in a fixed exchange rate system, banking troubles can lead to speculative attacks on the currency because investors expect authorities to loosen monetary policy in the near future, in order to support the banks."<br>&mdash;Accominotti (2012) p. 25
+> "The Central European crisis did not directly cause a balance-of-payment problem in Britain, it weakened the banking system. Nevertheless, in a fixed exchange rate system, banking troubles can lead to speculative attacks on the currency because investors expect authorities to loosen monetary policy in the near future, in order to support the banks." <br>—Accominotti (2012), p. 25
 
 ### Why might the UK loosen monetary policy?
 
-+ To promote financial stability
-+ To maintain London's role as an international financial center
-+ The political influence of the merchant banks
+-   To promote financial stability
+-   To maintain London's role as an international financial center
+-   The political influence of the merchant banks
+
+## The interwar gold standard in a 19th century mirror {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+#### Charles Kindleberger: **hegemonic stability theory**
+
+![](figures/kindleberger-frontis.jpg){width="50%"}
 :::
 
+::: {.column width="50%"}
+#### Barry Eichengreen: **credibility** and **cooperation**
 
----
+![](figures/golden-fetters-frontis.jpg){width="50%"}
+:::
+:::::
 
-# Questions for Discussion
+## Hegemonic stability {.smaller}
 
-> Why was the interwar monetary system so unstable?
+> "...**the international economic and monetary system needs leadership**. A country that is prepared ... to set standards of conduct ... to take on an undue share of the burdens of the system, and in particular to **take on its support in adversity** by accepting its redundant commodities, maintaining a flow of investment capital, and discounting its paper. Britain performed this role in the century to 1913; the United States in the period after the Second World War.... It is the theme of this book that part of the reason for the length and most of the explanation for the depth of the world depression was the inability of the British to continue their role of underwriter to the system and the reluctance of the United States to take it on until 1936." <br>—Kindleberger, 1987, p. 11
 
-<br>
+Key British roles per Kindleberger:
 
---
+1.  "accepting its redundant commodities": counter-cyclical buyer
+2.  "maintaining a flow of investment capital": counter-cyclical global lender
+3.  "discounting its paper": provider of liquidity in extremis
 
+## Credibility and cooperation {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+### Credibility
+
+> "If one of these central banks lost gold reserves and its exchange rate weakened, funds would flow in from abroad in anticipation of the capital gains investors in domestic assets would reap once the authorities adopted measures to stem reserve losses and strengthen the exchange rate. ... The very credibility of the official commitment to gold meant that this commitment was rarely tested." <br>—Eichengreen, p. 3
+
+:::
+
+::: {.column width="50%"}
+### Cooperation
+
+-   If global credit conditions are too tight and you want to loosen, difficult for a bank to do so on its own
+    -   E.g. if France reduces interest rates, capital will flow out to London
+-   Outside of crises: global banks played 'follow the leader' mimicking London
+-   During crises: formal and explicit cooperation
+-   Concludes **not** a hegemon, but a cooperative system that is collectively managed
+:::
+:::::
+
+## Credibility, cooperation and demise {.smaller}
+
+In Eichengreen's version, after WWI the gold-commitment is **much less credible** because of domestic political forces on monetary and fiscal policy.
+
+**Cooperation became much harder** because of:
+
+1.  Domestic interest groups
+2.  The international war debt disputes (reparations)
+3.  'Competing conceptual frameworks' shaped by uniquely bad monetary experiences during and after the war
+    -   E.g. anti-inflationary France vs more interventionist Britain
+
+## Questions for discussion
+
+> Why was the interwar monetary system so unstable? Evaluate Kindleberger vs Eichengreen's arguments and the criticisms of Flandreau
+
+::: fragment
 > Is a gold standard untenable for democratic societies?
+:::
 
-<br>
-
---
-
-> Did Britain choose to abandon the gold standard or was it forced to abandon the gold standard?
-
+::: fragment
+> Did Britain choose to abandon the gold standard or was it forced to abandon it?
+:::

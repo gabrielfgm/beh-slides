@@ -331,7 +331,7 @@ For more on spurious regression see: @granger1974
 :::
 :::::
 
-## Testing the trilemma: Specifications  {.smaller}
+## Testing the trilemma: Specifications {.smaller}
 
 Focus on relationship between **changes** in interest rates ( $\Delta$
 is often used to symbolize a difference over time)
